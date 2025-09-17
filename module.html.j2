@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ module.name }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body data-next-module="{{ next_module_file }}">
+    <div class="container">
+        <header>
+            <h1>{{ module.name }} Questions</h1>
+        </header>
+        <div class="main-layout">
+            <aside>
+                <nav>
+                    <ul>
+                        <li><strong>Modules</strong></li>
+                    </ul>
+                    <ul>
+                        {% for m in modules %}
+                        <li><a href="{{ m.html_file }}" {% if m.name == module.name %}class="current"{% endif %}>{{ m.name }}</a></li>
+                        {% endfor %}
+                        <li><a href="final-score.html">Final Score</a></li>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <main>
+            <aside class="one-third">
+                <nav>
+                    <ul>
+                        <li><strong>Modules</strong></li>
+                    </ul>
+                    <ul>
+                        {% for m in modules %}
+                        <li><a href="{{ m.html_file }}" {% if m.name == module.name %}class="current"{% endif %}>{{ m.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </aside>
+            <main class="two-thirds">
+                <ul>
+                    {% for item in module.questions %}
+                    <li>
+                        <details>
+                            <summary>
+                                <span class="question-number">{{ loop.index }}.</span>
+                                {{ item.question | safe }}
+                                <span class="card-arrow">►</span>
+                            </summary>
+                            <div>{{ item.answer | safe }}</div>
+                            <div class="button-group">
+                                <button class="ok-btn" data-points="{{ loop.index }}">OK</button>
+                                <button class="error-btn">Error</button>
+                            </div>
+                        </details>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </main>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

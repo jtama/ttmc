@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Leaderboard</h1>
+        </header>
+        <div class="main-layout">
+            <aside>
+                <nav>
+                    <ul>
+                        <li><strong>Modules</strong></li>
+                    </ul>
+                    <ul>
+                        {% for module in modules %}
+                        <li><a href="{{ module.html_file }}">{{ module.name }}</a></li>
+                        {% endfor %}
+                        <li><a href="final-score.html">Final Score</a></li>
+                        <li><a href="leaderboard.html" class="current">Leaderboard</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <main>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Player Name</th>
+                            <th scope="col">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-list">
+                        <!-- Leaderboard entries will be populated by JavaScript -->
+                    </tbody>
+                </table>
+                <p><a href="index.html" class="button">Start New Quiz</a></p>
+            </main>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

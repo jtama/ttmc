@@ -1,0 +1,148 @@
+/* Basic layout adjustments for Picnic CSS */
+/* Picnic CSS uses .container for centering and max-width */
+/* .grid and .button-group might need custom implementation or Picnic's flex utilities */
+
+/* Custom styles for the main layout */
+.main-layout {
+    display: flex;
+    flex-direction: row; /* Arrange items in a row */
+    width: 100%; /* Take full width of its parent */
+
+    aside {
+        flex: 0 1 auto; /* Allow to shrink, but not grow, size based on content */
+        max-width: 20rem; /* Maximum width for the aside */
+        padding-right: 1rem; /* Add some spacing between sidebar and main content */
+        box-sizing: border-box; /* Include padding in the element's total width */
+        position: static; /* Ensure no fixed positioning */
+
+        /* Navigation Menu Styling */
+        nav {
+            position: static; /* Ensure no fixed positioning for nav */
+
+            ul {
+                list-style: none; /* Remove default bullet points */
+                padding: 0;
+
+                li {
+                    margin-bottom: 0.5rem;
+
+                    a {
+                        display: block;
+                        padding: 0.5rem 1rem;
+                        text-decoration: none;
+                        color: #333; /* Dark gray text */
+                        background-color: #f8f8f8; /* Light background */
+                        border-radius: 4px;
+                        transition: background-color 0.2s ease;
+
+                        &:hover,
+                        &.current {
+                            background-color: #c6d0f5; /* Catppuccin Frappe Lavender */
+                            color: #fff; /* White text on hover/current */
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    main {
+        flex: 1; /* Allow main content to grow and shrink */
+        padding-left: 1rem; /* Add some spacing */
+        padding-right: 1rem; /* Add right padding */
+        box-sizing: border-box; /* Include padding in the element's total width */
+
+        /* Custom styles for the question list - Arrow Cards */
+        ul {
+            list-style: none; /* Remove default bullet points */
+            padding: 0;
+
+            li {
+                margin-bottom: 1.5rem; /* Space between questions */
+                border: 1px solid #ccc; /* Generic border */
+                border-radius: 4px; /* Generic border-radius */
+                padding: 1rem;
+                display: flex; /* Use flexbox for layout */
+                align-items: center; /* Vertically align items */
+                position: relative; /* For absolute positioning of arrow */
+                overflow: hidden; /* Hide overflowing arrow */
+
+                /* Alternating background colors - Catppuccin Frappe palette */
+                &:nth-child(4n+1) {
+                    background-color: #a6d189; /* Catppuccin Frappe Green */
+                }
+                &:nth-child(4n+2) {
+                    background-color: #81c8be; /* Catppuccin Frappe Teal */
+                }
+                &:nth-child(4n+3) {
+                    background-color: #e78284; /* Catppuccin Frappe Red */
+                }
+                &:nth-child(4n+4) {
+                    background-color: #c6d0f5; /* Catppuccin Frappe Lavender */
+                }
+
+                details {
+                    flex-grow: 1; /* Allow details to take available space */
+                    margin-bottom: 0;
+
+                    summary {
+                        font-weight: bold;
+                        cursor: pointer;
+                        padding: 0.5rem 0;
+                        color: #333; /* Generic text color */
+                        display: flex; /* Use flexbox for summary content */
+                        align-items: center;
+
+                        &:hover {
+                            color: #555; /* Generic hover color */
+                        }
+
+                        /* Hide default details arrow */
+                        &::-webkit-details-marker {
+                            display: none;
+                        }
+
+                        &::marker {
+                            display: none;
+                        }
+                    }
+
+                    &[open] summary {
+                        border-bottom: 1px solid #ccc; /* Generic border */
+                        margin-bottom: 0.5rem;
+                    }
+
+                    div {
+                        padding-top: 0.5rem;
+                    }
+                }
+
+                /* New arrow styling */
+                .card-arrow {
+                    font-size: 1.2em;
+                    color: #333; /* Generic text color */
+                    position: absolute; /* Position absolutely */
+                    right: 1rem; /* Distance from right edge of li */
+                    top: 50%; /* Center vertically */
+                    transform: translateY(-50%); /* Adjust for vertical centering */
+                }
+
+                /* Numbering - prominent circle */
+                .question-number {
+                    font-size: 1.2em; /* Smaller font size for number */
+                    font-weight: bold;
+                    color: #fff; /* White text */
+                    background-color: #333; /* Generic background */
+                    border-radius: 50%; /* Make it a circle */
+                    width: 30px; /* Fixed width */
+                    height: 30px; /* Fixed height */
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right: 15px; /* Space between number and question text */
+                    flex-shrink: 0; /* Prevent shrinking */
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tu te mets combien ???</h1>
+        </header>
+        <div class="main-layout">
+            <aside>
+                <nav>
+                    <ul>
+                        <li><strong>Modules</strong></li>
+                    </ul>
+                    <ul>
+                        {% for module in modules %}
+                        <li><a href="{{ module.html_file }}">{{ module.name }}</a></li>
+                        {% endfor %}
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <main>
+            <aside class="one-third">
+                <nav>
+                    <ul>
+                        <li><strong>Modules</strong></li>
+                    </ul>
+                    <ul>
+                        {% for module in modules %}
+                        <li><a href="{{ module.html_file }}">{{ module.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </aside>
+            <main class="two-thirds">
+                <label for="player-name">Player Name</label>
+                <input type="text" id="player-name" name="player-name" placeholder="Enter your name">
+                <a href="{{ modules[0].html_file }}" id="start-quiz-btn" class="button">Start Quiz</a>
+            </main>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
