@@ -10,7 +10,12 @@
 <body>
     <div class="container">
         <header>
-            <h1>Tu te mets combien ???</h1>
+            <div class="header-flex">
+                <h1>Tu te mets combien ???</h1>
+                <div class="header-actions">
+                    <a href="leaderboard.html" class="header-btn">Leaderboard</a>
+                </div>
+            </div>
         </header>
         <div class="main-layout">
             <aside>
@@ -22,7 +27,6 @@
                         {% for module in modules %}
                         <li><a href="{{ module.html_file }}">{{ module.name }}</a></li>
                         {% endfor %}
-                        <li><a href="leaderboard.html">Leaderboard</a></li>
                     </ul>
                 </nav>
             </aside>

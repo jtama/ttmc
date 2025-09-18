@@ -10,27 +10,19 @@
 <body>
     <div class="container">
         <header>
-            <h1>Final Score</h1>
+            <div class="header-flex">
+                <h1>Final Score</h1>
+                <div class="header-actions">
+                    <a href="index.html" class="header-btn">Home</a>
+                    <a href="leaderboard.html" class="header-btn">Leaderboard</a>
+                </div>
+            </div>
         </header>
         <div class="main-layout">
-            <aside>
-                <nav>
-                    <ul>
-                        <li><strong>Modules</strong></li>
-                    </ul>
-                    <ul>
-                        {% for module in modules %}
-                        <li><a href="{{ module.html_file }}">{{ module.name }}</a></li>
-                        {% endfor %}
-                        <li><a href="final-score.html" class="current">Final Score</a></li>
-                        <li><a href="leaderboard.html">Leaderboard</a></li>
-                    </ul>
-                </nav>
-            </aside>
+            <!-- Pas de menu modules sur la page final score -->
             <main>
                 <p>Congratulations, <span id="player-name-display"></span>!</p>
                 <p>Your final score is: <span id="final-score"></span></p>
-                <p><a href="leaderboard.html" class="button">View Leaderboard</a></p>
                 <p><a href="index.html" class="button">Start New Quiz</a></p>
             </main>
         </div>

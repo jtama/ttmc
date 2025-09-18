@@ -1,6 +1,7 @@
 body {
     background-color: var(--base);
     color: var(--text);
+    padding: 2rem 4rem;
 }
 
 :root {
@@ -212,4 +213,142 @@ tbody tr:hover {
 .current-player {
     background-color: var(--lavender) !important; /* Catppuccin Frappe Lavender */
     font-weight: bold;
+}
+
+
+
+.header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
+.header-btn {
+    background: var(--lavender);
+    color: var(--text);
+    border: none;
+    border-radius: 6px;
+    padding: 0.7em 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.2s;
+    cursor: pointer;
+}
+.header-btn:hover {
+    background: var(--blue);
+    color: var(--text);
+}
+
+.ok-btn {
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.7em 1.2em;
+    font-weight: bold;
+    margin-left: 0.5em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.ok-btn:disabled {
+    background: var(--overlay1) !important;
+    color: var(--subtext0) !important;
+    border: none;
+    cursor: not-allowed;
+    opacity: 1;
+}
+.error-btn {
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.7em 1.2em;
+    font-weight: bold;
+    margin-left: 0.5em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.error-btn:disabled {
+    background: var(--overlay1) !important;
+    color: var(--subtext0) !important;
+    border: none;
+    cursor: not-allowed;
+    opacity: 1;
+}
+.show-answer-btn {
+    background: var(--lavender);
+    color: var(--text);
+    border: none;
+    border-radius: 6px;
+    padding: 0.7em 1.2em;
+    font-weight: bold;
+    margin-right: 0.5em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+/* Grille de niveaux pour les modules */
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.level-btn {
+    background-color: var(--surface2);
+    color: var(--text);
+    border: none;
+    border-radius: 8px;
+    padding: 1.2rem 0.5rem;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.level-btn:hover {
+    background-color: var(--lavender);
+    color: var(--text);
+}
+
+.question-card {
+    background: var(--surface1);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.question-text {
+    font-size: 1.2em;
+    margin-bottom: 1rem;
+}
+.answer-text {
+    font-size: 1.1em;
+    margin-bottom: 1rem;
+    color: var(--green);
+}
+
+.score-detail {
+    margin-top: 2rem;
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+    th, td {
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid var(--overlay0);
+        text-align: left;
+    }
+    th {
+        background: var(--surface1);
+        color: var(--text);
+    }
+    tr:nth-child(even) {
+        background: var(--surface0);
+    }
 }
