@@ -27,19 +27,6 @@
                 </nav>
             </aside>
             <main>
-            <aside class="one-third">
-                <nav>
-                    <ul>
-                        <li><strong>Modules</strong></li>
-                    </ul>
-                    <ul>
-                        {% for module in modules %}
-                        <li><a href="{{ module.html_file }}">{{ module.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </nav>
-            </aside>
-            <main class="two-thirds">
                 <label for="player-name">Player Name</label>
                 <input type="text" id="player-name" name="player-name" placeholder="Enter your name">
                 <a href="{{ modules[0].html_file }}" id="start-quiz-btn" class="button">Start Quiz</a>

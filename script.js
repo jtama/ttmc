@@ -15,10 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
         leaderboard.sort((a, b) => b.score - a.score); // Sort by score descending
 
-        leaderboardElement.innerHTML = ''; // Clear existing list
-        leaderboard.slice(0, 25).forEach((entry, index) => { // Limit to 25 entries
-            const tr = document.createElement('tr');
-            const th = document.createElement('th');
+            const currentPlayer = localStorage.getItem('currentPlayer');
+        
+            leaderboardElement.innerHTML = ''; // Clear existing list
+            leaderboard.slice(0, 25).forEach((entry, index) => { // Limit to 25 entries
+                const tr = document.createElement('tr');
+                if (entry.playerName === currentPlayer) {
+                    tr.classList.add('current-player');
+                }            const th = document.createElement('th');
             th.setAttribute('scope', 'row');
             th.textContent = index + 1;
             const tdName = document.createElement('td');
@@ -74,7 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 playerNameElement.textContent = currentQuizData.playerName;
             }
 
-            // Add current quiz data to leaderboard
+            // Save player name for leaderboard highlighting
+        localStorage.setItem('currentPlayer', currentQuizData.playerName);
+
+        // Add current quiz data to leaderboard
             const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
             leaderboard.push({
                 playerName: currentQuizData.playerName,

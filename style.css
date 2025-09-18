@@ -1,3 +1,37 @@
+body {
+    background-color: var(--base);
+    color: var(--text);
+}
+
+:root {
+    --rosewater: #dc8a78;
+    --flamingo: #dd7878;
+    --pink: #ea76cb;
+    --mauve: #8839ef;
+    --red: #d20f39;
+    --maroon: #e64553;
+    --peach: #fe640b;
+    --yellow: #df8e1d;
+    --green: #427b58;
+    --teal: #179299;
+    --sky: #04a5e5;
+    --sapphire: #209fb5;
+    --blue: #1e66f5;
+    --lavender: #7287fd;
+    --text: #c6d0f5;
+    --subtext1: #b5bfe2;
+    --subtext0: #a5adce;
+    --overlay2: #949cbb;
+    --overlay1: #838ba7;
+    --overlay0: #737994;
+    --surface2: #626880;
+    --surface1: #51576d;
+    --surface0: #414559;
+    --base: #303446;
+    --mantle: #292c3c;
+    --crust: #232634;
+}
+
 /* Basic layout adjustments for Picnic CSS */
 /* Picnic CSS uses .container for centering and max-width */
 /* .grid and .button-group might need custom implementation or Picnic's flex utilities */
@@ -30,15 +64,15 @@
                         display: block;
                         padding: 0.5rem 1rem;
                         text-decoration: none;
-                        color: #333; /* Dark gray text */
-                        background-color: #f8f8f8; /* Light background */
+                        color: var(--text); /* Dark gray text */
+                        background-color: var(--surface0); /* Light background */
                         border-radius: 4px;
                         transition: background-color 0.2s ease;
 
                         &:hover,
                         &.current {
-                            background-color: #c6d0f5; /* Catppuccin Frappe Lavender */
-                            color: #fff; /* White text on hover/current */
+                            background-color: var(--lavender); /* Catppuccin Frappe Lavender */
+                            color: var(--text); /* White text on hover/current */
                         }
                     }
                 }
@@ -59,7 +93,7 @@
 
             li {
                 margin-bottom: 1.5rem; /* Space between questions */
-                border: 1px solid #ccc; /* Generic border */
+                border: 1px solid var(--overlay0); /* Generic border */
                 border-radius: 4px; /* Generic border-radius */
                 padding: 1rem;
                 display: flex; /* Use flexbox for layout */
@@ -69,16 +103,16 @@
 
                 /* Alternating background colors - Catppuccin Frappe palette */
                 &:nth-child(4n+1) {
-                    background-color: #a6d189; /* Catppuccin Frappe Green */
+                    background-color: var(--green);
                 }
                 &:nth-child(4n+2) {
-                    background-color: #81c8be; /* Catppuccin Frappe Teal */
+                    background-color: var(--teal);
                 }
                 &:nth-child(4n+3) {
-                    background-color: #e78284; /* Catppuccin Frappe Red */
+                    background-color: var(--maroon);
                 }
                 &:nth-child(4n+4) {
-                    background-color: #c6d0f5; /* Catppuccin Frappe Lavender */
+                    background-color: var(--lavender);
                 }
 
                 details {
@@ -89,12 +123,12 @@
                         font-weight: bold;
                         cursor: pointer;
                         padding: 0.5rem 0;
-                        color: #333; /* Generic text color */
+                        color: var(--text); /* Generic text color */
                         display: flex; /* Use flexbox for summary content */
                         align-items: center;
 
                         &:hover {
-                            color: #555; /* Generic hover color */
+                            color: var(--subtext0); /* Generic hover color */
                         }
 
                         /* Hide default details arrow */
@@ -108,7 +142,7 @@
                     }
 
                     &[open] summary {
-                        border-bottom: 1px solid #ccc; /* Generic border */
+                        border-bottom: 1px solid var(--overlay0); /* Generic border */
                         margin-bottom: 0.5rem;
                     }
 
@@ -120,7 +154,7 @@
                 /* New arrow styling */
                 .card-arrow {
                     font-size: 1.2em;
-                    color: #333; /* Generic text color */
+                    color: var(--text); /* Generic text color */
                     position: absolute; /* Position absolutely */
                     right: 1rem; /* Distance from right edge of li */
                     top: 50%; /* Center vertically */
@@ -131,8 +165,8 @@
                 .question-number {
                     font-size: 1.2em; /* Smaller font size for number */
                     font-weight: bold;
-                    color: #fff; /* White text */
-                    background-color: #333; /* Generic background */
+                    color: var(--text); /* White text */
+                    background-color: var(--surface2); /* Generic background */
                     border-radius: 50%; /* Make it a circle */
                     width: 30px; /* Fixed width */
                     height: 30px; /* Fixed height */
@@ -145,4 +179,37 @@
             }
         }
     }
+}
+
+/* Leaderboard Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--overlay0);
+    color: var(--text);
+}
+
+th {
+    background-color: var(--surface1);
+    font-weight: bold;
+    color: var(--text);
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--surface0);
+}
+
+tbody tr:hover {
+    background-color: var(--surface1);
+}
+
+.current-player {
+    background-color: var(--lavender) !important; /* Catppuccin Frappe Lavender */
+    font-weight: bold;
 }

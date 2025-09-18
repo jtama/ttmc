@@ -28,19 +28,6 @@
                 </nav>
             </aside>
             <main>
-            <aside class="one-third">
-                <nav>
-                    <ul>
-                        <li><strong>Modules</strong></li>
-                    </ul>
-                    <ul>
-                        {% for m in modules %}
-                        <li><a href="{{ m.html_file }}" {% if m.name == module.name %}class="current"{% endif %}>{{ m.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </nav>
-            </aside>
-            <main class="two-thirds">
                 <ul>
                     {% for item in module.questions %}
                     <li>
