@@ -10,7 +10,13 @@
 <body data-next-module="{{ next_module_file }}">
     <div class="container">
         <header>
-            <h1>{{ module.name }} Questions</h1>
+            <div class="header-flex">
+                <h1>{{ module.name }} Questions</h1>
+                <div class="header-actions">
+                    <a href="index.html" class="header-btn">Home</a>
+                    <a href="leaderboard.html" class="header-btn">Leaderboard</a>
+                </div>
+            </div>
         </header>
         <div class="main-layout">
             <aside>
@@ -22,33 +28,32 @@
                         {% for m in modules %}
                         <li><a href="{{ m.html_file }}" {% if m.name == module.name %}class="current"{% endif %}>{{ m.name }}</a></li>
                         {% endfor %}
-                        <li><a href="final-score.html">Final Score</a></li>
-                        <li><a href="leaderboard.html">Leaderboard</a></li>
                     </ul>
                 </nav>
             </aside>
             <main>
-                <ul>
+                <div class="levels-grid">
                     {% for item in module.questions %}
-                    <li>
-                        <details>
-                            <summary>
-                                <span class="question-number">{{ loop.index }}.</span>
-                                {{ item.question | safe }}
-                                <span class="card-arrow">►</span>
-                            </summary>
-                            <div>{{ item.answer | safe }}</div>
-                            <div class="button-group">
-                                <button class="ok-btn" data-points="{{ loop.index }}">OK</button>
-                                <button class="error-btn">Error</button>
-                            </div>
-                        </details>
-                    </li>
+                        <button class="level-btn" data-index="{{ loop.index0 }}" style="grid-column: {{ (loop.index0 % 5) + 1 }};">
+                            Niveau {{ loop.index }}
+                        </button>
                     {% endfor %}
-                </ul>
+                </div>
+                <div id="question-container" style="display:none;"></div>
             </main>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
+</body>
+<script>
+window.moduleQuestions = [
+{% for item in module.questions %}
+    {
+        question: {{ item.question | tojson }},
+        answer: {{ item.answer | tojson }}
+    }{% if not loop.last %},{% endif %}
+{% endfor %}
+];
+</script>
 </html>

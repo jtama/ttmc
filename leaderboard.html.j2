@@ -10,23 +10,15 @@
 <body>
     <div class="container">
         <header>
-            <h1>Leaderboard</h1>
+            <div class="header-flex">
+                <h1>Leaderboard</h1>
+                <div class="header-actions">
+                    <a href="index.html" class="header-btn">Home</a>
+                </div>
+            </div>
         </header>
         <div class="main-layout">
-            <aside>
-                <nav>
-                    <ul>
-                        <li><strong>Modules</strong></li>
-                    </ul>
-                    <ul>
-                        {% for module in modules %}
-                        <li><a href="{{ module.html_file }}">{{ module.name }}</a></li>
-                        {% endfor %}
-                        <li><a href="final-score.html">Final Score</a></li>
-                        <li><a href="leaderboard.html" class="current">Leaderboard</a></li>
-                    </ul>
-                </nav>
-            </aside>
+            <!-- Pas de menu modules sur la page leaderboard -->
             <main>
                 <table>
                     <thead>
