@@ -1,5 +1,6 @@
 import yaml
 import os
+import shutil
 from jinja2 import Environment, FileSystemLoader
 import markdown # Import the markdown library
 
@@ -23,8 +24,28 @@ def get_modules():
             })
     return modules
 
+def ensure_dist_directory():
+    """Ensures the dist directory exists, creates it if not."""
+    if not os.path.exists('dist'):
+        os.makedirs('dist')
+        print("Created 'dist' directory.")
+
+def cp_js_css():
+    """Copies JavaScript and CSS files to the dist directory."""
+    files_to_copy = ['script.js', 'style.css']
+
+    for file_name in files_to_copy:
+        if os.path.exists(file_name):
+            shutil.copy2(file_name, f'dist/{file_name}')
+            print(f"{file_name} copied to dist/ successfully.")
+        else:
+            print(f"Warning: {file_name} not found, skipping.")
+
 def main():
     """Generates the website."""
+    # Ensure dist directory exists
+    ensure_dist_directory()
+
     modules = get_modules()
     env = Environment(loader=FileSystemLoader('.'))
 
@@ -37,21 +58,21 @@ def main():
 
         template = env.get_template('module.html.j2')
         html_content = template.render(module=module, modules=modules, next_module_file=next_module_file)
-        with open(module['html_file'], 'w') as file:
+        with open('dist/' + module['html_file'], 'w') as file:
             file.write(html_content)
-        print(f"{module['html_file']} generated successfully.")
+        print(f"dist/{module['html_file']} generated successfully.")
 
     # Generate index page
     template = env.get_template('index.html.j2')
     html_content = template.render(modules=modules)
-    with open('index.html', 'w') as file:
+    with open('dist/index.html', 'w') as file:
         file.write(html_content)
     print("index.html generated successfully.")
 
     # Generate final score page
     template = env.get_template('final-score.html.j2')
     html_content = template.render()
-    with open('final-score.html', 'w') as file:
+    with open('dist/final-score.html', 'w') as file:
         file.write(html_content)
     print("final-score.html generated successfully.")
 
@@ -60,10 +81,12 @@ def generate_leaderboard_page():
     env = Environment(loader=FileSystemLoader('.'))
     template = env.get_template('leaderboard.html.j2')
     html_content = template.render()
-    with open('leaderboard.html', 'w') as file:
+    with open('dist/leaderboard.html', 'w') as file:
         file.write(html_content)
     print("leaderboard.html generated successfully.")
 
 if __name__ == "__main__":
     main()
     generate_leaderboard_page()
+    cp_js_css()
+    print("Build completed successfully!")

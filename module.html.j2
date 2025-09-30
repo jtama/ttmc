@@ -26,7 +26,7 @@
                     </ul>
                     <ul>
                         {% for m in modules %}
-                        <li><a href="{{ m.html_file }}" {% if m.name == module.name %}class="current"{% endif %}>{{ m.name }}</a></li>
+                        <li><a href="/{{ m.html_file }}" {% if m.name == module.name %}class="current"{% endif %}>{{ m.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </nav>
