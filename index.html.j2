@@ -6,6 +6,7 @@
     <title>Static Website</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
     <link href="style.css" rel="stylesheet">
+    <link href="modal.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -37,6 +38,14 @@
             </main>
         </div>
     </div>
-    <script src="script.js"></script>
+    <dialog id="custom-dialog">
+        <p id="dialog-message"></p>
+        <div id="dialog-confirm-buttons" style="display: none; justify-content: space-around;">
+            <button id="confirm-ok-btn">OK</button>
+            <button id="confirm-cancel-btn">Cancel</button>
+        </div>
+        <button id="close-dialog-btn" style="display: none;">OK</button>
+    </dialog>
+    <script src="script.js" defer></script>
 </body>
 </html>

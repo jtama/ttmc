@@ -30,9 +30,19 @@ def ensure_dist_directory():
         os.makedirs('dist')
         print("Created 'dist' directory.")
 
-def cp_js_css():
-    """Copies JavaScript and CSS files to the dist directory."""
-    files_to_copy = ['script.js', 'style.css']
+def cp_assets():
+    """Copies assets to the dist directory."""
+    if os.path.exists('dist/js'):
+        shutil.rmtree('dist/js')
+    shutil.copytree('js', 'dist/js')
+    print(f"js folder copied to dist/ successfully.")
+
+    if os.path.exists('dist/img'):
+        shutil.rmtree('dist/img')
+    shutil.copytree('img', 'dist/img')
+    print(f"img folder copied to dist/ successfully.")
+
+    files_to_copy = ['style.css', 'script.js', 'js/dialog.js']
 
     for file_name in files_to_copy:
         if os.path.exists(file_name):
@@ -40,6 +50,7 @@ def cp_js_css():
             print(f"{file_name} copied to dist/ successfully.")
         else:
             print(f"Warning: {file_name} not found, skipping.")
+
 
 def main():
     """Generates the website."""
@@ -88,5 +99,5 @@ def generate_leaderboard_page():
 if __name__ == "__main__":
     main()
     generate_leaderboard_page()
-    cp_js_css()
+    cp_assets()
     print("Build completed successfully!")

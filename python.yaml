@@ -1,7 +1,7 @@
 title: Python
 questions:
   - question: "En Python, comment qu'est-ce qui symbolise les limites d'un contexte: des parenthèses (`{` et `}`) ou l'indentation ?"
-    answer: "L'indentation"
+    answer: "L'indentation!"
   - question: "Quelle est la différence entre `=` et `==` en Python ?"
     answer: "`=` sert à affecter une valeur à une variable, `==` sert à tester l'égalité entre deux valeurs"
   - question: "En Python, comment écrit-on la valeur « rien » (équivalent de `null` en Java ou JS) ?"

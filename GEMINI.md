@@ -48,5 +48,5 @@ Then navigate to `http://localhost:8000` in your browser.
 *   **Quiz Content:** Quiz questions and answers are defined in `.yaml` files (e.g., `javascript.yaml`, `python.yaml`). Questions and answers within these files should be written in Markdown format.
 *   **Templating:** Jinja2 templates (`.j2` files) are used for the structure and dynamic content of the HTML pages.
 *   **Styling:** The website uses the Picnic CSS framework, supplemented by custom styles defined in `style.css`.
-*   **Scripting:** Client-side interactivity is handled by `script.js`.
+*   **Scripting:** Client-side interactivity is handled by multiple JavaScript files in the `js/` directory. A main `script.js` file dynamically loads the appropriate script based on the current page.
 *   **Build Process:** The `build.py` script is the single source of truth for generating the static site. Any new modules or pages should be integrated into this script and the corresponding Jinja2 templates.

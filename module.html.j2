@@ -6,6 +6,7 @@
     <title>{{ module.name }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
     <link href="style.css" rel="stylesheet">
+    <link href="modal.css" rel="stylesheet">
 </head>
 <body data-next-module="{{ next_module_file }}">
     <div class="container">
@@ -40,20 +41,43 @@
                     {% endfor %}
                 </div>
                 <div id="question-container" style="display:none;"></div>
+
+                {% for item in module.questions %}
+                <div id="question-{{ loop.index0 }}" class="question-card" style="display:none;">
+                    <div class="question-text">{{ item.question }}</div>
+                    <div class="answer-text" style="display:none;">{{ item.answer }}</div>
+                    <div class="button-group">
+                        <button class="show-answer-btn">Voir la réponse</button>
+                        <button class="ok-btn" data-points="{{ loop.index }}" disabled>OK</button>
+                        <button class="error-btn" disabled>Error</button>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <template id="already-answered-template">
+                    <div class="question-card">
+                        <div class="question-text">Vous avez déjà répondu à une question de ce module.</div>
+                        <div class="answer-text">
+                            <strong>Niveau choisi :</strong> <span class="niveau"></span><br>
+                            <strong>Points obtenus :</strong> <span class="points"></span>
+                        </div>
+                        <div class="button-group">
+                            <button class="next-btn">Continuer vers le module suivant</button>
+                        </div>
+                    </div>
+                </template>
             </main>
         </div>
     </div>
-    <script src="script.js"></script>
+    <dialog id="custom-dialog">
+        <p id="dialog-message"></p>
+        <div id="dialog-confirm-buttons" style="display: none; justify-content: space-around;">
+            <button id="confirm-ok-btn">OK</button>
+            <button id="confirm-cancel-btn">Cancel</button>
+        </div>
+        <button id="close-dialog-btn" style="display: none;">OK</button>
+    </dialog>
+
+    <script src="script.js" defer></script>
 </body>
-</body>
-<script>
-window.moduleQuestions = [
-{% for item in module.questions %}
-    {
-        question: {{ item.question | tojson }},
-        answer: {{ item.answer | tojson }}
-    }{% if not loop.last %},{% endif %}
-{% endfor %}
-];
-</script>
 </html>
