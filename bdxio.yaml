@@ -1,12 +1,26 @@
 title: BDX I/O
 questions:
-  - question: Que signifie BDX dans BDX I/O ?
-    answer: Bordeaux Développeur eXperience
-  - question: Où ont eu lieu les premières éditions de BDX I/O ?
-    answer: L'ENSERB
-  - question: Quelle est l'année de la première édition de BDX I/O ?
+  - question: |
+      Vrai ou Faux : BDX dans BDX I/O signifie "Bordeaux Digital eXperience".
+    answer: "Faux, il s'agit de **Bordeaux Développeur eXperience**."
+  - question: |
+      Vrai ou Faux : Les premières éditions de BDX I/O ont eu lieu à l'Université de Bordeaux.
+    answer: "Faux, elles ont eu lieu à **l'ENSEIRB**."
+  - question: |
+      Quelle est l'année de la première édition de BDX I/O ?
+      
+      - 2012
+      - 2014
+      - 2016
+      - 2018
     answer: "2014"
-  - question: Combien y'a-t-il de conférencier Onepoint cette année ?
+  - question: |
+      Combien y a-t-il de conférenciers Onepoint à BDX I/O cette année ?
+      
+      - 4
+      - 5
+      - 6
+      - 7
     answer: "6"
   - question: Quels sont les 4 niveaux de sponsoring ?
     answer: Startup, Magnum, Impérial, Balthazar

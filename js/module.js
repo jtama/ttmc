@@ -1,3 +1,15 @@
+// --- Access Control ---
+document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('currentQuiz')) {
+        // Redirect to home page if no quiz is in progress
+        window.location.href = 'index.html';
+        return; // Stop further execution
+    }
+
+    const nextModule = document.body.getAttribute('data-next-module');
+    initModulePage(nextModule);
+});
+
 // --- Module Page Logic ---
 function initModulePage(nextModule) {
     const levelButtons = document.querySelectorAll('.level-btn');

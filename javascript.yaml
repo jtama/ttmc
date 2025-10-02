@@ -1,13 +1,27 @@
 title: JavaScript
 questions:
-  - question: "Est-ce que JavaScript est un dérivé du Java ?"
-    answer: "Non"
-  - question: "`typeof null` retourne ?"
-    answer: "`\"object\"` – C’est un bug historique du langage qui n’a jamais été corrigé pour compatibilité."
-  - question: "`NaN === NaN` retourne ?"
-    answer: "`false` – `NaN` est défini comme pas égal à lui-même. Il faut utiliser `Number.isNaN()`."
-  - question: "`[] == ![]` retourne ?"
-    answer: "`true` – coercition : `![]` devient `false`, `[]` devient `0` → `0 == 0`."
+  - question: |
+      Vrai ou Faux : JavaScript est une version allégée de Java.
+    answer: "Faux, ce sont deux langages de programmation distincts avec des syntaxes et des usages très différents."
+  - question: |
+      Vrai ou Faux : L'expression `typeof null` retourne `null`.
+    answer: "Faux, elle retourne **\"object\"**. C'est un bug historique du langage."
+  - question: |
+      Que retourne l'expression `NaN === NaN` en JavaScript ?
+      
+      - true
+      - false
+      - undefined
+      - Error
+    answer: "**false** – `NaN` est la seule valeur en JavaScript qui n'est pas égale à elle-même."
+  - question: |
+      Que retourne l'expression `[] == ![]` en JavaScript ?
+      
+      - true
+      - false
+      - undefined
+      - Error
+    answer: "**true** – À cause de la coercition de type, `![]` devient `false`, et `[]` est converti en `0`, ce qui mène à `0 == 0`."
   - question: "`[] + []` retourne ?"
     answer: "`\"\"` (string vide) – avec `+`, les tableaux sont convertis en string → `\"\"`."
   - question: "`{} + []` retourne ?"

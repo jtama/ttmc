@@ -3,6 +3,8 @@ import os
 import shutil
 from jinja2 import Environment, FileSystemLoader
 import markdown # Import the markdown library
+import subprocess
+import glob
 
 def get_modules():
     """Returns a list of all modules from the YAML files."""
@@ -96,8 +98,27 @@ def generate_leaderboard_page():
         file.write(html_content)
     print("leaderboard.html generated successfully.")
 
+def run_accessibility_sub_agent():
+    """Calls the accessibility check sub-agent."""
+    print("\n--- Calling Accessibility Sub-Agent ---")
+    try:
+        subprocess.run(
+            ['python3', 'check_accessibility.py', 'dist'],
+            check=True
+        )
+    except FileNotFoundError:
+        print("Error: 'python3' command not found. Please ensure Python 3 is installed and in your PATH.")
+    except subprocess.CalledProcessError:
+        # The sub-agent will have already printed the errors.
+        # We exit here to ensure the build process is marked as failed.
+        print("\n--- Accessibility Sub-Agent finished with errors. ---")
+        exit(1)
+    print("\n--- Accessibility Sub-Agent finished successfully. ---")
+
+
 if __name__ == "__main__":
     main()
     generate_leaderboard_page()
     cp_assets()
+    run_accessibility_sub_agent()
     print("Build completed successfully!")

@@ -1,12 +1,26 @@
 title: Python
 questions:
-  - question: "En Python, comment qu'est-ce qui symbolise les limites d'un contexte: des parenthèses (`{` et `}`) ou l'indentation ?"
-    answer: "L'indentation!"
-  - question: "Quelle est la différence entre `=` et `==` en Python ?"
-    answer: "`=` sert à affecter une valeur à une variable, `==` sert à tester l'égalité entre deux valeurs"
-  - question: "En Python, comment écrit-on la valeur « rien » (équivalent de `null` en Java ou JS) ?"
+  - question: |
+      Vrai ou Faux : En Python, les blocs de code (comme les boucles ou les fonctions) sont délimités par des accolades `{}`.
+    answer: "Faux, ils sont délimités par l'**indentation**."
+  - question: |
+      Vrai ou Faux : En Python, l'opérateur `==` est utilisé pour assigner une valeur à une variable.
+    answer: "Faux, `==` est pour la comparaison. L'assignation se fait avec l'opérateur **=**."
+  - question: |
+      Comment représente-t-on l'équivalent de "null" (l'absence de valeur) en Python ?
+      
+      - NULL
+      - nil
+      - None
+      - undefined
     answer: "`None`"
-  - question: "Quel est le résultat de l’expression `len(\"Python\")` ?"
+  - question: |
+      Quel est le résultat de l'expression `len("Python")` ?
+      
+      - 5
+      - 6
+      - 7
+      - "Python"
     answer: "`6` (`len` appliqué à une chaîne donne sa longueur)"
   - question: "Que va afficher ce code ? `print(\"Python\"[::-1])`"
     answer: "`nohtyP` (chaîne inversée)"

@@ -1,12 +1,26 @@
 title: "IA"
 questions:
-  - question: "Quelle entreprise a développé ChatGPT ?"
-    answer: "OpenAI"
-  - question: "Comment s’appelle le programme d’IA d’IBM qui a battu le champion du monde d’échecs Garry Kasparov en 1997 ?"
-    answer: "DeepBlue"
-  - question: "Quels sont les deux frameworks python les plus utilisés pour le deep learning ?"
+  - question: |
+      Vrai ou Faux : ChatGPT a été développé par Google.
+    answer: "Faux, il a été développé par **OpenAI**."
+  - question: |
+      Vrai ou Faux : Le programme d'IA d'IBM qui a battu Garry Kasparov s'appelle Watson.
+    answer: "Faux, il s'agit de **DeepBlue**."
+  - question: |
+      Quels sont les deux frameworks Python les plus utilisés pour le deep learning ?
+      
+      - Scikit-learn et Keras
+      - TensorFlow et PyTorch
+      - Caffe et Theano
+      - NumPy et Pandas
     answer: "TensorFlow et Pytorch"
-  - question: "Quel test célèbre imaginé en 1950 évalue la capacité d’une machine à imiter l’intelligence humaine ?"
+  - question: |
+      Quel test célèbre, imaginé en 1950, évalue la capacité d’une machine à se faire passer pour un humain ?
+      
+      - Le Test de Lovelace
+      - Le Test de Turing
+      - Le Test de Voight-Kampff
+      - Le Test de Bechdel
     answer: "Le Test de Turing (ou Imitation Game)"
   - question: "Quelle est la méthode de deep learning attribuant une classe à chaque pixel d'une image ?"
     answer: "La segmentation sémantique"

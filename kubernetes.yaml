@@ -1,12 +1,26 @@
 title: "Kubernetes"
 questions:
-  - question: "Qu’est-ce que Kubernetes avant tout ?"
-    answer: "Un orchestrateur de conteneurs"
-  - question: "Qui a créé Kubernetes ?"
-    answer: "Google"
-  - question: "Dans quel langage est principalement écrit Kubernetes ?"
+  - question: |
+      Vrai ou Faux : Kubernetes est avant tout un système de gestion de bases de données.
+    answer: "Faux, c'est un **orchestrateur de conteneurs**."
+  - question: |
+      Vrai ou Faux : Kubernetes a été initialement créé par Microsoft.
+    answer: "Faux, il a été créé par **Google**."
+  - question: |
+      Dans quel langage de programmation Kubernetes est-il principalement écrit ?
+      
+      - Python
+      - Java
+      - Go (Golang)
+      - C++
     answer: "Go (Golang)"
-  - question: "Quel langage est utilisé pour décrire les ressources dans Kubernetes ?"
+  - question: |
+      Quel langage est le plus couramment utilisé pour décrire les ressources (pods, services, etc.) dans Kubernetes ?
+      
+      - JSON
+      - YAML
+      - XML
+      - TOML
     answer: "YAML ou KYAML (depuis v1.34)"
   - question: "Quel concept permet de regrouper des containers exécutés sur le même hôte ?"
     answer: "Le Pod"

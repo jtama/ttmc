@@ -1,12 +1,26 @@
 title: "Google"
 questions:
-  - question: "Qui sont les deux fondateurs de Google ?"
-    answer: "Larry Page et Sergey Brin."
-  - question: "Quel est le principal système d’exploitation mobile développé par Google ?"
-    answer: "Android."
-  - question: "Comment s’appelait le moteur de recherche précurseur de Google, créé à Stanford par ses fondateurs ?"
+  - question: |
+      Vrai ou Faux : Les fondateurs de Google sont Steve Jobs et Bill Gates.
+    answer: "Faux, il s'agit de **Larry Page et Sergey Brin**."
+  - question: |
+      Vrai ou Faux : iOS est le principal système d’exploitation mobile développé par Google.
+    answer: "Faux, il s'agit d'**Android**."
+  - question: |
+      Comment s’appelait le moteur de recherche précurseur de Google ?
+      
+      - PageRank
+      - BackRub
+      - Googol
+      - Stanford Search
     answer: "BackRub."
-  - question: "Quelle entreprise Google a rachetée en 2006, devenue la plus grande plateforme vidéo au monde ?"
+  - question: |
+      Quelle plateforme vidéo majeure Google a-t-elle rachetée en 2006 ?
+      
+      - Dailymotion
+      - Vimeo
+      - YouTube
+      - Twitch
     answer: "YouTube"
   - question: "De quel mot le nom «Google» est-il inspiré et que signifie-t-il ?"
     answer: "Du mot «googol», désignant le chiffre 1 suivi de 100 zéros."
