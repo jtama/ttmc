@@ -1,0 +1,25 @@
+---
+layout: module
+title: Base de données
+questions:
+  - question: "Que signifie le sigle ***SQL*** ?"
+    answer: "Structured Query Language."
+  - question: "Quel type de clé garantit l'unicité de chaque ligne dans une table et est utilisée pour l'identifier de manière non ambiguë ?"
+    answer: "**Clé Primaire** (Primary Key). Elle doit être unique et non nulle, servant de fondation au modèle relationnel."
+  - question: "Quel paradigme de bases de données privilégie une structure flexible (sans schéma rigide) et est souvent utilisé pour les gros volumes de données non structurées (ex : MongoDB, Redis) ?"
+    answer: "**NoSQL**. Ce terme générique englobe les bases non-relationnelles (document, clé-valeur, graphe, etc.) qui n'exigent pas un schéma fixe."
+  - question: "Dans une requête SQL, quel type de `JOIN` retourne toutes les lignes de la table de gauche, avec des `NULL` pour les correspondances manquantes dans la table de droite ?"
+    answer: "**`LEFT JOIN (ou LEFT OUTER JOIN)`**. Il assure que chaque enregistrement de la table de gauche soit présent dans le résultat."
+  - question: "L'une des propriétés ACID garantit que soit toutes les opérations d'une transaction sont effectuées, soit aucune ne l'est. De quelle propriété s'agit-il ?"
+    answer: "**Atomicité**. L'Atomicité (Atomicity) garantit que la transaction est traitée comme une seule unité de travail indivisible."
+  - question: "Quelle est la particularité d’une base de données orientée graphes ?"
+    answer: "Elle stocke les données sous forme de nœuds et de relations, idéale pour modéliser des réseaux."
+  - question: "Qu’est-ce que le sharding dans une base de données distribuée ?"
+    answer: "Technique de partitionnement horizontal des données sur plusieurs serveurs."
+  - question: "Selon le Théorème CAP, un système distribué ne peut garantir simultanément que deux des trois propriétés. Lesquelles, en cas de défaillance du réseau (Partition Tolerance) ?"
+    answer: "**Cohérence** (Consistency) et **Disponibilité** (Availability). Le théorème stipule que, face à une partition (P), il faut choisir entre Cohérence (C) et Disponibilité (A)."
+  - question: "Parmi les douze règles originales de Codd, quelle est la première et la plus fondamentale qui stipule que toutes les informations d'une BDD doivent être représentées explicitement et uniquement comme des valeurs dans des tables ?"
+    answer: "**La Règle d'Information**. Aussi appelée Règle n°1, elle définit le principe de base selon lequel l'intégralité du modèle relationnel doit se baser sur les données tabulaires."
+  - question: "L'algorithme 2PC (Two-Phase Commit) est utilisé pour garantir l'atomicité des transactions distribuées. Quelle étape précède le vote final des participants sur l'engagement (Commit) ou l'abandon (Abort) ?"
+    answer: "**L'étape de 'Prepare'** (ou 'VOTE Request'). Durant cette première phase, le coordinateur demande aux nœuds de s'assurer qu'ils sont prêts à valider la transaction avant d'envoyer l'ordre de Commit définitif."
+---

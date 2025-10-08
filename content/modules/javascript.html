@@ -1,0 +1,27 @@
+---
+layout: module
+title: JavaScript
+questions:
+  - question: "Est-ce que JavaScript est un dérivé du Java ?"
+    answer: "Non"
+  - question: "`typeof null` retourne ?"
+    answer: "`\"object\"` – C’est un bug historique du langage qui n’a jamais été corrigé pour compatibilité."
+  - question: "`NaN === NaN` retourne ?"
+    answer: "`false` – `NaN` est défini comme pas égal à lui-même. Il faut utiliser `Number.isNaN()`."
+  - question: "`[] == ![]` retourne ?"
+    answer: "`true` – coercition : `![]` devient `false`, `[]` devient `0` → `0 == 0`."
+  - question: "`[] + []` retourne ?"
+    answer: "`\"\"` (string vide) – avec `+`, les tableaux sont convertis en string → `\"\"`."
+  - question: "`{} + []` retourne ?"
+    answer: "`0` – le `{}` est vu comme un bloc vide → reste `+[]` → `0`."
+  - question: "`0.1 + 0.2 === 0.3` retourne ?"
+    answer: "`false` – → `0.30000000000000004`."
+  - question: "`[] == 0` retourne `true` mais `[] === 0` retourne ?"
+    answer: "`false` – `==` fait une coercition (`[]` → `\"\"` → `0`), `===` compare types strictement."
+  - question: "`\"2\" + 1` retourne `\"21\"`, mais `\"2\" - 1` retourne ?"
+    answer: "`1` .  `+` concatène si un opérande est string, et  `-` force la conversion en nombre."
+  - question: "`[] == ![]` retourne `true` mais `{}` == `!{}` retourne ?"
+    answer: "`false` – pour `[]`, coercition en `0` → `true`. Pour `{}`, impossible de le convertir → `false`."
+  - question: "`{} + []` retourne `0` et `[] + {}` retourne ?"
+    answer: "`[object Object]` –"
+---

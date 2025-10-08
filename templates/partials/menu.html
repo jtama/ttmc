@@ -1,0 +1,12 @@
+<aside>
+    <nav>
+        <ul>
+            <li><strong>Modules</strong></li>
+        </ul>
+        <ul>
+        {#for module in site.collections.get('modules')}
+            <li><a href="{module.url}">{module.title}</a></li>
+        {/for}
+        </ul>
+    </nav>
+</aside>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {#include partials/head.html /}
+        {#insert head /}
+        <title>Tu te mets combien ???</title>
+    </head>
+    <body data-next-module="{page.nextModule}">
+
+        <div class="container">
+
+            <header>
+                <div class="header-flex">
+                    <h1>{page.title}</h1>
+                    <div class="header-actions">
+                        <a href="{site.url}" class="header-btn">Home</a>
+                        <a href="{site.url.fromRoot('leaderboard')}" class="header-btn">Leaderboard</a>
+                    </div>
+                </div>
+            </header>
+
+            {#insert /}
+
+            <dialog id="custom-dialog">
+                <p id="dialog-message"></p>
+                <div id="dialog-confirm-buttons" style="display: none; justify-content: space-around;">
+                    <button id="confirm-ok-btn">OK</button>
+                    <button id="confirm-cancel-btn">Cancel</button>
+                </div>
+                <button id="close-dialog-btn" style="display: none;">OK</button>
+            </dialog>
+            <footer class="site-footer">
+                <p>&copy; 2025 Onepoint</p>
+            </footer>
+        </div>
+
+    </body>
+</html>
