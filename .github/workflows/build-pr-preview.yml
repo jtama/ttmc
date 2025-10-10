@@ -1,0 +1,31 @@
+name: Build PR Preview
+
+on:
+  pull_request:
+    paths-ignore:
+      - '.gitignore'
+      - 'CODEOWNERS'
+      - 'LICENSE'
+      - '*.md'
+      - '*.txt'
+      - '.all-contributorsrc'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate Roq Site
+        uses: quarkiverse/quarkus-roq@v1
+        with:
+          site-draft: 'true'
+          site-future: 'true'
+          github-pages: 'false'
+      - name: Store PR id
+        run: |
+          echo ${{ github.event.number }} > ./target/roq/pr-id.txt
+      - name: Publishing blog
+        uses: actions/upload-artifact@v4
+        with:
+          name: blog
+          path: ./target/roq
+          retention-days: 3

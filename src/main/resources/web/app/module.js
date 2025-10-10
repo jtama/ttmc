@@ -1,6 +1,6 @@
 import {showDialog} from "./dialog";
 // --- Module Page Logic ---
-function initModulePage(nextModule) {
+function initModulePage(nextModule, allModules) {
     const levelButtons = document.querySelectorAll('.level-btn');
     const questionContainer = document.getElementById('question-container');
     if (!levelButtons.length || !questionContainer) return;
@@ -35,11 +35,11 @@ function initModulePage(nextModule) {
     }
 
     levelButtons.forEach(btn => {
-        btn.addEventListener('click', () => showQuestion(btn, questionContainer, nextModule, levelButtons, state));
+        btn.addEventListener('click', () => showQuestion(btn, questionContainer, nextModule, levelButtons, state, allModules));
     });
 }
 
-function showQuestion(btn, container, nextModule, levelButtons, state) {
+function showQuestion(btn, container, nextModule, levelButtons, state, allModules) {
     const idx = parseInt(btn.getAttribute('data-index'));
     const questionElement = document.getElementById(`question-${idx}`);
     if (!questionElement) return;
@@ -96,18 +96,18 @@ function showQuestion(btn, container, nextModule, levelButtons, state) {
         showAnswerBtn.style.opacity = '0.5';
     });
 
-    okBtn.addEventListener('click', () => handleAnswer(true, parseInt(okBtn.dataset.points), questionText.innerHTML, parseInt(okBtn.dataset.points), nextModule));
-    errorBtn.addEventListener('click', () => handleAnswer(false, 0, questionText.innerHTML, parseInt(okBtn.dataset.points), nextModule));
+    okBtn.addEventListener('click', () => handleAnswer(true, parseInt(okBtn.dataset.points), questionText.innerHTML, parseInt(okBtn.dataset.points), nextModule, allModules));
+    errorBtn.addEventListener('click', () => handleAnswer(false, 0, questionText.innerHTML, parseInt(okBtn.dataset.points), nextModule, allModules));
 }
 
-function handleAnswer(isCorrect, points, question, niveau, nextModule) {
+function handleAnswer(isCorrect, points, question, niveau, nextModule, allModules) {
     let currentQuizData = JSON.parse(localStorage.getItem('currentQuiz'));
     if (!currentQuizData) {
         showDialog('Veuillez démarrer le quiz depuis la page principale.');
         return;
     }
     if (!currentQuizData.detail) currentQuizData.detail = [];
-    // Remplace le détail du module si déjà présent
+
     const moduleName = document.title;
     const newDetail = {
         niveau: niveau,
@@ -115,15 +115,25 @@ function handleAnswer(isCorrect, points, question, niveau, nextModule) {
         question: question || '-',
         points: isCorrect ? points : 0
     };
+
     const idx = currentQuizData.detail.findIndex(d => d.module === moduleName);
     if (idx !== -1) {
         currentQuizData.detail[idx] = newDetail;
     } else {
         currentQuizData.detail.push(newDetail);
     }
+    
+    if (nextModule) {
+        currentQuizData.nextModuleUrl = nextModule;
+    } else {
+        // No more modules, clear the next module URL
+        delete currentQuizData.nextModuleUrl;
+    }
+
     localStorage.setItem('currentQuiz', JSON.stringify(currentQuizData));
     window.location.href = nextModule;
 }
 
 const nextModule = document.body.getAttribute('data-next-module');
-initModulePage(nextModule);
+const allModules = document.body.getAttribute('data-all-modules') || '[]';
+initModulePage(nextModule, allModules);

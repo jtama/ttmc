@@ -1,0 +1,15 @@
+[a11y-check]
+description = "Lance l'analyse d'accessibilité avec Axe sur les pages du site."
+run = "node .gemini/agents/accessibility/check-accessibility.js"
+
+[health-check]
+description = "Vérifie que l'application répond sur le port 8081."
+run = "node .gemini/agents/health-check/health-check.js"
+
+[run-tests]
+description = "Lance les tests end-to-end avec Playwright."
+run = "npx playwright test --config .gemini/agents/testing/playwright.config.js"
+
+[start-dev]
+description = "Démarre l'application Quarkus en mode développement."
+run = "./mvnw quarkus:dev"

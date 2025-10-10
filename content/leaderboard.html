@@ -1,61 +1,62 @@
 ---
-title: Leaderboard
+title: 🏆Leaderboard
 layout: default
 ---
 <div class="container">
-    <h1>🏆 Leaderboard</h1>
+    <main>
 
-    <!-- Section Quiz en cours -->
-    <div id="current-quiz-container"
-         style="background: #f8f9fa; border: 2px solid #007bff; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
-        <h3 id="current-quiz-title">🎯 Quiz en cours'</h3>
-        <div id="current-quiz-content">
-            <p>Aucun quiz n'est actuellement en cours.</p>
-            <button onclick="forceFinishQuiz({site.collections.modules.collectionTitles})"
-                    style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-                🎮 Commencer un nouveau quiz
-            </button>
+        <!-- Section Quiz en cours -->
+        <div id="current-quiz-container"
+             style="background: #f8f9fa; border: 2px solid #007bff; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
+            <h2 id="current-quiz-title">🎯 Quiz en cours'</h2>
+            <div id="current-quiz-content">
+                <p>Aucun quiz n'est actuellement en cours.</p>
+                <button onclick="forceFinishQuiz({site.collections.modules.collectionTitles})"
+                        style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                    🎮 Commencer un nouveau quiz
+                </button>
+            </div>
+
+            <template id="no-quiz-in-progress-template">
+                <p>Aucun quiz n'est actuellement en cours.</p>
+                <button onclick="window.location.href='{site.url}'"
+                        style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                    🎮 Commencer un nouveau quiz
+                </button>
+            </template>
+
+
         </div>
 
-        <template id="no-quiz-in-progress-template">
-            <p>Aucun quiz n'est actuellement en cours.</p>
-            <button onclick="window.location.href='{site.url}'"
-                    style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-                🎮 Commencer un nouveau quiz
-            </button>
-        </template>
+        <!-- Section Leaderboard -->
+        <div class="leaderboard-section" id="leaderboard" data-modules="{site.collections.modules.collectionTitles.raw}">
+            <h2>🥇 Classement</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Joueur</th>
+                    <th scope="col">Score</th>
+                </tr>
+                </thead>
+                <tbody id="leaderboard-list">
+                <!-- Les scores seront ajoutés ici par JavaScript -->
+                </tbody>
+            </table>
 
+            <template id="leaderboard-row-template">
+                <tr>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </template>
+        </div>
 
-    </div>
-
-    <!-- Section Leaderboard -->
-    <div class="leaderboard-section" id="leaderboard" data-modules="{site.collections.modules.collectionTitles.raw}">
-        <h2>🥇 Classement</h2>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Joueur</th>
-                <th scope="col">Score</th>
-            </tr>
-            </thead>
-            <tbody id="leaderboard-list">
-            <!-- Les scores seront ajoutés ici par JavaScript -->
-            </tbody>
-        </table>
-
-        <template id="leaderboard-row-template">
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-            </tr>
-        </template>
-    </div>
-
-    <div class="navigation">
-        <button id="clear-storage-btn" class="button primary">☠️ Tout remettre à zéro ☠️</button>
-    </div>
+        <div class="navigation">
+            <button id="clear-storage-btn" class="button primary">☠️ Tout remettre à zéro ☠️</button>
+        </div>
+    </main>
 </div>
 
 <template id="quiz-in-progress-template">

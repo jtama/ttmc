@@ -38,7 +38,7 @@ export function initLeaderboardPage(allModules) {
 
 }
 
-function displayCurrentQuiz(allModules) {
+function displayCurrentQuiz(totalModules) {
     const currentQuizData = JSON.parse(localStorage.getItem('currentQuiz'));
     const titleElement = document.getElementById('current-quiz-title');
     const contentElement = document.getElementById('current-quiz-content');
@@ -47,40 +47,29 @@ function displayCurrentQuiz(allModules) {
     if (!titleElement || !contentElement || !templateElement) return;
 
     if (currentQuizData && currentQuizData.playerName) {
-        // Définir tous les modules disponibles
+        const answeredModules = currentQuizData.detail ? currentQuizData.detail.map(d => d.module) : [];
+        const remainingCount = totalModules - answeredModules.length;
+        const currentScore = currentQuizData.detail ? currentQuizData.detail.reduce((acc, d) => acc + (d.points || 0), 0) : 0;
 
-        // Calculer les modules restants
-        const answeredModules = currentQuizData.detail ?
-            currentQuizData.detail.map(d => d.module) : [];
-        const remainingModules = allModules.filter(module => !answeredModules.includes(module));
-
-        const currentScore = currentQuizData.detail ?
-            currentQuizData.detail.reduce((acc, d) => acc + (d.points || 0), 0) : 0;
-
-        // Cacher le contenu par défaut et afficher le template
         contentElement.innerHTML = '';
         const template = document.getElementById('quiz-in-progress-template').content.cloneNode(true);
         template.querySelector('.player-name-display').textContent = currentQuizData.playerName;
         template.querySelector('.current-score-display').textContent = currentScore;
-        template.querySelector('.modules-progress').textContent = `${answeredModules.length}/${allModules.length}`;
+        template.querySelector('.modules-progress').textContent = `${answeredModules.length}/${totalModules}`;
 
         const remainingModulesList = template.querySelector('.remaining-modules-list');
-        if (remainingModules.length > 0) {
-            remainingModules.forEach(module => {
-                const li = document.createElement('li');
-                li.textContent = module;
-                remainingModulesList.appendChild(li);
-            });
+        const li = document.createElement('li');
+        if (remainingCount > 0) {
+            li.textContent = `${remainingCount} module(s) restant(s)`;
         } else {
-            const li = document.createElement('li');
             li.innerHTML = '<em>Tous les modules sont complétés</em>';
-            remainingModulesList.appendChild(li);
         }
+        remainingModulesList.appendChild(li);
 
         const forceFinishBtn = template.querySelector('.force-finish-btn');
         const finalizeBtn = template.querySelector('.finalize-btn');
 
-        if (remainingModules.length > 0) {
+        if (remainingCount > 0) {
             forceFinishBtn.style.display = 'inline-block';
             finalizeBtn.style.display = 'none';
         } else {
@@ -88,14 +77,13 @@ function displayCurrentQuiz(allModules) {
             finalizeBtn.style.display = 'inline-block';
         }
 
-        forceFinishBtn.onclick = () => forceFinishQuiz(allModules);
-        finalizeBtn.onclick = () => forceFinishQuiz(allModules);
+        forceFinishBtn.onclick = () => forceFinishQuiz(totalModules);
+        finalizeBtn.onclick = () => forceFinishQuiz(totalModules);
         template.querySelector('.continue-quiz-btn').onclick = continueQuiz;
 
         contentElement.appendChild(template);
 
     } else {
-        // Aucun quiz en cours - afficher le contenu par défaut
         titleElement.textContent = 'ℹ️ Aucun quiz en cours';
         contentElement.innerHTML = '';
     }
@@ -167,9 +155,9 @@ function finalizeQuiz(quizData) {
     location.reload();
 }
 
-if (window.location.pathname === '/leaderboard') {
-    const modules = document.getElementById('leaderboard').getAttribute("data-modules").split(",");
-    initLeaderboardPage(modules);
+if (window.location.pathname.includes('/leaderboard')) {
+    const totalModules = parseInt(document.body.getAttribute("data-all-modules") || '0');
+    initLeaderboardPage(totalModules);
 }
 
 

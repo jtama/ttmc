@@ -1,4 +1,19 @@
 import {showDialog} from "./dialog";
+
+// --- Homepage Redirection Logic ---
+function redirectToNextModuleIfQuizInProgress() {
+    // Only perform redirection logic on the homepage.
+    if (window.location.pathname === '/') {
+        const currentQuizJSON = localStorage.getItem('currentQuiz');
+        if (currentQuizJSON) {
+            const currentQuiz = JSON.parse(currentQuizJSON);
+            if (currentQuiz.nextModuleUrl) {
+                window.location.href = currentQuiz.nextModuleUrl;
+            }
+        }
+    }
+}
+
 // --- Start Quiz Page Logic ---
 function initStartQuizPage() {
     const startQuizButton = document.getElementById('start-quiz-btn');
@@ -54,4 +69,7 @@ function initStartQuizPage() {
     toggleStartButton();
 }
 
+// Execute redirection check first. If it redirects, the rest of the script won't matter.
+
+redirectToNextModuleIfQuizInProgress();
 initStartQuizPage();

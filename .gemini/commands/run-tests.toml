@@ -1,0 +1,3 @@
+[run-tests]
+description = "Lance les tests end-to-end avec Playwright."
+run = "cd .gemini && npx playwright test"

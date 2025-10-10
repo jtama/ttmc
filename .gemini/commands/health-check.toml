@@ -1,0 +1,3 @@
+[health-check]
+description = "Vérifie que l'application répond sur le port 8081."
+run = "node .gemini/agents/health-check/health-check.js"

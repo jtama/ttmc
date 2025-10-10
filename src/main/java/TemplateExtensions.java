@@ -16,6 +16,13 @@ public class TemplateExtensions {
     }
 
     @TemplateExtension
+    public static String allModules(RoqCollection collection) {
+        return collection.stream()
+                .map(document -> document.url().relative())
+                .collect(Collectors.joining(","));
+    }
+
+    @TemplateExtension
     public static String nextModule(Page page) {
         RoqCollection modules = page.site().collections().get("modules");
         return modules.stream()
