@@ -1,3 +1,9 @@
+import hljs from 'highlight.js';
+import 'highlight.js/scss/default.scss';
+
+hljs.highlightAll();
+
+
 function redirectToNextModuleIfQuizInProgress() {
     // Only perform redirection logic on the homepage.
     if (!window.location.pathname.includes('leaderboard')) {

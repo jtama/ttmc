@@ -41,6 +41,12 @@
         </dependency>
         <dependency>
             <groupId>org.mvnpm</groupId>
+            <artifactId>highlight.js</artifactId>
+            <version>11.10.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mvnpm</groupId>
             <artifactId>picnic</artifactId>
             <version>7.1.0</version>
             <scope>provided</scope>
