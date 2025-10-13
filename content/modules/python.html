@@ -1,24 +1,58 @@
 ---
 title: Python
 questions:
-  - question: "En Python, comment qu'est-ce qui symbolise les limites d'un contexte: des parenthèses (`{` et `}`) ou l'indentation ?"
-    answer: "L'indentation!"
-  - question: "Quelle est la différence entre `=` et `==` en Python ?"
-    answer: "`=` sert à affecter une valeur à une variable, `==` sert à tester l'égalité entre deux valeurs"
-  - question: "En Python, comment écrit-on la valeur « rien » (équivalent de `null` en Java ou JS) ?"
+  - question: "A part à un serpent, à quoi peut faire référence Python ?"
+    answer: "Un langage de programmation"
+  - question: "En Python, comment qu'est-ce qui symbolise les limites d'un contexte: des accolades `{}` ou l'indentation ?"
+    answer: "L'indentation"
+  - question: "En Python, comment écrit-on la valeur «rien» (équivalent de `null` en Java ou JS) ?"
     answer: "`None`"
-  - question: "Quel est le résultat de l’expression `len(\"Python\")` ?"
+  - question: |
+      Quel est le résultat de l’expression suivante:
+      ```python
+      len(＂Python＂)
+      ```
     answer: "`6` (`len` appliqué à une chaîne donne sa longueur)"
-  - question: "Que va afficher ce code ? `print(\"Python\"[::-1])`"
+  - question: |
+      Que va afficher le code suivant:
+      ```python
+      print(＂Python＂[::-1])
+      ```
     answer: "`nohtyP` (chaîne inversée)"
-  - question: "Comment appelle-t-on cette syntaxe Python ? `{x**2 for x in range(4)}`"
+  - question: |
+      En Python, comment appelle-t-on la syntaxe suivante:
+      ``` python
+      { x**2 for x in range(4) }
+      ```
     answer: "c'est une `set comprehension` (ensemble en compréhension). Existe aussi pour les listes (`list comprehension`) mais PAS pour les tuples"
-  - question: "Quelle est la complexité en temps moyenne de l'accès à une valeur dans un dictionnaire Python (`dict[key]`) ?"
-    answer: "`O(1)` en moyenne (`dict` = `hash map`)"
-  - question: "En Python, que renvoient les deux expressions suivantes : `[] == []` et `[] is []` ?"
-    answer: "`[] == []` -> `True` (mêmes valeurs). `[] is []` -> `False` (objets distincts en mémoire)"
-  - question: "En Python, qu’est-ce qu'un `decorator` et à quoi sert-il ?"
-    answer: "Un `decorator` est une fonction qui prend une fonction (ou classe) en paramètre et renvoie une version modifiée -> sert à ajouter du comportement sans modifier le code d'origine (ex. `@staticmethod`, `@property`)"
-  - question: "En Python 3, pourquoi `hash(1) == hash(True)` est évalué à `True` ?"
-    answer: "Parce que `bool` hérite de `int` en Python -> `True` est littéralement l'entier `1`, donc ils ont le même `hash`."
+  - question: |
+       Si on crée un `dict` comme ça:
+       ```python
+       dict.fromkeys([＂a＂,＂b＂], [])
+       ```
+       Que se passe-t'il si on modifie la liste associée à `a` ?
+    answer: "La même liste est partagée, donc modifier `a` modifie `b` aussi → piège classique pour mutables et mémoire partagée"
+  - question: "Qu'est-ce que le GIL empêche exactement dans CPython ?"
+    answer: "Le GIL (Global Interpreter Lock) garantit qu'un seul thread exécute du bytecode Python à la fois dans un seul processus CPython - il n'empêche pas l’exécution parallèle en C (extensions peuvent relâcher le GIL) ni l'I/O asynchrone."
+  - question: "Dans quel cas Python lève l'exception suivante: `TypeError: Cannot create a consistent method resolution order` ?"
+    answer: |
+      Lorsqu'un héritage multiple crée un conflit insoluble pour l'algorithme C3 (algorithme de linéarisation de l'ordre des méthodes en cas d'héritages multiples).
+      Ex de code:
+      ```python
+      class A: ...
+      class B(A): ...
+      class C(A,B): ...
+      ```
+  - question: |
+      Prenons la fonction Python suivante:
+      ```python
+      def calc(a,b):
+        for i in range(a,b):
+          c = a + 2*i
+        return c
+      ```
+      et les deux appels suivants : `calc(0,128)` et `calc(1000,1128)`.
+
+      Est-ce que l'un des deux appels sera plus rapide (contexte CPython) ? Si oui, lequel et pourquoi.
+    answer: "CPython internalise les petits entiers (entre -5 et 256) sans nécessiter d'allocation mémoire donc `calc(0,128)` et plus rapide que `calc(1000,1128)` qui nécessite d'allouer de la mémoire pour stocker les valeurs > 256."
 ---
