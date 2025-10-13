@@ -4,15 +4,18 @@ import io.quarkiverse.roq.frontmatter.runtime.model.RoqCollection;
 import io.quarkus.qute.TemplateExtension;
 
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.util.stream.Collectors;
 
 public class TemplateExtensions {
 
     @TemplateExtension
     public static String collectionTitles(RoqCollection collection) {
-        return collection.stream()
+        return "['%s']".formatted(collection.stream()
                 .map(DocumentPage::title)
-                .collect(Collectors.joining(","));
+                        .map(value -> value.replaceAll("'", "\\\\'"))
+                .collect(Collectors.joining("','")));
     }
 
     @TemplateExtension

@@ -6,30 +6,37 @@ layout: default
     <main>
 
         <!-- Section Quiz en cours -->
-        <div id="current-quiz-container"
-             style="background: #f8f9fa; border: 2px solid #007bff; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
+        <div id="quiz-in-progress">
             <h2 id="current-quiz-title">🎯 Quiz en cours'</h2>
-            <div id="current-quiz-content">
-                <p>Aucun quiz n'est actuellement en cours.</p>
-                <button onclick="forceFinishQuiz({site.collections.modules.collectionTitles})"
-                        style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-                    🎮 Commencer un nouveau quiz
-                </button>
+            <div id="current-quiz-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <p><strong>Joueur :</strong> <span class="player-name-display"></span></p>
+                    <p><strong>Score actuel :</strong> <span class="current-score-display"></span> points</p>
+                    <p><strong>Modules complétés :</strong> <span class="modules-progress"></span></p>
+                </div>
+                <div>
+                    <p><strong>Modules restants :</strong></p>
+                    <ul class="remaining-modules-list" style="margin: 5px 0; padding-left: 20px;">
+                    </ul>
+                </div>
+                <div style="margin-top: 15px;">
+                    <button class="force-finish-btn"
+                            style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px"
+                            onclick="leaderboard.forceFinishQuiz({site.collections.modules.collectionTitles.raw})">
+                        ⚠️ Terminer le quiz (0 pts pour les modules restants)
+                    </button>
+                    <button class="continue-quiz-btn"
+                            style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;"
+                            onclick="leaderboard.continueQuiz()">
+                        ▶️ Continuer le quiz
+                    </button>
+                </div>
             </div>
-
-            <template id="no-quiz-in-progress-template">
-                <p>Aucun quiz n'est actuellement en cours.</p>
-                <button onclick="window.location.href='{site.url}'"
-                        style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-                    🎮 Commencer un nouveau quiz
-                </button>
-            </template>
-
-
         </div>
 
         <!-- Section Leaderboard -->
-        <div class="leaderboard-section" id="leaderboard" data-modules="{site.collections.modules.collectionTitles.raw}">
+        <div class="leaderboard-section" id="leaderboard"
+             data-modules="{site.collections.modules.collectionTitles.raw}">
             <h2>🥇 Classement</h2>
             <table class="table table-striped">
                 <thead>
@@ -59,31 +66,6 @@ layout: default
     </main>
 </div>
 
-<template id="quiz-in-progress-template">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-        <div>
-            <p><strong>Joueur :</strong> <span class="player-name-display"></span></p>
-            <p><strong>Score actuel :</strong> <span class="current-score-display"></span> points</p>
-            <p><strong>Modules complétés :</strong> <span class="modules-progress"></span></p>
-        </div>
-        <div>
-            <p><strong>Modules restants :</strong></p>
-            <ul class="remaining-modules-list" style="margin: 5px 0; padding-left: 20px;">
-            </ul>
-        </div>
-    </div>
-    <div style="margin-top: 15px;">
-        <button class="force-finish-btn"
-                style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px; display: none;">
-            ⚠️ Terminer le quiz (0 pts pour les modules restants)
-        </button>
-        <button class="finalize-btn"
-                style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px; display: none;">
-            ✅ Finaliser le quiz terminé
-        </button>
-        <button class="continue-quiz-btn"
-                style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-            ▶️ Continuer le quiz
-        </button>
-    </div>
-</template>
+<script type="module">
+    addEventListener("load", () => leaderboard.initLeaderboardPage({site.collections.modules.size()}));
+</script>

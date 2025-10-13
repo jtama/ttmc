@@ -42,22 +42,17 @@ function displayCurrentQuiz(totalModules) {
     const currentQuizData = JSON.parse(localStorage.getItem('currentQuiz'));
     const titleElement = document.getElementById('current-quiz-title');
     const contentElement = document.getElementById('current-quiz-content');
-    const templateElement = document.getElementById('quiz-in-progress-template');
-
-    if (!titleElement || !contentElement || !templateElement) return;
 
     if (currentQuizData && currentQuizData.playerName) {
         const answeredModules = currentQuizData.detail ? currentQuizData.detail.map(d => d.module) : [];
         const remainingCount = totalModules - answeredModules.length;
         const currentScore = currentQuizData.detail ? currentQuizData.detail.reduce((acc, d) => acc + (d.points || 0), 0) : 0;
 
-        contentElement.innerHTML = '';
-        const template = document.getElementById('quiz-in-progress-template').content.cloneNode(true);
-        template.querySelector('.player-name-display').textContent = currentQuizData.playerName;
-        template.querySelector('.current-score-display').textContent = currentScore;
-        template.querySelector('.modules-progress').textContent = `${answeredModules.length}/${totalModules}`;
+        contentElement.querySelector('.player-name-display').textContent = currentQuizData.playerName;
+        contentElement.querySelector('.current-score-display').textContent = currentScore;
+        contentElement.querySelector('.modules-progress').textContent = `${answeredModules.length}/${totalModules}`;
 
-        const remainingModulesList = template.querySelector('.remaining-modules-list');
+        const remainingModulesList = contentElement.querySelector('.remaining-modules-list');
         const li = document.createElement('li');
         if (remainingCount > 0) {
             li.textContent = `${remainingCount} module(s) restant(s)`;
@@ -65,24 +60,6 @@ function displayCurrentQuiz(totalModules) {
             li.innerHTML = '<em>Tous les modules sont complétés</em>';
         }
         remainingModulesList.appendChild(li);
-
-        const forceFinishBtn = template.querySelector('.force-finish-btn');
-        const finalizeBtn = template.querySelector('.finalize-btn');
-
-        if (remainingCount > 0) {
-            forceFinishBtn.style.display = 'inline-block';
-            finalizeBtn.style.display = 'none';
-        } else {
-            forceFinishBtn.style.display = 'none';
-            finalizeBtn.style.display = 'inline-block';
-        }
-
-        forceFinishBtn.onclick = () => forceFinishQuiz(totalModules);
-        finalizeBtn.onclick = () => forceFinishQuiz(totalModules);
-        template.querySelector('.continue-quiz-btn').onclick = continueQuiz;
-
-        contentElement.appendChild(template);
-
     } else {
         titleElement.textContent = 'ℹ️ Aucun quiz en cours';
         contentElement.innerHTML = '';
@@ -155,9 +132,11 @@ function finalizeQuiz(quizData) {
     location.reload();
 }
 
-if (window.location.pathname.includes('/leaderboard')) {
-    const totalModules = parseInt(document.body.getAttribute("data-all-modules") || '0');
-    initLeaderboardPage(totalModules);
+window.leaderboard = {
+    initLeaderboardPage: initLeaderboardPage,
+    continueQuiz: continueQuiz,
+    displayCurrentQuiz: displayCurrentQuiz,
+    forceFinishQuiz: forceFinishQuiz
 }
 
 
