@@ -8,19 +8,27 @@ questions:
       - Halo, de Microsoft
       - Counter-Strike, de VALVe
     answer: "Minecraft, de Mojang AB (R)"
-  - question: "Quel est le slogan célèbre utilisé lors du lancement de Java, indiquant sa promesse multi-plateforme ?"
-    answer: "Write Once, Run Anywhere (Écrire une fois, exécuter partout)"
+  - question: |
+        Vrai ou Faux : Le slogan de Java est "Write Fast, Run Faster".
+    answer: "Faux, le slogan est \"**Write Once, Run Anywhere**\"."
   - question: "Est-ce que tout est objet en java ? Donnez un exemple."
     answer: "Non, les types primitifs (int, boolean, char, etc.) ne sont pas des objets."
   - question: "Quelle annotation permet de supprimer un warning sur une méthode deprecated ?"
-    answer: "`@SuppressWarnings('deprecation')`"
+    answer: |
+        ```java
+        @SuppressWarnings('deprecation')
+        ```
   - question: "En quelle année la première version publique de Java (Java 1.0) a-t-elle été officiellement lancée ?"
     answer: "En 1995"
   - question: "Qu’est-ce que `NaN` en Java ?"
     answer: "`Not a Number`, il s'agit d'une valeur à virgule flottante spéciale pour signaler les dépassements de capacité et les erreurs. Elle est générée lorsqu'un nombre à virgule flottante est divisé par zéro ou lorsque la racine carrée d'un nombre négatif est calculée."
   - question: "Pourquoi dit-on que les Enum Java sont implicitement final ?"
     answer: "Car le compilateur interdit d'étendre une enum. Le bytecode les marque comme final, pour garantir leur unicité (singleton-like)"
-  - question: "À quoi sert `Unsafe.allocateInstance(Class<?>)` ?"
+  - question: |
+        À quoi sert:
+        ```java
+        Unsafe.allocateInstance(Class<?>)
+        ``` ?
     answer: "À instancier un objet sans appeler son constructeur."
   - question: "Quel est le nom d'origine de java ?"
     answer: "Oak, d'après le chêne que voyait le créateur du language depuis la fenêtre de son bureau"

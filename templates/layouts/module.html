@@ -9,7 +9,7 @@ layout: default
 
         <div class="levels-grid">
             {#for item in page.data.questions}
-            <button class="level-btn" data-index="{item_index}" style="grid-column: {item_count.mod(5)};">
+            <button class="level-btn" data-index="{item_index}" title="Révèle la question {item_index}" style="grid-column: {item_count.mod(5)};">
                 Niveau {item_count}
             </button>
             {/for}
@@ -19,7 +19,7 @@ layout: default
         {#for item in page.data.questions}
         <div id="question-{item_index}" class="question-card" style="display:none;">
             <div class="question-text"><p>{#markdown}{item.question}{/markdown}</p></div>
-            <div class="answer-text" style="display:none;">{#markdown}{item.answer}{/markdown}</p></div>
+            <div class="answer-text" style="display:none;">{#markdown}{item.answer.raw}{/markdown}</p></div>
             <div class="button-group">
                 <button class="show-answer-btn">Voir la réponse</button>
                 <button class="ok-btn" data-points="{item_index}" disabled>OK</button>
@@ -27,19 +27,5 @@ layout: default
             </div>
         </div>
         {/for}
-
-        <template id="already-answered-template">
-            <div class="question-card">
-                <div class="question-text">Vous avez déjà répondu à une question de ce module.</div>
-                <div class="answer-text">
-                    <strong>Niveau choisi :</strong> <span class="niveau"></span><br>
-                    <strong>Points obtenus :</strong> <span class="points"></span>
-                </div>
-                <div class="button-group">
-                    <button class="next-btn">Continuer vers le module suivant</button>
-                </div>
-            </div>
-        </template>
-
     </main>
 </div>

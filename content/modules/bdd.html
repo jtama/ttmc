@@ -1,14 +1,28 @@
 ---
 title: Base de données
 questions:
-  - question: "Que signifie le sigle ***SQL*** ?"
-    answer: "Structured Query Language."
-  - question: "Quel type de clé garantit l'unicité de chaque ligne dans une table et est utilisée pour l'identifier de manière non ambiguë ?"
-    answer: "**Clé Primaire** (Primary Key). Elle doit être unique et non nulle, servant de fondation au modèle relationnel."
-  - question: "Quel paradigme de bases de données privilégie une structure flexible (sans schéma rigide) et est souvent utilisé pour les gros volumes de données non structurées (ex : MongoDB, Redis) ?"
-    answer: "**NoSQL**. Ce terme générique englobe les bases non-relationnelles (document, clé-valeur, graphe, etc.) qui n'exigent pas un schéma fixe."
-  - question: "Dans une requête SQL, quel type de `JOIN` retourne toutes les lignes de la table de gauche, avec des `NULL` pour les correspondances manquantes dans la table de droite ?"
-    answer: "**`LEFT JOIN (ou LEFT OUTER JOIN)`**. Il assure que chaque enregistrement de la table de gauche soit présent dans le résultat."
+  - question: |
+      Vrai ou Faux : Le sigle SQL signifie "Standard Query Language".
+    answer: "Faux, il s'agit de **Structured Query Language**."
+  - question: |
+      Vrai ou Faux : Une clé primaire peut contenir des valeurs nulles.
+    answer: "Faux, une clé primaire doit être **unique et non nulle**."
+  - question: |
+      Quel paradigme de base de données est conçu pour des données non structurées et n'a pas de schéma rigide ?
+
+      - NoSQL
+      - Relationnel
+      - Orienté Objet
+      - Fichier plat
+    answer: "**NoSQL**. Ce terme englobe les bases non-relationnelles (document, clé-valeur, graphe, etc.)."
+  - question: |
+      Dans une requête SQL, quel type de `JOIN` retourne toutes les lignes de la table de gauche, même s'il n'y a pas de correspondance dans la table de droite ?
+
+      - INNER JOIN
+      - LEFT JOIN
+      - RIGHT JOIN
+      - FULL JOIN
+    answer: "**LEFT JOIN**. Il assure que chaque enregistrement de la table de gauche soit présent dans le résultat."
   - question: "L'une des propriétés ACID garantit que soit toutes les opérations d'une transaction sont effectuées, soit aucune ne l'est. De quelle propriété s'agit-il ?"
     answer: "**Atomicité**. L'Atomicité (Atomicity) garantit que la transaction est traitée comme une seule unité de travail indivisible."
   - question: "Quelle est la particularité d’une base de données orientée graphes ?"
