@@ -2,44 +2,15 @@ import {showDialog} from "./dialog";
 // --- Module Page Logic ---
 function initModulePage(nextModule, allModules) {
     const levelButtons = document.querySelectorAll('.level-btn');
-    const questionContainer = document.getElementById('question-container');
-    if (!levelButtons.length || !questionContainer) return;
-
+    if (!levelButtons.length) return;
     // Objet pour tracker l'état de révélation (passé par référence)
     const state = { answerRevealed: false, currentQuestionElement: null };
-
-    // Vérifier si une réponse a déjà été donnée pour ce module
-    const currentQuizData = JSON.parse(localStorage.getItem('currentQuiz'));
-    const moduleName = document.title;
-    const hasAnswered = currentQuizData && currentQuizData.detail &&
-                       currentQuizData.detail.some(d => d.module === moduleName);
-
-    if (hasAnswered) {
-        // Désactiver tous les boutons si une réponse a déjà été donnée
-        levelButtons.forEach(btn => {
-            btn.disabled = true;
-            btn.style.opacity = '0.5';
-            btn.style.pointerEvents = 'none';
-        });
-
-        // Afficher un message indiquant qu'une réponse a déjà été donnée
-        const existingAnswer = currentQuizData.detail.find(d => d.module === moduleName);
-        const template = document.getElementById('already-answered-template').content.cloneNode(true);
-        template.querySelector('.niveau').textContent = existingAnswer.niveau;
-        template.querySelector('.points').textContent = existingAnswer.points;
-        template.querySelector('.next-btn').onclick = () => window.location.href = nextModule;
-        questionContainer.innerHTML = '';
-        questionContainer.appendChild(template);
-        questionContainer.style.display = '';
-        return;
-    }
-
     levelButtons.forEach(btn => {
-        btn.addEventListener('click', () => showQuestion(btn, questionContainer, nextModule, levelButtons, state, allModules));
+        btn.addEventListener('click', () => showQuestion(btn, nextModule, levelButtons, state, allModules));
     });
 }
 
-function showQuestion(btn, container, nextModule, levelButtons, state, allModules) {
+function showQuestion(btn, nextModule, levelButtons, state, allModules) {
     const idx = parseInt(btn.getAttribute('data-index'));
     const questionElement = document.getElementById(`question-${idx}`);
     if (!questionElement) return;

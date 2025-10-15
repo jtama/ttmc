@@ -400,7 +400,8 @@
     color: white;
     box-shadow: var(--shadow-sm);
 
-    &:hover {
+    &:hover,
+    &:focus {
       background: var(--primary-700);
       box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 25%, transparent);
       transform: translateY(-2px) scale(1.02);
