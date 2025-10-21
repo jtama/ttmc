@@ -3,48 +3,57 @@ title: Python
 questions:
   - question: "A part à un serpent, à quoi peut faire référence Python ?"
     answer: "Un langage de programmation"
-  - question: "En Python, comment qu'est-ce qui symbolise les limites d'un contexte: des accolades `{}` ou l'indentation ?"
+  - question: |
+        En Python, quel élément délimite les différents contextes :
+
+        - des accolades `{}`
+        - l'indentation
+        - des parenthèses `()`
     answer: "L'indentation"
-  - question: "En Python, comment écrit-on la valeur «rien» (équivalent de `null` en Java ou JS) ?"
+  - question: "En Python, comment écrit-on la valeur « rien » (équivalent de `null` en Java ou JS) ?"
     answer: "`None`"
   - question: |
-      Quel est le résultat de l’expression suivante:
+      Quel est le résultat de l’expression suivante :
       ```python
       len(＂Python＂)
       ```
     answer: "`6` (`len` appliqué à une chaîne donne sa longueur)"
   - question: |
-      Que va afficher le code suivant:
+      Que va afficher le code suivant :
       ```python
       print(＂Python＂[::-1])
       ```
     answer: "`nohtyP` (chaîne inversée)"
   - question: |
-      En Python, comment appelle-t-on la syntaxe suivante:
+      En Python, comment appelle-t-on la syntaxe suivante :
       ``` python
       { x**2 for x in range(4) }
       ```
     answer: "c'est une `set comprehension` (ensemble en compréhension). Existe aussi pour les listes (`list comprehension`) mais PAS pour les tuples"
   - question: |
-       Si on crée un `dict` comme ça:
+       Si on crée un `dict` comme ça :
        ```python
        dict.fromkeys([＂a＂,＂b＂], [])
        ```
-       Que se passe-t'il si on modifie la liste associée à `a` ?
+       Que se passe-t-il si on modifie la liste associée à `a` ?
     answer: "La même liste est partagée, donc modifier `a` modifie `b` aussi → piège classique pour mutables et mémoire partagée"
   - question: "Qu'est-ce que le GIL empêche exactement dans CPython ?"
     answer: "Le GIL (Global Interpreter Lock) garantit qu'un seul thread exécute du bytecode Python à la fois dans un seul processus CPython - il n'empêche pas l’exécution parallèle en C (extensions peuvent relâcher le GIL) ni l'I/O asynchrone."
-  - question: "Dans quel cas Python lève l'exception suivante: `TypeError: Cannot create a consistent method resolution order` ?"
+  - question: |
+        Dans quel cas Python lève l'exception suivante :
+        ```python
+        TypeError: Cannot create a consistent method resolution order
+        ```
     answer: |
-      Lorsqu'un héritage multiple crée un conflit insoluble pour l'algorithme C3 (algorithme de linéarisation de l'ordre des méthodes en cas d'héritages multiples).
-      Ex de code:
+      Lorsqu'un multiple héritage crée un conflit insoluble pour l'algorithme C3 (algorithme de linéarisation de l'ordre des méthodes en cas d'héritages multiples).
+      Ex de code :
       ```python
       class A: ...
       class B(A): ...
       class C(A,B): ...
       ```
   - question: |
-      Prenons la fonction Python suivante:
+      Prenons la fonction Python suivante :
       ```python
       def calc(a,b):
         for i in range(a,b):
