@@ -18,7 +18,7 @@ layout: default
 
         {#for item in page.data.questions}
         <div id="question-{item_index}" class="question-card" style="display:none;">
-            <div class="question-text"><p>{#markdown}{item.question}{/markdown}</p></div>
+            <div class="question-text"><p>{#markdown}{item.question.raw}{/markdown}</p></div>
             <div class="answer-text" style="display:none;">{#markdown}{item.answer.raw}{/markdown}</p></div>
             <div class="button-group">
                 <button class="show-answer-btn">Voir la réponse</button>
