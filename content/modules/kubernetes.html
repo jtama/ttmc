@@ -38,7 +38,8 @@ questions:
       ```
       kubectl patch deployment nginx-deployment --subresource='replicas' --type='merge' -p '{"spec":{"replicas":3}}
       ```
-    answer: "`kubectl patch deployment nginx-deployment --subresource='scale' --type='merge' -p '{"spec":{"replicas":3}}`"
+    answer: |
+      `kubectl patch deployment nginx-deployment --subresource='scale' --type='merge' -p '{"spec":{"replicas":3}}`
   - question: "Sur quel algorithme de consensus s’appuie la base clés/valeurs par défaut qui stocke l’état du cluster ?"
     answer: "`etcd` s’appuie sur l’algorithme Raft"
   - question: "Quelles sont les étapes du scheduling framework ?"
