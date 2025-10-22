@@ -2,39 +2,87 @@
 title: JavaScript
 questions:
   - question: |
-      Vrai ou Faux : JavaScript est une version allégée de Java.
+        Vrai ou Faux : JavaScript est une version allégée de Java.
     answer: "Faux, ce sont deux langages de programmation distincts avec des syntaxes et des usages très différents."
   - question: |
-      Vrai ou Faux : L'expression `typeof null` retourne `null`.
+        Vrai ou Faux : L'expression `typeof null` retourne `null`.
     answer: "Faux, elle retourne **\"object\"**. C'est un bug historique du langage."
   - question: |
-      Que retourne l'expression `NaN === NaN` en JavaScript ?
-
-      - true
-      - false
-      - undefined
-      - Error
+        Que retourne l'expression :
+        ```js
+        NaN === NaN
+        ```
+        - true
+        - false
+        - undefined
+        - Error
     answer: "**false** – `NaN` est la seule valeur en JavaScript qui n'est pas égale à elle-même."
   - question: |
-      Que retourne l'expression `[] == ![]` en JavaScript ?
-
-      - true
-      - false
-      - undefined
-      - Error
+        Que retourne l'expression :
+        ```js
+        [] == ![]
+        ```
+        - true
+        - false
+        - undefined
+        - Error
     answer: "**true** – À cause de la coercition de type, `![]` devient `false`, et `[]` est converti en `0`, ce qui mène à `0 == 0`."
-  - question: "`[] + []` retourne ?"
+  - question: |
+        Que retourne l'expression :
+        ```js
+        [] + []
+        ```
     answer: "`\"\"` (string vide) – avec `+`, les tableaux sont convertis en string → `\"\"`."
-  - question: "`{} + []` retourne ?"
+  - question: |
+        Que retourne l'expression :
+        ```js
+        {} + []
+        ```
     answer: "`0` – le `{}` est vu comme un bloc vide → reste `+[]` → `0`."
-  - question: "`0.1 + 0.2 === 0.3` retourne ?"
+  - question: |
+        Que retourne l'expression :
+        ```js
+        0.1 + 0.2 === 0.3
+        ```
     answer: "`false` – → `0.30000000000000004`."
-  - question: "`[] == 0` retourne `true` mais `[] === 0` retourne ?"
+  - question: |
+        Sachant que:
+        ```js
+        [] == 0 //return true
+        ```
+        Que retourne l'expression :
+        ```js
+        [] === 0
+        ```
     answer: "`false` – `==` fait une coercition (`[]` → `\"\"` → `0`), `===` compare types strictement."
-  - question: "`\"2\" + 1` retourne `\"21\"`, mais `\"2\" - 1` retourne ?"
+  - question: |
+        Sachant que :
+        ```js
+        "2" + 1 //return "21"
+        ```
+        Que retourne l'expression :
+        ```js
+        "2" - 1
+        ```
     answer: "`1` .  `+` concatène si un opérande est string, et  `-` force la conversion en nombre."
-  - question: "`[] == ![]` retourne `true` mais `{}` == `!{}` retourne ?"
+  - question: |
+        Sachant que :
+        ```js
+        [] == ![] //return true
+        ```
+        Que retourne l'expression :
+        ```js
+        {} == !{}
+        ```
     answer: "`false` – pour `[]`, coercition en `0` → `true`. Pour `{}`, impossible de le convertir → `false`."
-  - question: "`{} + []` retourne `0` et `[] + {}` retourne ?"
+  - question: |
+        Sachant que :
+        ```js
+        {} + [] //return 0
+        ```
+        Que retourne l'expression :
+        ```js
+        [] + {}
+        ```
     answer: "`[object Object]` –"
 ---
