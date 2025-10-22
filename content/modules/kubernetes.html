@@ -38,20 +38,24 @@ questions:
       ```
       kubectl patch deployment nginx-deployment --subresource='replicas' --type='merge' -p '{"spec":{"replicas":3}}
       ```
-    answer: "kubectl patch deployment nginx-deployment --subresource='scale' --type='merge' -p '{"spec":{"replicas":3}}"
+    answer: "`kubectl patch deployment nginx-deployment --subresource='scale' --type='merge' -p '{"spec":{"replicas":3}}`"
   - question: "Sur quel algorithme de consensus s’appuie la base clés/valeurs par défaut qui stocke l’état du cluster ?"
     answer: "`etcd` s’appuie sur l’algorithme Raft"
   - question: "Quelles sont les étapes du scheduling framework ?"
     answer: |
       1. Queueing / Admission : le pod arrive dans la file du scheduler.
+
       Scheduling cycle
+
       2. PreFilter : prépare et valide des données partagées pour la phase de sélection.
       3. Filter : chaque nœud candidat est filtré selon des contraintes (affinity/anti‑affinity, taints/tolerations, ressources disponibles, node selectors, volumes attachables, etc.). On garde la liste des nœuds valides.
       4. PostFilter : intervient si aucun nœud n’a passé le Filter (ex. pour déclencher des actions d’échec ou de remédiation comme re‑préemption).
       5. Score : les nœuds valides sont notés (scoring) par les plugins ; les scores sont normalisés et additionnés pour obtenir le(s) meilleur(s) nœud(s).
       6. Reserve : réservation temporaire des ressources sur le(s) nœud(s) choisi(s).
       7. Permit : pause possible avant le binding : un plugin peut retarder l’ordonnancement (ex. attendre d’être approuvé par une politique, coordination multi‑cluster, ou pour la préemption). Peut aussi rejeter le pod.
+
       Binding cycle
+
       8. PreBind : dernières vérifications / préparation juste avant la liaison.
       9. Bind : action qui lie le Pod au Node : appel à l’API kube‑apiserver pour créer l’objet binding (effectif « scheduled »).
       10. PostBind : notifications après le bind (ex. notifications, instrumentation, déclenchement de handlers externes).
