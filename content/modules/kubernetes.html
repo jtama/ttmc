@@ -28,27 +28,31 @@ questions:
   - question: "Trouver l'intrus : `K3S` / `K6S` / `K8S` / `K9S`"
     answer: "`K6S` est un vélo électrique de Kemoway, à ne pas confondre avec `K6` outil de test de Grafana Labs"
   - question: |
-        Que fait la commande :
-        ```bash
-        kubectl get pods
-        ```
-    answer: "Elle liste les pods du cluster"
-  - question: "Quel objet Kubernetes gère l’accès externe à un service dans Kubernetes ?"
-    answer: "`L’Ingress`, `le loadbalancer`, `la gateway api`"
-  - question: "Comment s’appelle la base de données interne qui stocke l’état du cluster ?"
-    answer: "`etcd`"
-  - question: "Comment appelle-t-on une entité répliquée et mise à l’échelle automatiquement ?"
-    answer: "`Un ReplicaSet`"
-  - question: "Qu’est-ce qu’un **DaemonSet** ?"
-    answer: "`Un objet qui veille à ce qu’une copie d’un pod tourne sur chaque nœud du cluster`"
-  - question: "Que signifie Kubernetes ?"
-    answer: "Timonier en grec"
-  - question: "Quel est le nom du projet qui a donné naissance à Kubernetes ?"
-    answer: "`Borg` par Google"
-  - question: "Quel est le moyen de contrôle des appels entrants au cluster ?"
-    answer: "`Validating webhook`"
-  - question: "Quel est le nombre maximum de pods d'un cluster vanilla ?"
-    answer: "Pas plus de 110 pods par nœud; pas plus de 5000 nœuds; pas plus de 150000 pods au total; pas plus de 300000 conteneurs au total."
-  - question: "Quand Kubernetes est-il entré à la CNCF ?"
-    answer: "En 2016, la CNCF a accueilli Kubernetes au niveau de maturité «Incubating» le 10 mars, avant qu’il n’atteigne le niveau «Graduated» le 6 mars 2018."
+      Que fait la commande :
+      ```bash
+      kubectl get secrets -n searxng searxng-config -ojsonpath='{.data.settings\.yml}' | b64decode
+      ```
+    answer: "Elle affiche en clair le contenu du champ `settings.yml`, stocké dans les données du secret `searxng-config` dans le namespace `searxng`"
+  - question: |
+      Corrigez la commande :
+      ```
+      kubectl patch deployment nginx-deployment --subresource='replicas' --type='merge' -p '{"spec":{"replicas":3}}
+      ```
+    answer: "kubectl patch deployment nginx-deployment --subresource='scale' --type='merge' -p '{"spec":{"replicas":3}}"
+  - question: "Sur quel algorithme de consensus s’appuie la base clés/valeurs par défaut qui stocke l’état du cluster ?"
+    answer: "`etcd` s’appuie sur l’algorithme Raft"
+  - question: "Quelles sont les étapes du scheduling framework ?"
+    answer: |
+      1. Queueing / Admission : le pod arrive dans la file du scheduler.
+      Scheduling cycle
+      2. PreFilter : prépare et valide des données partagées pour la phase de sélection.
+      3. Filter : chaque nœud candidat est filtré selon des contraintes (affinity/anti‑affinity, taints/tolerations, ressources disponibles, node selectors, volumes attachables, etc.). On garde la liste des nœuds valides.
+      4. PostFilter : intervient si aucun nœud n’a passé le Filter (ex. pour déclencher des actions d’échec ou de remédiation comme re‑préemption).
+      5. Score : les nœuds valides sont notés (scoring) par les plugins ; les scores sont normalisés et additionnés pour obtenir le(s) meilleur(s) nœud(s).
+      6. Reserve : réservation temporaire des ressources sur le(s) nœud(s) choisi(s).
+      7. Permit : pause possible avant le binding : un plugin peut retarder l’ordonnancement (ex. attendre d’être approuvé par une politique, coordination multi‑cluster, ou pour la préemption). Peut aussi rejeter le pod.
+      Binding cycle
+      8. PreBind : dernières vérifications / préparation juste avant la liaison.
+      9. Bind : action qui lie le Pod au Node : appel à l’API kube‑apiserver pour créer l’objet binding (effectif « scheduled »).
+      10. PostBind : notifications après le bind (ex. notifications, instrumentation, déclenchement de handlers externes).
 ---
