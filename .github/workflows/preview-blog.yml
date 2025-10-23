@@ -39,7 +39,7 @@ jobs:
           pr-number: ${{ steps.pr.outputs.id }}
           body: |
             🚀 PR Preview for **blog** ${{ github.sha }} has been successfully built!
-            * https://jtama-${{ steps.pr.outputs.id }}-preview.surge.sh
+            * https://jtama-ttmc-${{ steps.pr.outputs.id }}-preview.surge.sh
           body-marker: <!-- Preview status comment marker -->
       - name: Update PR status comment on failure
         uses: quarkusio/action-helpers@main
