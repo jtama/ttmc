@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Teardown Surge.sh preview (blog)
         id: teardown-blog
-        run: npx surge teardown https://onepoint-tech-${{ github.event.number }}-preview.surge.sh --token ${{ secrets.SURGE_TOKEN }} || true
+        run: npx surge teardown https://jtama-ttmc-${{ github.event.number }}-preview.surge.sh --token ${{ secrets.SURGE_TOKEN }} || true
       - name: Update PR status comment
         uses: quarkusio/action-helpers@main
         with:

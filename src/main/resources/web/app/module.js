@@ -98,7 +98,7 @@ function handleAnswer(isCorrect, points, question, niveau, nextModule, allModule
         currentQuizData.nextModuleUrl = nextModule;
     } else {
         // No more modules, clear the next module URL
-        delete currentQuizData.nextModuleUrl;
+        delete currentQuizData.nextModuleUrl.relative;
     }
 
     localStorage.setItem('currentQuiz', JSON.stringify(currentQuizData));
