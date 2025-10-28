@@ -1,0 +1,25 @@
+---
+title: HTML
+questions:
+
+  - question: "À quoi sert la balise &lt;div&gt; en HTML ?"
+    answer: "Elle sert à structurer le contenu en blocs."
+  - question: "Quelle est la différence entre les balises &lt;span&gt; et &lt;div&gt; ?"
+    answer: "&lt;div&gt; est un élément bloc (il prend toute la largeur). &lt;span&gt; est un élément inline (il s’intègre dans une ligne de texte)."
+  - question: "À quoi sert l’attribut srcset sur une balise &lt;img&gt; ?"
+    answer: "Il permet de fournir plusieurs versions d’une image (différentes résolutions), et le navigateur choisit la plus adaptée (responsive images)."
+  - question: "Qu’est-ce que le shadow DOM (lié à HTML) ?"
+    answer: "Le Shadow DOM est une fonctionnalité du Web Components API qui permet de créer un DOM encapsulé (ou isolé) à l’intérieur d’un élément HTML personnalisé."
+  - question: "Que permet la balise &lt;template&gt; en HTML5 ?"
+    answer: "Elle définit du contenu HTML qui n’est pas affiché au chargement, mais peut être cloné via JavaScript."
+  - question: "Quelle est la différence entre les attributs aria-* et les balises HTML sémantiques pour l’accessibilité ?"
+    answer: "Les balises sémantiques (comme &lt;header&gt;, &lt;nav&gt;) donnent une structure native accessible. Les attributs aria-* complètent ou corrigent quand la sémantique native ne suffit pas. Ensemble, ils améliorent l’accessibilité (lecteurs d’écran, navigation clavier)."
+  - question: "Quelle est la différence entre &lt;iframe&gt; et &lt;object&gt; ?"
+    answer: "&lt;iframe&gt; intègre un document HTML externe. &lt;object&gt; est plus générique (peut embarquer HTML, images, PDFs, etc.) et fait partie des balises multimédia."
+  - question: "Pourquoi l’attribut rel=\"noopener noreferrer\" est-il recommandé sur les liens externes avec target=\"_blank\" ?"
+    answer: "Pour éviter les failles de sécurité (window.opener exploitable)."
+  - question: "Que permet de faire la balise &lt;picture&gt; en HTML5 et quelle est sa différence avec srcset ?"
+    answer: "&lt;picture&gt; permet de définir plusieurs sources (&lt;source&gt;) avec conditions (media queries, formats comme WebP). Plus puissant que srcset, il permet de changer d’image selon contexte et pas seulement résolution."
+  - question: "Comment le navigateur construit-il l’“accessibility tree” à partir du DOM et du CSSOM ?"
+    answer: "Il part du DOM, applique les styles sémantiques et ARIA, ignore les éléments non pertinents (display: none, aria-hidden=\"true\") et génère un arbre séparé pour les technologies d’assistance (lecteurs d’écran). Cet arbre n’est pas identique au DOM visuel mais reflète la structure logique et accessible."
+---
