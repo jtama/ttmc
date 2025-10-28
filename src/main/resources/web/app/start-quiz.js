@@ -47,6 +47,7 @@ function initStartQuizPage() {
         const newQuizData = {
             playerName,
             quizId: Date.now(),
+            nextModuleUrl: startQuizButton.pathname,
             detail: []
         };
         localStorage.setItem('currentQuiz', JSON.stringify(newQuizData));
