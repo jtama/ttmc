@@ -106,11 +106,8 @@ function continueQuiz() {
         showDialog('Aucun quiz en cours à continuer.');
         return;
     }
-
-    const nextModule = document.body.getAttribute('data-next-module');
-
     // Rediriger vers le premier module ou la page appropriée
-    window.location.href = '../'+nextModule; // À adapter selon votre flux
+    window.location.href = "/"; // À adapter selon votre flux
 }
 
 // Fonction utilitaire pour finaliser un quiz
