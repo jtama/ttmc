@@ -29,17 +29,25 @@ questions:
     answer: "`K6S` est un vélo électrique de Kemoway, à ne pas confondre avec `K6` outil de test de Grafana Labs"
   - question: |
       Que fait la commande :
-      ```bash
-      kubectl get secrets -n searxng searxng-config -ojsonpath='{.data.settings\.yml}' | b64decode
+      ```
+        kubectl get secrets -n searxng searxng-config
+          -ojsonpath='{.data.settings.yml}' | b64decode
       ```
     answer: "Elle affiche en clair le contenu du champ `settings.yml`, stocké dans les données du secret `searxng-config` dans le namespace `searxng`"
   - question: |
       Corrigez la commande :
-      ```
-      kubectl patch deployment nginx-deployment --subresource='replicas' --type='merge' -p '{"spec":{"replicas":3}}
+      ```bash
+      kubectl patch deployment nginx-deployment
+          --subresource='replicas' --type='merge'
+          -p '{"spec":{"replicas":3}}
       ```
     answer: |
-      `kubectl patch deployment nginx-deployment --subresource='scale' --type='merge' -p '{"spec":{"replicas":3}}`
+      La *subresource* est `scale` pas `replicas`.
+      ```bash
+      kubectl patch deployment nginx-deployment
+        --subresource='scale' --type='merge'
+        -p '{"spec":{"replicas":3}}
+      ```
   - question: "Sur quel algorithme de consensus s’appuie la base clés/valeurs par défaut qui stocke l’état du cluster ?"
     answer: "`etcd` s’appuie sur l’algorithme Raft"
   - question: "Quelles sont les étapes du scheduling framework ?"
