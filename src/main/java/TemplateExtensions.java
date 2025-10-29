@@ -28,11 +28,13 @@ public class TemplateExtensions {
     @TemplateExtension
     public static String nextModule(Page page) {
         RoqCollection modules = page.site().collections().get("modules");
+        if (page.url().equals(page.site().url()))
+            return modules.getFirst().url().relative();
         return modules.stream()
                 .filter(item -> item.id().equals(page.id()))
                 .findFirst()
                 .map(DocumentPage::next)
                 .map(doc -> doc.url().relative())
-                .orElse(modules.getFirst().url().relative());
+                .orElse(page.site().url().fromRoot("leaderboard").absolute());
     }
 }
