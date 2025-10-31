@@ -17,6 +17,12 @@ jobs:
           site-future: 'true'
           github-pages: 'false'
           site-url: https://jtama-ttmc-${{ github.ref_name }}
+      - name: Publishing blog
+        uses: actions/upload-artifact@v4
+        with:
+          name: blog
+          path: ./target/roq
+          retention-days: 3
 
       - name: Install Surge
         run: npm install --global surge
