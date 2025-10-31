@@ -19,6 +19,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}   # Used to automatically get the GitHub Pages url
 
       - name: Copy build to folder 📦
+        id: copy-slides
         run: |
           SLIDES_FOLDER="slides/${GITHUB_REF_NAME}"
           mkdir -p "$SLIDES_FOLDER"
