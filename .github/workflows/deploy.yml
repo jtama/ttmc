@@ -18,6 +18,13 @@ jobs:
           github-pages: 'false'
           site-url: https://jtama-ttmc-${{ github.ref_name }}-preview.surge.sh
 
+      - name: Install Surge
+        run: npm install --global surge
+
       - name: Deploy to Surge
         run: |
           npx surge teardown https://jtama-ttmc-${{ github.ref_name }}-preview.surge.sh --token ${{ secrets.SURGE_TOKEN }} || true
+          
+          npx surge ./target/roq \
+            --domain https://jtama-ttmc-${{ github.ref_name }}-preview.surge.sh \
+            --token ${{ secrets.SURGE_TOKEN }}
