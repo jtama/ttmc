@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+
+<meta charset="utf-8">
+
+
+
+  <!-- SEO TITLE -->
+  
+  <title>🏆Leaderboard - choix de pseudo</title>
+  <meta property="og:title" content="🏆Leaderboard" />
+  <meta name="twitter:title" content="🏆Leaderboard">
+  <meta property="og:site_name" content="choix de pseudo">
+  <!-- SEO URL -->
+  <link rel="canonical" href="https://jtama.github.io/ttmc/leaderboard/" />
+  <meta property="og:url" content="https://jtama.github.io/ttmc/leaderboard/" />
+  <meta name="twitter:url" content="https://jtama.github.io/ttmc/leaderboard/">
+
+  <!-- SEO TYPE -->
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2025-10-31T09:44:44.358606873Z[Etc/UTC]" />
+
+  <!-- SEO IMAGE -->
+  <meta name="twitter:card" content="summary">
+  <!-- SEO LOCALE -->
+  <meta property="og:locale" content="en" />
+  <!-- SEO GENERATOR -->
+  <meta name="generator" content="Quarkus Roq v1.10.1" />
+<link rel="alternate" type="application/rss+xml" title="choix de pseudo" href="https://jtama.github.io/ttmc/rss.xml"/>
+<base href="/ttmc/leaderboard/">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/ttmc/images/site-icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#263959">
+<meta name="msapplication-navbutton-color" content="#263959">
+<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+
+
+    <script type="module" src="/ttmc/static/bundle/main-HVK5OWO3.js"></script>
+      <link rel="stylesheet" href="/ttmc/static/bundle/main-QQM2YZER.css" />
+
+        <title>Tu te mets combien ???</title>
+    </head>
+    <body data-next-module="https://jtama.github.io/ttmc/leaderboard" data-all-modules="15">
+
+        <div class="container" >
+
+            <header>
+                <div class="header-flex">
+                    <h1>Tu te mets combien en 🏆Leaderboard ?</h1>
+                    <div class="header-actions">
+                        <a href="/ttmc/" class="header-btn">Home</a>
+                        <a href="/ttmc/leaderboard" class="header-btn">Leaderboard</a>
+                    </div>
+                </div>
+            </header>
+
+<div class="container">
+    <main>
+
+        <!-- Section Quiz en cours -->
+        <div id="quiz-in-progress">
+            <h2 id="current-quiz-title">🎯 Quiz en cours'</h2>
+            <div id="current-quiz-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <p><strong>Joueur :</strong> <span class="player-name-display"></span></p>
+                    <p><strong>Score actuel :</strong> <span class="current-score-display"></span> points</p>
+                    <p><strong>Modules complétés :</strong> <span class="modules-progress"></span></p>
+                </div>
+                <div>
+                    <p><strong>Modules restants :</strong></p>
+                    <ul class="remaining-modules-list" style="margin: 5px 0; padding-left: 20px;">
+                    </ul>
+                </div>
+                <div style="margin-top: 15px;">
+                    <button class="force-finish-btn"
+                            style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px"
+                            onclick="leaderboard.forceFinishQuiz(['Base de données','Les attaques informatiques','Python','Kubernetes','Les dingueries de JavaScript','HTML','Acronymes','Java','CSS','Les femmes dans la tech\'','BDX I/O','IoT & Domotique','Devfest Toulouse','IA','Google'])">
+                        ⚠️ Terminer le quiz (0 pts pour les modules restants)
+                    </button>
+                    <button class="continue-quiz-btn"
+                            style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;"
+                            onclick="leaderboard.continueQuiz()">
+                        ▶️ Continuer le quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Leaderboard -->
+        <div class="leaderboard-section" id="leaderboard"
+             data-modules="['Base de données','Les attaques informatiques','Python','Kubernetes','Les dingueries de JavaScript','HTML','Acronymes','Java','CSS','Les femmes dans la tech\'','BDX I/O','IoT & Domotique','Devfest Toulouse','IA','Google']">
+            <h2>🥇 Classement</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Joueur</th>
+                    <th scope="col">Score</th>
+                </tr>
+                </thead>
+                <tbody id="leaderboard-list">
+                <!-- Les scores seront ajoutés ici par JavaScript -->
+                </tbody>
+            </table>
+
+            <template id="leaderboard-row-template">
+                <tr>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </template>
+        </div>
+
+        <div class="navigation">
+            <button id="clear-storage-btn" class="button primary">☠️ Tout remettre à zéro ☠️</button>
+        </div>
+    </main>
+</div>
+
+<script type="module">
+    addEventListener("load", () => leaderboard.initLeaderboardPage(15));
+</script>
+
+            <dialog id="custom-dialog">
+                <p id="dialog-message"></p>
+                <div id="dialog-confirm-buttons" style="display: none; justify-content: space-around;">
+                    <button id="confirm-ok-btn">OK</button>
+                    <button id="confirm-cancel-btn">Cancel</button>
+                </div>
+                <button id="close-dialog-btn" style="display: none;">OK</button>
+            </dialog>
+            <footer class="site-footer">
+                <p>&copy; 2025 Onepoint ❤️ <strong>Camille Grandjean</strong>, Camille Hoareau, Robin Cadinot, Rémi Pachet, Julien Fettinger, Sébastien Buchoux, Nicolas Trauwaen, Mary Pascal, Dararath Beauvoir, Alexandre Bregeon, Jérôme Tama</p>
+            </footer>
+        </div>
+
+    <script type="module">
+        addEventListener("load", () => common.redirectToNextModuleIfQuizInProgress());
+    </script>
+    </body>
+</html>
