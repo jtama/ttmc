@@ -34,21 +34,30 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}/${{ github.ref_name }}
     permissions:
+      contents: write
       pages: write      # to deploy to Pages
       id-token: write   # to verify the deployment originates from an appropriate source
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download build artifact 📦
+        uses: actions/download-artifact@v4
         with:
           name: site
-          path: site
+          path: ./slides
+
+      - name: Move site content to branch folder
+        run: |
+          mkdir -p ./deploy/${GITHUB_REF_NAME}
+          cp -r ./build/* ./deploy/${GITHUB_REF_NAME}/
 
       - name: Deploy to GitHub Pages 🚀
         id: deployment
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
           branch: gh-pages
-          folder: site
+          folder: deploy
           clean: false
