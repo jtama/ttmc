@@ -16,6 +16,11 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}   # Used to automatically get the GitHub Pages url
           site-url: https://jtama.github.io/ttmc/${{ github.ref_name }}
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: target/roq
 
   deploy:
     environment:
@@ -34,7 +39,7 @@ jobs:
       - name: Download build artifact 📦
         uses: actions/download-artifact@v4
         with:
-          name: github-pages.zip
+          name: github-pages
           path: deploy/${{ github.ref_name }}
 
       - name: Deploy to GitHub Pages 🚀
