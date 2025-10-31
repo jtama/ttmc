@@ -30,7 +30,7 @@ jobs:
           rm -f pr-id.txt
       - name: Publishing blog to Surge.sh
         id: deploy-blog
-        run: npx surge ./ --domain jtama-ttmc-${{ steps.pr.outputs.id }}-preview.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+        run: npx surge ./ --domain https://jtama-ttmc-${{ steps.pr.outputs.id }}-preview.surge.sh --token ${{ secrets.SURGE_TOKEN }}
       - name: Update PR status comment on success
         uses: quarkusio/action-helpers@main
         with:
