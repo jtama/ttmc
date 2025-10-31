@@ -21,7 +21,9 @@ jobs:
       - name: Copy build to folder 📦
         id: copy-slides
         run: |
-          SLIDES_FOLDER="slides/${GITHUB_REF_NAME}"
+          # Supprime le préfixe refs/heads/ si présent
+          BRANCH_NAME=${GITHUB_REF_NAME#refs/heads/}
+          SLIDES_FOLDER="slides/$BRANCH_NAME"
           mkdir -p "$SLIDES_FOLDER"
           cp -r target/roq/* "$SLIDES_FOLDER/"
           echo "folder=$SLIDES_FOLDER" >> $GITHUB_OUTPUT
