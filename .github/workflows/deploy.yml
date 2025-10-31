@@ -29,17 +29,10 @@ jobs:
       - name: Install Surge
         run: npm install --global surge
 
-      - name: Prepare Surge domain
-        run: |
-          # Nettoyer le nom de branche pour qu'il soit compatible Surge
-          SAFE_BRANCH_NAME=$(echo "${GITHUB_REF_NAME}" | tr '[:upper:]' '[:lower:]' | tr '/' '-')
-          echo "SURGE_DOMAIN=jtama-ttmc-${SAFE_BRANCH_NAME}" >> $GITHUB_ENV
-
-
       - name: Deploy to Surge
         run: |
           echo "Deploying to Surge at $SURGE_DOMAIN.surge.sh..."
           npx surge ./target/roq \
-            --domain $SURGE_DOMAIN \
+            --domain jtama-ttmc-${{github.ref_name}}.surge.sh \
             --token $SURGE_TOKEN \
             --debug
