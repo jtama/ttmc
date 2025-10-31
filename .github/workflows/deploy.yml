@@ -19,10 +19,10 @@ jobs:
       - name: Copy build to folder 📦
         id: copy-slides
         run: |
-          mkdir -p build/${{ github.ref_name }}/reveal.js/dist && \
-          cp -r favicon.svg *.html images css highlight.js build/${{ github.ref_name }}/ && \
-          cp -r reveal.js/dist/* build/${{ github.ref_name }}/reveal.js/dist/ && \
-          cp -r reveal.js/plugin build/${{ github.ref_name }}/reveal.js/
+          SLIDES_FOLDER="slides/${GITHUB_REF_NAME}"
+          mkdir -p "$SLIDES_FOLDER"
+          cp -r target/roq/* "$SLIDES_FOLDER/"
+          echo "folder=$SLIDES_FOLDER" >> $GITHUB_OUTPUT
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
