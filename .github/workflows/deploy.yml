@@ -16,7 +16,7 @@ jobs:
           site-draft: 'true'
           site-future: 'true'
           github-pages: 'false'
-          site-url: https://jtama-ttmc-${{ github.ref_name }}
+          site-url: https://jtama-ttmc-${{ github.ref_name }}.surge.sh
       - name: Publishing blog
         uses: actions/upload-artifact@v4
         with:
@@ -29,7 +29,7 @@ jobs:
 
       - name: Deploy to Surge
         run: |
-          npx surge teardown https://jtama-ttmc-${{ github.ref_name }} --token ${{ secrets.SURGE_TOKEN }} || true
+          npx surge teardown https://jtama-ttmc-${{ github.ref_name }}.surge.sh --token ${{ secrets.SURGE_TOKEN }} || true
           
           npx surge ./target/roq \
             --domain https://jtama-ttmc-${{ github.ref_name }} \
