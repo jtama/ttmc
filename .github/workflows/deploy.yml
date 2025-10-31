@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      slides-folder: ${{ steps.copy-slides.outputs.folder }}
     steps:
       - uses: actions/checkout@v4
       - name: Generate Roq Site
