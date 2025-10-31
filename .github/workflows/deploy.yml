@@ -9,8 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      slides-folder: ${{ steps.copy-slides.outputs.folder }}
     steps:
       - uses: actions/checkout@v4
       - name: Generate Roq Site
@@ -21,12 +19,15 @@ jobs:
       - name: Copy build to folder 📦
         id: copy-slides
         run: |
-          # Supprime le préfixe refs/heads/ si présent
-          BRANCH_NAME=${GITHUB_REF_NAME#refs/heads/}
-          SLIDES_FOLDER="slides/$BRANCH_NAME"
-          mkdir -p "$SLIDES_FOLDER"
-          cp -r target/roq/* "$SLIDES_FOLDER/"
-          echo "folder=$SLIDES_FOLDER" >> $GITHUB_OUTPUT
+          mkdir -p build/${{ github.ref_name }}/reveal.js/dist && \
+          cp -r favicon.svg *.html images css highlight.js build/${{ github.ref_name }}/ && \
+          cp -r reveal.js/dist/* build/${{ github.ref_name }}/reveal.js/dist/ && \
+          cp -r reveal.js/plugin build/${{ github.ref_name }}/reveal.js/
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: build/${{ github.ref_name }}
 
   deploy:
     environment:
@@ -38,12 +39,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: site
 
       - name: Deploy to GitHub Pages 🚀
         id: deployment
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
-          folder: ${{ needs.build.outputs.slides-folder }}
           branch: gh-pages
-          clean: false
+          folder: slides
+          clean: true
