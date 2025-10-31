@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: site
-          path: build/${{ github.ref_name }}
+          path: slides/${{ github.ref_name }}
 
   deploy:
     environment:
@@ -49,5 +49,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
           branch: gh-pages
-          folder: slides
-          clean: true
+          folder: site
+          clean: false
