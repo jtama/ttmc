@@ -47,12 +47,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: site
-          path: ./slides
+          path: site
 
       - name: Move site content to branch folder
         run: |
           mkdir -p ./deploy/${GITHUB_REF_NAME}
-          cp -r ./build/* ./deploy/${GITHUB_REF_NAME}/
+          cp -r ./site/* ./deploy/${GITHUB_REF_NAME}/
 
       - name: Deploy to GitHub Pages 🚀
         id: deployment
