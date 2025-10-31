@@ -15,19 +15,7 @@ jobs:
         uses: quarkiverse/quarkus-roq@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}   # Used to automatically get the GitHub Pages url
-
-      - name: Copy build to folder 📦
-        id: copy-slides
-        run: |
-          SLIDES_FOLDER="slides/${GITHUB_REF_NAME}"
-          mkdir -p "$SLIDES_FOLDER"
-          cp -r target/roq/* "$SLIDES_FOLDER/"
-          echo "folder=$SLIDES_FOLDER" >> $GITHUB_OUTPUT
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: site
-          path: slides/${{ github.ref_name }}
+          site-url: https://jtama.github.io/ttmc/${{ github.ref_name }}
 
   deploy:
     environment:
@@ -46,13 +34,8 @@ jobs:
       - name: Download build artifact 📦
         uses: actions/download-artifact@v4
         with:
-          name: site
-          path: site
-
-      - name: Move site content to branch folder
-        run: |
-          mkdir -p ./deploy/${GITHUB_REF_NAME}
-          cp -r ./site/* ./deploy/${GITHUB_REF_NAME}/
+          name: github-pages.zip
+          path: deploy/${{ github.ref_name }}
 
       - name: Deploy to GitHub Pages 🚀
         id: deployment
