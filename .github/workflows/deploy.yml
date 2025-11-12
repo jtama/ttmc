@@ -1,38 +1,31 @@
-name: Build & Deploy to Surge
+## Deploy to GH-Pages for your Quarkus Roq blog.
+name: Deploy main to GitHub Pages
 
 on:
   push:
-    branches: [ main, devfest, bdx-io ]
+    branches: [ main ]   # Switch to the branch which should be deployed to GitHub Pages
   workflow_dispatch:
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
-    env:
-      SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: Generate Roq Site
         uses: quarkiverse/quarkus-roq@v1
         with:
-          site-draft: 'true'
-          site-future: 'true'
-          github-pages: 'false'
-          site-url: https://jtama-ttmc-${{ github.ref_name }}.surge.sh
-      - name: Publishing blog
-        uses: actions/upload-artifact@v4
-        with:
-          name: blog
-          path: ./target/roq
-          retention-days: 3
+          github-token: ${{ secrets.GITHUB_TOKEN }}   # Used to automatically get the GitHub Pages url
 
-      - name: Install Surge
-        run: npm install --global surge
-
-      - name: Deploy to Surge
-        run: |
-          echo "Deploying to Surge at $SURGE_DOMAIN.surge.sh..."
-          npx surge ./target/roq \
-            --domain jtama-ttmc-${{github.ref_name}}.surge.sh \
-            --token $SURGE_TOKEN \
-            --debug
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
