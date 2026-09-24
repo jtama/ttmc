@@ -1,3 +1,0 @@
-[a11y-check]
-description = "Lance l'analyse d'accessibilité avec Axe sur les pages du site."
-run = "node .gemini/agents/accessibility/check-accessibility.js"

@@ -1,3 +1,0 @@
-[start-dev]
-description = "Démarre l'application Quarkus en mode développement."
-run = "mvn quarkus:dev"
