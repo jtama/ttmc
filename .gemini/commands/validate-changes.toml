@@ -1,3 +1,0 @@
-[validate-changes]
-description = "Lance le workflow de validation complet (health-check, tests, a11y)."
-run = "node .gemini/agents/orchestrator/orchestrator.js"

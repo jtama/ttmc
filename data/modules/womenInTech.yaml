@@ -1,0 +1,56 @@
+
+title: Les femmes dans la tech'
+questions:
+  - question: |
+      Vrai ou Faux : En pourcentage, dans le domaine informatique les femmes représentent **27%** en 2024 ?
+    answer: "C'est vrai ! environ **27 %** des effectifs dans les métiers du numérique et seulement 15 % dans les métiers de la tech (Insee, 2023)"
+  - question: |
+      Vrai ou Faux : Une des premières programmeuses informatiques est né au XIXe siècle ?
+    answer: "C'est vrai ! Ada Lovelace, pionnière de la programmation, est née en 1815."
+  - question: |
+      Sur quelle machine a travaillé Ada Lovelace ?
+
+        1. À café
+        2. À calculer
+        3. À tisser
+    answer: "**À calculer**. La machine analytique de Charles Babbage (ancêtre de l’ordinateur)."
+  - question: |
+      Quel était le surnom de Grace Hopper dans la marine américaine ?
+
+        1. Amazing Grace
+        2. Code Queen
+        3. Captain Bug
+    answer: "**Amazing Grace**."
+  - question : |
+      Qui est la première femme programmeuse de l’histoire de l’informatique ?
+    answer: "**Ada Lovelace**. Auteure du premier algorithme au XIXᵉ siècle."
+  - question: |
+      Quel outil, inventé par Grace Hopper, est super pratique pour les programmeurs :
+
+        1. Le correcteur orthographique
+        2. Le débogueur
+        3. Le compilateur
+        4. Le copier / coller
+    answer: "**Le compilateur**. Il traduit le code source en code machine exécutable par l’ordinateur."
+  - question: |
+      Margaret Hamilton, programmeuse de la NASA, a dirigé le développement du logiciel qui a permis aux astronautes d’Apollo 11 de marcher sur la Lune. Dans la photo devenue culte, que voit-on à ses côtés ?
+
+        1. Une médaille d'honneur de la NASA
+        2. Une pile de papiers
+        3. Un ordinateur de bord d'Apollo 11
+    answer: |
+      Une pile de l'ensemble du code d'Apollo 11 au format papier.
+      ![la fameuse photo](../../images/m_hamilton.jpg "la fameuse photo !")
+  - question: |
+      Aurélie Jean, scientifique et entrepreneuse française, a écrit plusieurs livres sur le numérique. Quels titres lui appartiennent ?
+
+        1. De l'autre côté de la machine
+        2. Les algorithmes font-ils la loi ?
+        3. La révolution du code
+        4. Tech au féminin
+    answer: "**De l'autre côté de la machine** et **Les algorithme font-il la loi** ?"
+  - question: "Quelle ingénieure et actrice a inventé, pendant la Seconde Guerre mondiale, une technologie à l’origine du Wi-Fi ?"
+    answer: "Hedy Lamarr. (Oui, l’actrice hollywoodienne !)."
+  - question: "Dans Iron Man 3, Pepper Potts dirige Stark Industries. Mais dans la vraie vie, quelle femme a dirigé IBM de 2012 à 2020 ?"
+    answer: "Ginni Rometty."
+
