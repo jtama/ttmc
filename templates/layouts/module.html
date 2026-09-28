@@ -9,7 +9,13 @@ layout: default
 
         <div class="levels-grid">
             {#for item in page.data.questions}
-            <button class="level-btn" data-index="{item_index}" title="Révèle la question {item_index}" style="grid-column: {item_count.mod(5)};">
+            <button class="level-btn
+                    {#if item_count <= 3} level-btn--beginner{/if}
+                    {#if item_count >= 4 && item_count <= 6} level-btn--intermediate{/if}
+                    {#if item_count >= 7 && item_count <= 8} level-btn--advanced{/if}
+                    {#if item_count == 9} level-btn--expert{/if}
+                    {#if item_count == 10} level-btn--boss{/if}"
+                    data-index="{item_index}" title="Révèle la question {item_index}" style="grid-column: {item_count.mod(5)};">
                 Niveau {item_count}
             </button>
             {/for}

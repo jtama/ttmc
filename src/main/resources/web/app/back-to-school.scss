@@ -1,0 +1,137 @@
+/* Stylesheet Back to school */
+@use './mixins' as *;
+
+
+// BDX I/O — Back to School - palette Colors
+$color-dark: #090817;
+$color-medium-purple: #130a2a;
+$color-dark-purple: #260747;
+$color-purple: #570076;
+$color-dark-magenta: #8F009E;
+$color-magenta: #c600ad;
+$color-pink: #f500b5;
+$color-cyan: #00e5ff;
+$color-yellow: #fdf45d;
+
+// buttons levels
+$level-beginner: #4af8af;
+$level-intermediate: #36c1fa;
+$level-advanced: #fc8d50;
+$level-expert: #fb35a1;
+$level-boss: #fb4a68;
+
+/* Levels	    Color
+** 01 → 03	    #4AF8AF
+** 04 → 06	    #36C1FA
+** 07 → 08	    #FC8D50
+** 09	        #FB35A1
+** 10 Boss 👑   #FB4A68
+*/
+
+// Text
+$color-white: #ffffff;
+
+// Buttons
+$button-primary-bg: $color-pink;
+$button-primary-text: $color-dark;
+
+$button-secondary-bg: $color-cyan;
+$button-secondary-text: $color-dark;
+
+
+/* APP */
+
+.back-to-school {
+  min-height: 100vh;
+  color: $color-white;
+  background: linear-gradient(
+    180deg,
+    $color-dark 0%,
+    $color-medium-purple 18%,
+    $color-dark-purple 35%,
+    $color-purple 52%,
+    $color-dark-magenta 68%,
+    $color-magenta 82%,
+    $color-pink 100%
+  );
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    //background: url("src/main/resources/web/src/picto-sac-a-dos.png") no-repeat center center;
+  }
+
+  .header-flex {
+    padding-bottom: 1rem;
+    .header-btn {
+      background-color: $color-dark;
+      color: $color-white;
+      border: 2px solid $color-pink;
+    }
+  }
+
+  .level-btn {
+    --level-color: #{$level-beginner};
+
+    position: relative;
+    padding: 12px 20px;
+    color: #fff;
+    background: $color-dark;
+    border: 2px solid var(--level-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+
+    transition:
+            filter 0.2s ease,
+            transform 0.2s ease;
+
+    &:hover {
+      filter:
+        drop-shadow(0 0 4px var(--level-color))
+        drop-shadow(0 0 8px var(--level-color));
+
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 4px;
+      background-color: var(--level-color);
+      color: $color-dark;
+    }
+
+    &:active {
+      transform: translateY(2px);
+      background-color: var(--level-color);
+      color: $color-dark;
+    }
+
+    @include level-button-states($color-dark);
+
+    &--beginner {
+      --level-color: #{$level-beginner};
+    }
+
+    &--intermediate {
+      --level-color: #{$level-intermediate};
+    }
+
+    &--advanced {
+      --level-color: #{$level-advanced};
+    }
+
+    &--expert {
+      --level-color: #{$level-expert};
+    }
+
+    &--boss {
+      --level-color: #{$level-boss};
+    }
+  }
+
+}

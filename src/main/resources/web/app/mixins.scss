@@ -1,0 +1,15 @@
+// mixins.scss
+
+@mixin level-button-states($text-color) {
+  &:hover,
+  &.is-active,
+  &[aria-pressed="true"] {
+    background-color: var(--level-color);
+    color: $text-color;
+  }
+
+  &:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 4px;
+  }
+}

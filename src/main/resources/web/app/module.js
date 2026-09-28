@@ -27,14 +27,10 @@ function showQuestion(btn, nextModule, levelButtons, state, allModules) {
             otherBtn.disabled = false;
             otherBtn.style.opacity = '1';
             otherBtn.style.pointerEvents = 'auto';
+            const isActive = otherBtn === btn;
             // Mettre en évidence le bouton actuellement sélectionné
-            if (otherBtn === btn) {
-                otherBtn.style.backgroundColor = '#007bff';
-                otherBtn.style.color = 'white';
-            } else {
-                otherBtn.style.backgroundColor = '';
-                otherBtn.style.color = '';
-            }
+            otherBtn.classList.toggle('is-active', isActive);
+            otherBtn.setAttribute('aria-pressed', String(isActive));
         });
     }
 
@@ -93,7 +89,7 @@ function handleAnswer(isCorrect, points, question, niveau, nextModule, allModule
     } else {
         currentQuizData.detail.push(newDetail);
     }
-    
+
     if (nextModule) {
         currentQuizData.nextModuleUrl = nextModule;
     } else {
