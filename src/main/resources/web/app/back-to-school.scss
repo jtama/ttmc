@@ -74,6 +74,12 @@ $button-secondary-text: $color-dark;
     }
   }
 
+  .main-layout {
+    ul:first-child {
+      color: $color-dark;
+    }
+  }
+
   .level-btn {
     --level-color: #{$level-beginner};
 

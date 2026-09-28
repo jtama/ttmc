@@ -43,7 +43,7 @@ function showQuestion(btn, nextModule, levelButtons, state, allModules) {
     const answerText = questionElement.querySelector('.answer-text');
     const questionText = questionElement.querySelector('.question-text');
 
-    showAnswerBtn.addEventListener('click', () => {
+    showAnswerBtn.onclick = () => {
         // Marquer que la réponse a été révélée
         state.answerRevealed = true;
 
@@ -61,10 +61,10 @@ function showQuestion(btn, nextModule, levelButtons, state, allModules) {
         errorBtn.disabled = false;
         showAnswerBtn.disabled = true;
         showAnswerBtn.style.opacity = '0.5';
-    });
+    };
 
-    okBtn.addEventListener('click', () => handleAnswer(true, parseInt(okBtn.dataset.points), questionText.innerHTML, parseInt(okBtn.dataset.points), nextModule, allModules));
-    errorBtn.addEventListener('click', () => handleAnswer(false, 0, questionText.innerHTML, parseInt(okBtn.dataset.points), nextModule, allModules));
+    okBtn.onclick = () => handleAnswer(true, parseInt(okBtn.dataset.points), questionText.innerHTML, parseInt(okBtn.dataset.points), nextModule, allModules);
+    errorBtn.onclick = () => handleAnswer(false, 0, questionText.innerHTML, parseInt(okBtn.dataset.points), nextModule, allModules);
 }
 
 function handleAnswer(isCorrect, points, question, niveau, nextModule, allModules) {
@@ -75,7 +75,7 @@ function handleAnswer(isCorrect, points, question, niveau, nextModule, allModule
     }
     if (!currentQuizData.detail) currentQuizData.detail = [];
 
-    const moduleName = document.title;
+    const moduleName = document.body.getAttribute('data-page-title') || document.title;
     const newDetail = {
         niveau: niveau,
         module: moduleName,

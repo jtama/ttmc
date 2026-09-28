@@ -5,7 +5,7 @@
         </ul>
         <ul>
         {#for module in site.collections.get('modules')}
-            <li><a href="{module.url}">{module.title}</a></li>
+            <li><a href="{module.url}" data-module-link>{module.title}</a></li>
         {/for}
         </ul>
     </nav>

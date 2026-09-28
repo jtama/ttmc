@@ -15,7 +15,7 @@ layout: default
                     {#if item_count >= 7 && item_count <= 8} level-btn--advanced{/if}
                     {#if item_count == 9} level-btn--expert{/if}
                     {#if item_count == 10} level-btn--boss{/if}"
-                    data-index="{item_index}" title="Révèle la question {item_index}" style="grid-column: {item_count.mod(5)};">
+                    data-index="{item_index}" title="Révèle la question {item_count}" style="grid-column: {item_count.mod(5)};">
                 Niveau {item_count}
             </button>
             {/for}
@@ -28,7 +28,7 @@ layout: default
             <div class="answer-text" style="display:none;">{#markdown}{item.answer.raw}{/markdown}</p></div>
             <div class="button-group">
                 <button class="show-answer-btn">Voir la réponse</button>
-                <button class="ok-btn" data-points="{item_index}" disabled>OK</button>
+                <button class="ok-btn" data-points="{item_count}" disabled>OK</button>
                 <button class="error-btn" disabled>Error</button>
             </div>
         </div>
