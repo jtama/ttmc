@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     <head>
         {#include partials/head.html /}
         {#insert head /}
@@ -11,7 +11,13 @@
 
             <header>
                 <div class="header-flex">
+                    {#if page.data.containsKey('html-title')}
+                    <h1>{page.title.raw}</h1>
+                    {#else if page.data.containsKey('custom-title')}
+                    <h1>{page.title}</h1>
+                    {#else}
                     <h1>Tu te mets combien en {page.title} ?</h1>
+                    {/if}
                     <div class="header-actions">
                         <a href="{site.url}" class="header-btn">Home</a>
                         <a href="{site.url.fromRoot('leaderboard')}" class="header-btn">Leaderboard</a>
@@ -21,16 +27,16 @@
 
             {#insert /}
 
-            <dialog id="custom-dialog">
+            <dialog class="custom-dialog" id="custom-dialog">
                 <p id="dialog-message"></p>
                 <div id="dialog-confirm-buttons" style="display: none; justify-content: space-around;">
-                    <button id="confirm-ok-btn">OK</button>
-                    <button id="confirm-cancel-btn">Cancel</button>
+                    <button class="btn-confirm-dialog" id="confirm-ok-btn">OK</button>
+                    <button class="btn-cancel-dialog"  id="confirm-cancel-btn">Cancel</button>
                 </div>
                 <button id="close-dialog-btn" style="display: none;">OK</button>
             </dialog>
             <footer class="site-footer">
-                <p>&copy; 2025 Onepoint ❤️ <strong>Camille Grandjean</strong>, <strong>Jérôme Tama</strong>, Camille Hoareau, Robin Cadinot, Rémi Pachet, Julien Fettinger, Sébastien Buchoux, Nicolas Trauwaen, Mary Pascal, Alexandre Bregeon</p>
+                <p>&copy; 2025/2026 Onepoint ❤️ <strong>Camille Grandjean</strong>, <strong>Jérôme Tama</strong>, Camille Hoareau, Robin Cadinot, Rémi Pachet, Julien Fettinger, Sébastien Buchoux, Nicolas Trauwaen, Mary Pascal, Alexandre Bregeon, Emilie De Pinho 👾</p>
             </footer>
         </div>
         </div>

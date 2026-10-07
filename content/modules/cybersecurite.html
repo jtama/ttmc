@@ -1,0 +1,60 @@
+---
+title: Cybersécurité
+questions:
+  - question: |
+      Vrai ou Faux : Un site utilisant **HTTPS** garantit que le site est fiable et qu'il ne peut pas être frauduleux.
+    answer: |
+      ❌ **Faux !** HTTPS chiffre la connexion, mais ne garantit pas qu'un site est fiable.
+
+  - question: |
+      Vrai ou Faux : Un gestionnaire de mots de passe permet d'utiliser un mot de passe différent et complexe pour chaque service sans avoir à tous les mémoriser.
+    answer: |
+      ✅ **Vrai !** Il permet de stocker et générer des mots de passe uniques et complexes.
+
+  - question: |
+      Vrai ou Faux : L'authentification multifacteur (**MFA**) empêche absolument toute compromission d'un compte.
+    answer: |
+      ❌ **Faux !** Le MFA renforce la sécurité, mais ne garantit pas une protection absolue.
+
+  - question: |
+      Vrai ou Faux : Un **ransomware** peut chiffrer les fichiers d'une victime afin d'exiger une rançon pour leur récupération.
+    answer: |
+      ✅ **Vrai !** Un ransomware peut chiffrer les données d'une victime et demander une rançon.
+
+  - question: |
+      Vrai ou Faux : Un mot de passe stocké sous forme de **hash** peut normalement être "déchiffré" avec la bonne clé pour retrouver le mot de passe original.
+    answer: |
+      ❌ **Faux !** Le hachage est conçu comme une transformation à sens unique.
+
+  - question: |
+      Vrai ou Faux : Cette construction d'une requête SQL peut présenter un risque de sécurité si `username` provient directement de l'utilisateur :
+
+      ```java
+      String sql =
+      "SELECT * FROM users WHERE name = '" + username + "'";
+      ```
+    answer: |
+      ✅ **Vrai !** Cette construction peut rendre l'application vulnérable à une injection SQL.
+
+  - question: |
+      Vrai ou Faux : Une attaque **brute force** consiste à essayer un grand nombre de combinaisons afin de trouver une information secrète, comme un mot de passe.
+    answer: |
+      ✅ **Vrai !** Une attaque par force brute teste de nombreuses combinaisons jusqu'à trouver la bonne.
+
+  - question: |
+      Vrai ou Faux : Le principe du **moindre privilège** consiste à donner à un utilisateur tous les droits disponibles, puis à retirer ceux dont il n'a pas besoin.
+    answer: |
+      ❌ **Faux !** Il consiste à accorder uniquement les permissions nécessaires.
+
+  - question: |
+      Vrai ou Faux : Dans une approche **Zero Trust**, un utilisateur connecté au réseau interne de l'entreprise est automatiquement considéré comme digne de confiance.
+    answer: |
+      ❌ **Faux !** Le Zero Trust impose de vérifier les accès même lorsqu'ils proviennent du réseau interne.
+
+  - question: |
+      👾 **BOSS FINAL — Vrai ou Faux :**
+
+      Le contenu d'un **JWT** encodé en Base64URL est automatiquement confidentiel : une personne possédant le token ne peut donc pas lire son `payload`.
+    answer: |
+      ❌ **Faux !** Le payload d'un JWT signé classique peut être décodé et lu ; il n'est pas automatiquement chiffré.
+---

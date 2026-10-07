@@ -5,7 +5,7 @@
         </ul>
         <ul>
         {#for module in site.collections.get('modules')}
-            <li><a href="{module.url}" data-module-link>{module.title}</a></li>
+            <li><a href="{module.url}" data-module-link title="{module.title}">{#if module.data.containsKey('menu-title')}{module.data.get('menu-title')}{#else}{module.title}{/if}</a></li>
         {/for}
         </ul>
     </nav>

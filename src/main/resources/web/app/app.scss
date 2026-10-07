@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'modal.css';
 
 @layer base, layout, components;
 
@@ -76,6 +77,9 @@
     --spacing-xl: 2.5rem;
     --spacing-2xl: 3.5rem;
     --spacing-3xl: 5rem;
+
+    --z-aside: 10;
+    --z-header: 20;
   }
 
   html {
@@ -105,10 +109,6 @@
     font-size: clamp(16px, 1.5vw, 18px);
     font-weight: 400;
   }
-
-
-
-  @import 'modal.css';
 
   /*
     View Transitions API styles.
@@ -157,7 +157,7 @@
     margin-bottom: var(--spacing-2xl);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: var(--z-header);
     animation: shrink-header linear;
     animation-timeline: header-scroll-timeline;
 
@@ -194,17 +194,22 @@
     }
 
     aside {
+      margin-bottom: 30px;
       background: var(--surface);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-xl);
       padding: var(--spacing-lg);
       height: fit-content;
+      max-height: calc(100dvh - var(--spacing-3xl) - 60px - var(--spacing-lg));
       position: sticky;
       top: calc(var(--spacing-3xl) + 60px);
+      z-index: var(--z-aside);
       width: 280px;
       flex-shrink: 0;
       box-sizing: border-box;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
+      scrollbar-gutter: stable;
 
       nav {
         all: unset;
@@ -241,29 +246,29 @@
               position: relative;
               transform: translateX(0);
 
-              &::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                height: 100%;
-                width: 3px;
-                background: var(--primary-600);
-                transform: scaleY(0);
-                transition: transform 0.2s ease;
-                border-radius: 0 2px 2px 0;
-              }
+              //&::before {
+              //  content: '';
+              //  position: absolute;
+              //  left: 0;
+              //  top: 0;
+              //  height: 100%;
+              //  width: 3px;
+              //  background: var(--primary-600);
+              //  transform: scaleY(0);
+              //  transition: transform 0.2s ease;
+              //  border-radius: 0 2px 2px 0;
+              //}
 
-              &:hover {
-                background: var(--gray-50);
-                color: var(--text-primary);
-                transform: translateX(4px);
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-
-                &::before {
-                  transform: scaleY(1);
-                }
-              }
+              //&:hover {
+              //  background: var(--gray-50);
+              //  color: var(--text-primary);
+              //  transform: translateX(4px);
+              //  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+              //
+              //  &::before {
+              //    transform: scaleY(1);
+              //  }
+              //}
 
               &.current {
                 background: var(--primary-50);
@@ -400,13 +405,13 @@
   }
 
   :is(.button, .header-btn, button, input[type="submit"]) {
-    background: var(--primary-600);
+    background: #130a2a;
     color: white;
     box-shadow: var(--shadow-sm);
 
     &:hover,
     &:focus {
-      background: var(--primary-700);
+      background: #1F0B57;
       box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 25%, transparent);
       transform: translateY(-2px) scale(1.02);
 
@@ -532,7 +537,7 @@
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, var(--primary-600), var(--primary-800), var(--primary-600));
+        background: linear-gradient(90deg, #260747, #570076, #260747);
       }
 
       th {
@@ -620,7 +625,8 @@
       }
 
       th:first-child {
-        background-color: var(--success-600) !important;
+        //background-color: var(--success-600) !important;
+        background-color: #4af8af !important;
       }
     }
 

@@ -1,0 +1,86 @@
+---
+title: Bugs & bizarreries du Web
+menu-title: Bizarreries Web
+questions:
+  - question: |
+      Vrai ou Faux : En JavaScript, cette expression retourne `true`.
+
+      ```javascript
+      typeof null === "object"
+      ```
+    answer: |
+      ✅ **Vrai !** `typeof null` retourne historiquement `"object"` en JavaScript.
+
+  - question: |
+      Vrai ou Faux : En HTML, oublier la balise fermante `</p>` provoque obligatoirement une erreur empêchant la page de s'afficher.
+    answer: |
+      ❌ **Faux !** Dans certains contextes, la balise fermante `</p>` peut être omise et le navigateur détermine automatiquement la fin du paragraphe.
+
+  - question: |
+      Vrai ou Faux : En JavaScript, ce code affiche `55`.
+
+      ```javascript
+      console.log("5" + 5);
+      ```
+    answer: |
+      ✅ **Vrai !** Avec une chaîne de caractères, `+` effectue ici une concaténation.
+
+  - question: |
+      Vrai ou Faux : En CSS, un élément avec `z-index: 999999` sera forcément affiché au-dessus d'un élément avec `z-index: 2`.
+    answer: |
+      ❌ **Faux !** Deux éléments appartenant à des contextes d'empilement différents ne sont pas comparés uniquement selon la valeur de leur `z-index`.
+
+  - question: |
+      Vrai ou Faux : En JavaScript, cette comparaison retourne `true`.
+
+      ```javascript
+      0 == "0"
+      ```
+    answer: |
+      ✅ **Vrai !** L'opérateur `==` effectue ici une conversion implicite des types.
+
+  - question: |
+      Vrai ou Faux : En HTML, écrire deux attributs `class` sur le même élément permet de fusionner automatiquement leurs valeurs.
+
+      ```html
+      <button class="btn" class="primary">
+      Jouer
+      </button>
+      ```
+    answer: |
+      ❌ **Faux !** HTML n'autorise pas plusieurs attributs portant le même nom sur un même élément.
+
+  - question: |
+      Vrai ou Faux : Ce calcul JavaScript peut produire `0.30000000000000004` au lieu de `0.3`.
+
+      ```javascript
+      0.1 + 0.2
+      ```
+    answer: |
+      ✅ **Vrai !** Certains nombres décimaux ne peuvent pas être représentés exactement avec le format numérique binaire utilisé par JavaScript.
+
+  - question: |
+      Vrai ou Faux : Un élément avec `visibility: hidden` continue normalement à occuper de la place dans la mise en page.
+    answer: |
+      ✅ **Vrai !** Contrairement à `display: none`, `visibility: hidden` conserve normalement l'espace occupé par l'élément.
+
+  - question: |
+      Vrai ou Faux : En JavaScript, cette comparaison retourne `true`.
+
+      ```javascript
+      NaN === NaN
+      ```
+    answer: |
+      ❌ **Faux !** `NaN` n'est pas égal à lui-même.
+
+  - question: |
+      👾 **BOSS FINAL — Vrai ou Faux :**
+
+      En JavaScript, cette expression retourne `true`.
+
+      ```javascript
+      [] == ![]
+      ```
+    answer: |
+      ✅ **Vrai !** Les conversions implicites effectuées avec `==` conduisent ici les deux côtés à être comparés comme la valeur numérique `0`.
+---

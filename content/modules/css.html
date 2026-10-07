@@ -1,46 +1,116 @@
 ---
 title: CSS
 questions:
-  - question: "Que fait la propriété `background-color` ?"
-    answer: "Elle définit la couleur de fond d’un élément."
-  - question: "À quoi servent les *media queries* en ***CSS*** ?"
-    answer: "Elles permettent d’appliquer des styles différents selon la taille de l’écran, utiles pour le responsive design."
-  - question: "Quelle est la différence entre *id* et *class* en  ***CSS*** ?"
-    answer: "Un *id* est unique par page (`#id`), une *class* peut être utilisée plusieurs fois (`.class`)."
-  - question: "Quelle est la différence entre `relative`, `absolute` et `fixed` en  ***CSS*** ?"
+  - question: |
+      Vrai ou Faux : La pseudo-classe `:where()` a toujours une spécificité de `0`, même si elle contient un sélecteur très spécifique.
+
+      ```css
+      :where(#app .card button) {
+      color: red;
+      }
+      ```
     answer: |
-        * `relative` : déplacement par rapport à sa position initiale.
-        * `absolute` : relatif au parent positionné.
-        * `fixed` : relatif à la fenêtre (viewport).
-  - question: "Quelle est la différence entre *rem*, *em* et *px* ?"
+      ✅ **Vrai !** `:where()` possède une spécificité nulle, quel que soit le sélecteur placé entre ses parenthèses.
+
+  - question: |
+      Vrai ou Faux : La pseudo-classe `:has()` permet de sélectionner un élément en fonction des éléments qu'il contient.
+
+      ```css
+      .card:has(img) {
+      padding: 0;
+      }
+      ```
     answer: |
-        * *px* : pixels fixes
-        * *em* : relatif à la taille de la police du parent.
-        * *rem* : relatif à la taille de la police à la racine (html)
-  - question: "Que signifie la propriété `box-sizing: border-box` ?"
-    answer: "Le padding et la border sont inclus dans la taille (width et height)."
-  - question: "Quelle est la différence entre relative, absolute, fixed et sticky en  ***CSS*** ?"
+      ✅ **Vrai !** Ici, seules les `.card` correspondant à la condition `:has(img)` sont sélectionnées.
+
+  - question: |
+      Vrai ou Faux : Avec ce code, `.child` peut forcément passer devant tous les autres éléments de la page grâce à son `z-index: 9999`.
+
+      ```css
+      .parent {
+      position: relative;
+      z-index: 1;
+      }
+
+      .child {
+      position: absolute;
+      z-index: 9999;
+      }
+      ```
     answer: |
-        * relative : positionne l'élément par rapport à sa position normale.
-        * absolute : positionne par rapport au parent positionné le plus proche.
-        * fixed : positionne par rapport à la fenêtre du navigateur (reste fixe au scroll).
-        * sticky : combine relative et fixed, devient fixe à partir d’un seuil de scroll.
-  - question: "Comment fonctionne le système de spécificité ***CSS*** et dans quel cas une règle est prioritaire sur une autre ?"
+      ❌ **Faux !** Le `z-index` de l'enfant reste contraint par le contexte d'empilement de son parent.
+
+  - question: |
+      Vrai ou Faux : Appliquer `opacity: 0.99` à un élément peut créer un nouveau contexte d'empilement.
     answer: |
-        Du plus prioritaire au moins prioritaire :
-        1. Styles en ligne (inline)
-        1. `!important`
-        1. Sélecteurs avec ID
-        1. Sélecteurs de classes, attributs et pseudo-classes
-        1. Sélecteurs de balises et pseudo-éléments.
-  - question: "Comment fonctionne le `contain` et le `will-change` en ***CSS*** et pourquoi sont-ils utilisés ?"
+      ✅ **Vrai !** Une valeur d'`opacity` inférieure à `1` crée un nouveau stacking context.
+
+  - question: |
+      Vrai ou Faux : Avec CSS Grid, `minmax(0, 1fr)` peut être utile à la place de `1fr` pour permettre à une colonne de se réduire malgré un contenu volumineux.
+
+      ```css
+      .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      }
+      ```
     answer: |
-        Ce sont des optimisations avancées de rendu :
-        * `contain` limite la zone d’invalidation et améliore la performance du rendu.
-        * `will-change` avertit le navigateur d’un futur changement (ex : transform, opacity) pour optimiser le GPU.
-  - question: "Quelles sont les conditions pour qu’un élément soit formaté en *block formatting context (BFC)* et à quoi servent-elles ?"
+      ✅ **Vrai !** `minmax(0, 1fr)` autorise explicitement la piste à descendre jusqu'à `0`.
+
+  - question: |
+      Vrai ou Faux : Une `@container` query permet d'adapter un composant en fonction de la taille de son conteneur plutôt que de celle du viewport.
+
+      ```css
+      @container (width > 500px) {
+      .card {
+      display: grid;
+      }
+      }
+      ```
     answer: |
-        Un BFC est une zone d’isolation visuelle.
-        * Il empêche les éléments flottants (floats) de sortir de leur conteneur, entre autres.
-        * Un BFC est déclenché par : `overflow: hidden|auto|scroll`, `display: flow-root, float, etc."
+      ✅ **Vrai !** Les container queries permettent notamment de réagir aux dimensions d'un conteneur.
+
+  - question: |
+      Vrai ou Faux : `margin-inline-start` correspond obligatoirement à `margin-left`.
+    answer: |
+      ❌ **Faux !** Les propriétés logiques s'adaptent notamment au sens d'écriture du document.
+
+  - question: |
+      Vrai ou Faux : Dans des `@layer`, un sélecteur extrêmement spécifique placé dans une couche moins prioritaire peut perdre face à un simple sélecteur placé dans une couche plus prioritaire.
+
+      ```css
+      @layer base, components;
+
+      @layer base {
+      #app .page .card button {
+      color: blue;
+      }
+      }
+
+      @layer components {
+      button {
+      color: red;
+      }
+      }
+      ```
+    answer: |
+      ✅ **Vrai !** La priorité des couches est évaluée avant la spécificité des sélecteurs appartenant à ces couches.
+
+  - question: |
+      Vrai ou Faux : `display: contents` fait disparaître l'élément du DOM et déplace réellement ses enfants dans son parent.
+    answer: |
+      ❌ **Faux !** `display: contents` affecte la génération de boîtes CSS, mais ne déplace pas les éléments dans le DOM.
+
+  - question: |
+      👾 **BOSS FINAL — Vrai ou Faux :**
+
+      Ajouter `transform: translateZ(0)` sur un élément peut modifier le comportement de ses descendants utilisant `z-index`, même si l'élément ne semble pas avoir bougé visuellement.
+
+      ```css
+      .container {
+      transform: translateZ(0);
+      }
+      ```
+    answer: |
+      ✅ **Vrai !** Une transformation différente de `none` crée un nouveau contexte d'empilement et peut donc modifier le comportement des `z-index`.
 ---

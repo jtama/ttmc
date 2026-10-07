@@ -11,8 +11,13 @@ export function initLeaderboardPage(allModules) {
     const leaderboard = (JSON.parse(localStorage.getItem('leaderboard')) || []).sort((a, b) => b.score - a.score);
     const currentPlayer = localStorage.getItem('currentPlayer');
     leaderboardElement.innerHTML = '';
-    leaderboard.slice(0, 25).forEach((entry, index) => {
+    const displayedLeaderboard = leaderboard.slice(0, 25);
+    displayedLeaderboard.forEach((entry, index) => {
         const template = document.getElementById('leaderboard-row-template').content.cloneNode(true);
+        if (index > 0) {
+            const progress = (index - 1) / Math.max(displayedLeaderboard.length - 2, 1);
+            template.querySelector('tr').style.setProperty('--rank-green-lightness', `${72 + progress * 23}%`);
+        }
         const cells = template.querySelectorAll('td');
         template.querySelector('th').textContent = index + 1;
         cells[0].textContent = entry.playerName;
@@ -135,7 +140,6 @@ window.leaderboard = {
     displayCurrentQuiz: displayCurrentQuiz,
     forceFinishQuiz: forceFinishQuiz
 }
-
 
 
 

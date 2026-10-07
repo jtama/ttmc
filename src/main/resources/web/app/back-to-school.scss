@@ -4,7 +4,7 @@
 
 // BDX I/O — Back to School - palette Colors
 $color-dark: #090817;
-$color-medium-purple: #130a2a;
+$color-medium-purple: #1f0b57;
 $color-dark-purple: #260747;
 $color-purple: #570076;
 $color-dark-magenta: #8F009E;
@@ -12,6 +12,8 @@ $color-magenta: #c600ad;
 $color-pink: #f500b5;
 $color-cyan: #00e5ff;
 $color-yellow: #fdf45d;
+$color-red: #fb4a68;
+$color-green: #4af8af;
 
 // buttons levels
 $level-beginner: #4af8af;
@@ -31,20 +33,57 @@ $level-boss: #fb4a68;
 // Text
 $color-white: #ffffff;
 
-// Buttons
-$button-primary-bg: $color-pink;
-$button-primary-text: $color-dark;
-
-$button-secondary-bg: $color-cyan;
-$button-secondary-text: $color-dark;
-
-
 /* APP */
 
+// HOME
+.home-page {
+  position: relative;
+  isolation: isolate;
+
+  .button {
+    border: 2px solid $level-beginner;
+    background-color: $color-dark;
+    &:hover {
+      background-color: $level-beginner;
+      color: $color-dark;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.2;
+    background-image: url('./src/picto-sac-a-dos.png');
+    background-repeat: no-repeat;
+    background-position: right 8% bottom 5%;
+    background-size: clamp(220px, 35vw, 400px) auto;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2rem;
+  }
+}
+
+// QCM
+
 .back-to-school {
+  --z-aside: 10;
+  --z-header: 20;
+
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   color: $color-white;
-  background: linear-gradient(
+  background:
+    linear-gradient(
     180deg,
     $color-dark 0%,
     $color-medium-purple 18%,
@@ -58,15 +97,36 @@ $button-secondary-text: $color-dark;
   &::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    //background: url("src/main/resources/web/src/picto-sac-a-dos.png") no-repeat center center;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.75;
+    background-image: url("./src/picto-pacman.png");
+    background-repeat: no-repeat;
+    background-position: right 8% bottom 5%;
+    background-size: clamp(220px, 35vw, 400px) auto;
+    mix-blend-mode: screen;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  header {
+    background: linear-gradient(
+      180deg,
+      rgba($color-dark, 0.98) 0%,
+      rgba($color-medium-purple, 0.96) 100%
+    );
+    margin-bottom: 2rem;
   }
 
   .header-flex {
     padding-bottom: 1rem;
+    h1 {
+      width: 62%;
+    }
     .header-btn {
       background-color: $color-dark;
       color: $color-white;
@@ -77,6 +137,35 @@ $button-secondary-text: $color-dark;
   .main-layout {
     ul:first-child {
       color: $color-dark;
+    }
+
+    aside nav ul li a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      &:hover,
+      &.current {
+        background-color: #dff0ff;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        width: 16px;
+        height: 16px;
+        flex: 0 0 16px;
+        background: url('./src/picto-4-pixels-fluo.svg') no-repeat center;
+        background-size: 16px 16px;
+
+        opacity: 0;
+      }
+
+      &:hover::before,
+      &:focus-visible::before,
+      &:active::before,
+      &.current::before {
+        opacity: 1;
+      }
     }
   }
 
@@ -137,6 +226,75 @@ $button-secondary-text: $color-dark;
 
     &--boss {
       --level-color: #{$level-boss};
+    }
+  }
+
+  // Leaderboard
+
+  .current-quizz {
+    margin-bottom: 3rem;
+  }
+
+  .btn-actions-quizz {
+    display: contents;
+
+    .force-finish-btn {
+      background-color: $color-red;
+      color: $color-dark;
+      border: 2px solid $color-red;
+
+      transition:
+              filter 0.2s ease,
+              transform 0.2s ease;
+
+      &:hover {
+        filter:
+          drop-shadow(0 0 4px $color-red);
+          transform: translateY(-2px);
+      }
+    }
+    .continue-quiz-btn {
+      background-color: $color-green;
+      color: $color-dark;
+      border: 2px solid $color-green;
+
+      transition:
+              filter 0.2s ease,
+              transform 0.2s ease;
+
+      &:hover {
+        filter:
+          drop-shadow(0 0 4px $color-green);
+          transform: translateY(-2px);
+      }
+    }
+  }
+
+  .leaderboard-section {
+    #leaderboard-list tr:nth-child(n + 2) {
+      background: linear-gradient(135deg,
+        hsl(145, 55%, var(--rank-green-lightness, 85%)) 0%,
+        #f0fdf4 100%) !important;
+
+      th,
+      td {
+        color: #14532d;
+      }
+
+      &.current-player th:first-child {
+        background-color: transparent !important;
+      }
+    }
+
+    table {
+      margin-bottom: 2rem;
+      thead {
+        background: linear-gradient(135deg, $color-cyan 0%, $color-yellow 100%);
+        th {
+          text-align: center;
+          color: $color-dark;
+        }
+      }
     }
   }
 

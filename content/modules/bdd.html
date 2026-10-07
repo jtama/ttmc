@@ -2,37 +2,82 @@
 title: Base de données
 questions:
   - question: |
-      Vrai ou Faux : Le sigle SQL signifie **Standard Query Language**.
-    answer: "Faux, il s'agit de **Structured Query Language**."
-  - question: |
-      Vrai ou Faux : Une clé primaire peut contenir des valeurs nulles.
-    answer: "Faux, une clé primaire doit être **unique et non nulle**."
-  - question: |
-      Quel paradigme de base de données est conçu pour des données non structurées et n'a pas de schéma rigide ?
+      Vrai ou Faux : En SQL, `DISTINCT` permet d'éviter les doublons dans le résultat d'une requête.
 
-        1. NoSQL
-        2. Relationnel
-        3. Orienté Objet
-        4. Fichier plat
-    answer: "**NoSQL**. Ce terme englobe les bases non-relationnelles (document, clé-valeur, graphe, etc.)."
-  - question: |
-      Dans une requête SQL, quel type de `JOIN` retourne toutes les lignes de la table de gauche, même s'il n'y a pas de correspondance dans la table de droite ?
+      ```sql
+      SELECT DISTINCT ville
+      FROM users;
+      ```
+    answer: |
+      ✅ **Vrai !** `DISTINCT` élimine les lignes identiques du résultat. Bordeaux n'a donc pas besoin d'apparaître 42 fois. 🍷
 
-        1. `INNER JOIN`
-        2. `LEFT JOIN`
-        3. `RIGHT JOIN`
-        4. `FULL JOIN`
-    answer: "**LEFT JOIN**. Il assure que chaque enregistrement de la table de gauche soit présent dans le résultat."
-  - question: "Quelle propriétés ACID assure qu'une transaction exécute toutes ses opérations ou aucune, sans état intermédiaire ?"
-    answer: "**Atomicité**. L'Atomicité (Atomicity) garantit que la transaction est traitée comme une seule unité de travail indivisible."
-  - question: "Quelle est la particularité d’une base de données orientée graphes ?"
-    answer: "Elle stocke les données sous forme de nœuds et de relations, idéale pour modéliser des réseaux."
-  - question: "Qu’est-ce que le sharding dans une base de données distribuée ?"
-    answer: "Technique de partitionnement horizontal des données sur plusieurs serveurs."
-  - question: "Selon le Théorème CAP, un système distribué ne peut garantir simultanément que deux des trois propriétés. Lesquelles, en cas de défaillance du réseau (Partition Tolerance) ?"
-    answer: "**Cohérence** (Consistency) et **Disponibilité** (Availability). Le théorème stipule que, face à une partition (P), il faut choisir entre Cohérence (C) et Disponibilité (A)."
-  - question: "Parmi les douze règles originales de Codd, quelle est la première et la plus fondamentale qui stipule que toutes les informations d'une BDD doivent être représentées explicitement et uniquement comme des valeurs dans des tables ?"
-    answer: "**La Règle d'Information**. Aussi appelée Règle n°1, elle définit le principe de base selon lequel l'intégralité du modèle relationnel doit se baser sur les données tabulaires."
-  - question: "L'algorithme 2PC (Two-Phase Commit) est utilisé pour garantir l'atomicité des transactions distribuées. Quelle étape précède le vote final des participants sur l'engagement (Commit) ou l'abandon (Abort) ?"
-    answer: "**L'étape de 'Prepare'** (ou 'VOTE Request'). Durant cette première phase, le coordinateur demande aux nœuds de s'assurer qu'ils sont prêts à valider la transaction avant d'envoyer l'ordre de Commit définitif."
+  - question: |
+      Vrai ou Faux : Cette requête permet de trouver tous les pseudos qui commencent par la lettre `M`.
+
+      ```sql
+      SELECT *
+      FROM players
+      WHERE pseudo LIKE 'M%';
+      ```
+    answer: |
+      ✅ **Vrai !** Avec `LIKE`, le caractère `%` représente zéro, un ou plusieurs caractères. Mario, Marco et Morpheus peuvent entrer. 👾
+
+  - question: |
+      Vrai ou Faux : La fonction `COUNT(*)` permet de compter le nombre de lignes retournées par une requête.
+
+      ```sql
+      SELECT COUNT(*)
+      FROM players;
+      ```
+    answer: |
+      ✅ **Vrai !** `COUNT(*)` compte les lignes. Pratique pour savoir combien de courageux ont osé lancer le quiz. 🎮
+
+  - question: |
+      Vrai ou Faux : La contrainte `UNIQUE` interdit à plusieurs lignes de posséder la même valeur pour la ou les colonnes concernées.
+    answer: |
+      ✅ **Vrai !** Une contrainte `UNIQUE` impose l'unicité des valeurs concernées.
+
+  - question: |
+      Vrai ou Faux : Cette requête modifie le pseudo de tous les joueurs de la table.
+
+      ```sql
+      UPDATE players
+      SET pseudo = 'DarkVador'
+      WHERE id = 42;
+      ```
+    answer: |
+      ❌ **Faux !** Grâce au `WHERE`, seules les lignes dont `id` vaut `42` sont concernées.
+
+  - question: |
+      Vrai ou Faux : Une `VIEW` SQL stocke obligatoirement une copie physique complète des données qu'elle affiche.
+    answer: |
+      ❌ **Faux !** Une vue classique correspond essentiellement à une requête enregistrée et ne stocke généralement pas elle-même une copie de toutes les données.
+
+  - question: |
+      Vrai ou Faux : `GROUP BY` permet de regrouper des lignes afin d'effectuer des calculs par groupe.
+
+      ```sql
+      SELECT team, AVG(score)
+      FROM players
+      GROUP BY team;
+      ```
+    answer: |
+      ✅ **Vrai !** Ici, les joueurs sont regroupés par équipe et `AVG(score)` calcule le score moyen de chacune.
+
+  - question: |
+      Vrai ou Faux : Une procédure stockée est un ensemble d'instructions enregistré dans la base de données et pouvant être exécuté à la demande.
+    answer: |
+      ✅ **Vrai !** Une procédure stockée permet de regrouper une logique exécutée côté base de données.
+
+  - question: |
+      Vrai ou Faux : Un `TRIGGER` doit forcément être lancé manuellement par un utilisateur.
+    answer: |
+      ❌ **Faux !** Un trigger peut se déclencher automatiquement lorsqu'un événement défini se produit, par exemple lors d'un `INSERT`, d'un `UPDATE` ou d'un `DELETE`.
+
+  - question: |
+      👾 **BOSS FINAL — Vrai ou Faux :**
+
+      La troisième forme normale (**3NF**) cherche notamment à éviter qu'un attribut non-clé dépende transitivement d'une clé via un autre attribut non-clé.
+    answer: |
+      ✅ **Vrai !** La troisième forme normale vise notamment à éliminer les dépendances transitives problématiques entre attributs non-clés.
 ---

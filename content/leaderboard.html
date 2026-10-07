@@ -1,5 +1,6 @@
 ---
-title: 🏆Leaderboard
+title: "🏆 HIGH SCORES <br> Qui règne sur la cour de récré ?"
+html-title: true
 layout: default
 ---
 <div class="container">
@@ -8,7 +9,7 @@ layout: default
         <!-- Section Quiz en cours -->
         <div id="quiz-in-progress">
             <h2 id="current-quiz-title">🎯 Quiz en cours'</h2>
-            <div id="current-quiz-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="current-quizz" id="current-quiz-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
                 <div>
                     <p><strong>Joueur :</strong> <span class="player-name-display"></span></p>
                     <p><strong>Score actuel :</strong> <span class="current-score-display"></span> points</p>
@@ -19,16 +20,14 @@ layout: default
                     <ul class="remaining-modules-list" style="margin: 5px 0; padding-left: 20px;">
                     </ul>
                 </div>
-                <div style="margin-top: 15px;">
+                <div class="btn-actions-quizz">
                     <button class="force-finish-btn"
-                            style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px"
                             onclick="leaderboard.forceFinishQuiz({site.collections.modules.collectionTitles.raw})">
-                        ⚠️ Terminer le quiz (0 pts pour les modules restants)
+                        💾 Terminer le quiz (0 pts pour les modules restants)
                     </button>
                     <button class="continue-quiz-btn"
-                            style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;"
                             onclick="leaderboard.continueQuiz()">
-                        ▶️ Continuer le quiz
+                        🕹️ Continuer le quiz
                     </button>
                 </div>
             </div>
@@ -61,7 +60,7 @@ layout: default
         </div>
 
         <div class="navigation">
-            <button id="clear-storage-btn" class="button primary">☠️ Tout remettre à zéro ☠️</button>
+            <button id="clear-storage-btn" class="button primary"> ☠️&nbsp; RESET GAME</button>
         </div>
     </main>
 </div>

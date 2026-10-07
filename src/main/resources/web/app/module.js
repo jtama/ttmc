@@ -57,6 +57,8 @@ function showQuestion(btn, nextModule, levelButtons, state, allModules) {
         });
 
         answerText.style.display = 'block';
+        okBtn.style.display = 'inline-flex';
+        errorBtn.style.display = 'inline-flex';
         okBtn.disabled = false;
         errorBtn.disabled = false;
         showAnswerBtn.disabled = true;

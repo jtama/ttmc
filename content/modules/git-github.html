@@ -1,0 +1,65 @@
+---
+title: Git & GitHub
+questions:
+  - question: |
+      Vrai ou Faux : Après avoir modifié un fichier, `git add` enregistre définitivement ces modifications dans l'historique Git.
+    answer: |
+      ❌ **Faux !** `git add` place les modifications dans la zone de staging ; c'est le `commit` qui les ajoute à l'historique.
+
+  - question: |
+      Vrai ou Faux : Dans Git, `HEAD` désigne généralement le commit actuellement checkouté, souvent via la branche courante.
+    answer: |
+      ✅ **Vrai !** `HEAD` représente la position actuellement checkoutée dans l'historique Git.
+
+  - question: |
+      Vrai ou Faux : Ajouter un fichier dans `.gitignore` suffit à arrêter automatiquement son suivi s'il a déjà été ajouté et commité.
+    answer: |
+      ❌ **Faux !** `.gitignore` n'arrête pas automatiquement le suivi d'un fichier déjà suivi par Git.
+
+  - question: |
+      Vrai ou Faux : `git revert` permet d'annuler les modifications d'un ancien commit en créant un nouveau commit.
+    answer: |
+      ✅ **Vrai !** `git revert` crée un nouveau commit qui inverse les modifications ciblées.
+
+  - question: |
+      Vrai ou Faux : Supprimer une branche Git entraîne automatiquement la suppression des commits qui ont été fusionnés dans une autre branche.
+    answer: |
+      ❌ **Faux !** Les commits restent accessibles depuis les autres branches qui les référencent.
+
+  - question: |
+      Vrai ou Faux : Un `git rebase` peut réécrire l'historique en recréant des commits avec de nouveaux identifiants.
+    answer: |
+      ✅ **Vrai !** Un rebase peut recréer les commits et donc modifier leurs hashes.
+
+  - question: |
+      Vrai ou Faux : Sur GitHub, un **fork** et une **branche** désignent exactement la même chose.
+    answer: |
+      ❌ **Faux !** Un fork est une copie d'un dépôt dans un autre espace GitHub, tandis qu'une branche appartient à un dépôt.
+
+  - question: |
+      Vrai ou Faux : `git cherry-pick` permet d'appliquer un commit précis d'une autre branche sur la branche courante.
+    answer: |
+      ✅ **Vrai !** `cherry-pick` permet d'appliquer les modifications introduites par un commit spécifique.
+
+  - question: |
+      Vrai ou Faux : Après cette commande, le dernier commit disparaît de `main` et les modifications correspondantes sont également supprimées du répertoire de travail.
+
+      ```bash
+      git reset --soft HEAD~1
+      ```
+    answer: |
+      ❌ **Faux !** `--soft` déplace `HEAD` mais conserve les modifications dans la zone de staging.
+
+  - question: |
+      👾 **BOSS FINAL — Vrai ou Faux :**
+
+      Après avoir checkouté directement un commit avec :
+
+      ```bash
+      git checkout a1b2c3d
+      ```
+
+      puis créé un nouveau commit sans créer de branche, ce nouveau commit appartient automatiquement à `main`.
+    answer: |
+      ❌ **Faux !** On se trouve en `detached HEAD` : le nouveau commit n'est pas automatiquement rattaché à `main`.
+---

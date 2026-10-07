@@ -1,0 +1,61 @@
+---
+title: Accessibilité Web
+questions:
+  - question: |
+      Vrai ou Faux : Ajouter `role="button"` sur un `<div>` lui donne automatiquement le même comportement clavier qu'un véritable `<button>`.
+    answer: |
+      ❌ **Faux !** Le rôle expose sa fonction, mais n'ajoute pas automatiquement les comportements clavier natifs d'un `<button>`.
+
+  - question: |
+      Vrai ou Faux : Un élément avec `aria-hidden="true"` peut encore recevoir le focus clavier s'il est rendu focusable.
+    answer: |
+      ✅ **Vrai !** `aria-hidden="true"` ne retire pas à lui seul un élément de l'ordre de tabulation.
+
+  - question: |
+      Vrai ou Faux : Pour un texte de taille normale, le niveau **AA des WCAG** demande généralement un ratio de contraste d'au moins **4.5:1**.
+    answer: |
+      ✅ **Vrai !** Le contraste minimal attendu pour du texte normal est généralement de 4.5:1.
+
+  - question: |
+      Vrai ou Faux : Un bouton contenant uniquement une icône peut être accessible sans afficher de texte visible à l'intérieur.
+    answer: |
+      ✅ **Vrai !** Il peut être accessible s'il possède un nom accessible pertinent, par exemple via un texte masqué ou `aria-label`.
+
+  - question: |
+      Vrai ou Faux : Utiliser `tabindex="5"` est une bonne pratique pour faire passer un bouton avant les autres éléments interactifs au clavier.
+    answer: |
+      ❌ **Faux !** Les valeurs positives de `tabindex` créent un ordre de tabulation artificiel et sont généralement à éviter.
+
+  - question: |
+      Vrai ou Faux : Un élément avec `tabindex="-1"` ne peut jamais recevoir le focus.
+    answer: |
+      ❌ **Faux !** Il est retiré de la tabulation séquentielle, mais peut toujours recevoir le focus par programmation.
+
+  - question: |
+      Vrai ou Faux : Lorsqu'une modale est ouverte, le focus clavier devrait normalement rester à l'intérieur de celle-ci jusqu'à sa fermeture.
+    answer: |
+      ✅ **Vrai !** Une boîte de dialogue modale doit gérer le focus afin que l'utilisateur n'interagisse pas avec le contenu situé derrière elle.
+
+  - question: |
+      Vrai ou Faux : `aria-live` peut permettre à un lecteur d'écran d'annoncer une information mise à jour dynamiquement sans déplacer le focus dessus.
+    answer: |
+      ✅ **Vrai !** Une région live permet d'annoncer certains changements dynamiques sans nécessiter de déplacement du focus.
+
+  - question: |
+      Vrai ou Faux : Ajouter un attribut ARIA à un composant HTML natif rend systématiquement ce composant plus accessible.
+    answer: |
+      ❌ **Faux !** Un mauvais usage d'ARIA peut dégrader l'accessibilité d'un composant déjà correctement sémantique.
+
+  - question: |
+      👾 **BOSS FINAL — Vrai ou Faux :**
+
+      Ce bouton est correctement désactivé pour tous les utilisateurs uniquement grâce à `aria-disabled="true"` :
+
+      ```html
+      <button aria-disabled="true">
+        Supprimer
+      </button>
+      ```
+    answer: |
+      ❌ **Faux !** `aria-disabled="true"` expose l'état aux technologies d'assistance mais n'empêche pas à lui seul l'activation du bouton.
+---

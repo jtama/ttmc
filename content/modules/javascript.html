@@ -1,78 +1,96 @@
 ---
-title: Les dingueries de JavaScript
+title: JavaScript
 questions:
   - question: |
-        Vrai ou Faux : JavaScript est une version allégée de Java.
-    answer: "Faux, ce sont deux langages de programmation distincts avec des syntaxes et des usages très différents."
+      Vrai ou Faux : JavaScript peut changer le texte d'un bouton **sans recharger toute la page**.
+    answer: |
+      ✅ **Vrai !** JavaScript peut modifier directement le DOM. Heureusement, sinon chaque clic serait une aventure. 😅
+
   - question: |
-        Vrai ou Faux : L'expression `typeof null` retourne `null`.
-    answer: "Faux, elle retourne **\"object\"**. C'est un bug historique du langage."
+      Vrai ou Faux : Ce code affiche `Hello Batman` :
+
+      ```javascript
+      const hero = "Batman";
+      console.log(`Hello ${hero}`);
+      ```
+    answer: |
+      ✅ **Vrai !** Les template literals avec les backticks permettent d'insérer une variable avec `${...}`. 🦇
+
   - question: |
-        Que retourne l'expression :
-        ```js
-        NaN === NaN
-        ```
-        - true
-        - false
-        - undefined
-        - Error
-    answer: "**false** – `NaN` est la seule valeur en JavaScript qui n'est pas égale à elle-même."
+      Vrai ou Faux : En JavaScript, ceci est parfaitement possible :
+
+      ```javascript
+      const sac = ["PC", 42, true, "café ☕"];
+      ```
+    answer: |
+      ✅ **Vrai !** Un tableau JavaScript peut contenir plusieurs types de valeurs. Même du café, et c'est probablement le plus important. ☕
+
   - question: |
-        Que retourne l'expression :
-        ```js
-        [] == ![]
-        ```
-        - true
-        - false
-        - undefined
-        - Error
-    answer: "**true** – À cause de la coercition de type, `![]` devient `false`, et `[]` est converti en `0`, ce qui mène à `0 == 0`."
+      Vrai ou Faux : Après ce code, Batman a disparu du tableau :
+
+      ```javascript
+      const heroes = ["Batman", "Spider-Man", "Deadpool"];
+      heroes.shift();
+      ```
+    answer: |
+      ✅ **Vrai !** `shift()` retire le premier élément du tableau. Batman est donc parti bouder dans sa Batcave. 🦇
+
   - question: |
-        Que retourne l'expression :
-        ```js
-        [] + []
-        ```
-    answer: "`\"\"` (string vide) – avec `+`, les tableaux sont convertis en string → `\"\"`."
+      Vrai ou Faux : Ce code affiche `55` :
+
+      ```javascript
+      console.log("5" + 5);
+      ```
+    answer: |
+      ✅ **Vrai !** Comme l'une des valeurs est une chaîne de caractères, JavaScript effectue une concaténation et affiche `"55"`.
+
   - question: |
-        Que retourne l'expression :
-        ```js
-        {} + []
-        ```
-    answer: "`0` – le `{}` est vu comme un bloc vide → reste `+[]` → `0`."
+      Vrai ou Faux : Ce code affiche `true` :
+
+      ```javascript
+      console.log(0 == false);
+      ```
+    answer: |
+      ✅ **Vrai !** Avec `==`, JavaScript effectue une conversion implicite des types. Avec `0 === false`, le résultat serait `false`. JavaScript commence à jouer avec nos nerfs. 😈
+
   - question: |
-        Que retourne l'expression :
-        ```js
-        0.1 + 0.2 === 0.3
-        ```
-    answer: "`false` – → `0.30000000000000004`."
+      Vrai ou Faux : Ce code provoque une erreur :
+
+      ```javascript
+      const snacks = ["🍕", "🍔"];
+      snacks.push("🍪");
+      ```
+    answer: |
+      ❌ **Faux !** Même déclaré avec `const`, le contenu d'un tableau peut être modifié. On ne peut simplement pas réassigner `snacks` à un autre tableau. Le cookie est sauvé. 🍪
+
   - question: |
-        Sachant que :
-        ```js
-        [] == 0 //return true
-        ```
-        Que retourne l'expression :
-        ```js
-        [] === 0
-        ```
-    answer: "`false` – `==` fait une coercition (`[]` → `\"\"` → `0`), `===` compare types strictement."
+      Vrai ou Faux : En JavaScript, `typeof null` retourne `"null"`.
+    answer: |
+      ❌ **Faux !** Il retourne `"object"`. C'est une particularité historique de JavaScript. Oui, même JavaScript traîne encore des casseroles des années 90. 📼
+
   - question: |
-        Sachant que :
-        ```js
-        "2" + 1 //return "21"
-        ```
-        Que retourne l'expression :
-        ```js
-        "2" - 1
-        ```
-    answer: "`1` .  `+` concatène si un opérande est string, et  `-` force la conversion en nombre."
+      Vrai ou Faux : Ce code affiche `false` :
+
+      ```javascript
+      console.log(NaN === NaN);
+      ```
+    answer: |
+      ✅ **Vrai !** L'expression affiche bien `false`. `NaN` n'est pas égal à lui-même. Pour le détecter proprement, on peut utiliser `Number.isNaN()`.
+
   - question: |
-        Sachant que :
-        ```js
-        {} + [] //return 0
-        ```
-        Que retourne l'expression :
-        ```js
-        [] + {}
-        ```
-    answer: "`[object Object]` –"
+      👾 **BOSS FINAL — Vrai ou Faux :**
+
+      Ce code affiche `1`, puis `2`, puis `3`.
+
+      ```javascript
+      console.log(1);
+
+      setTimeout(() => {
+        console.log(2);
+      }, 0);
+
+      console.log(3);
+      ```
+    answer: |
+      ❌ **Faux !** Il affiche `1`, puis `3`, puis `2`.
 ---

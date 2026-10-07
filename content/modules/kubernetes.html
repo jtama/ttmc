@@ -2,70 +2,58 @@
 title: Kubernetes
 questions:
   - question: |
-      Vrai ou Faux : Kubernetes est avant tout un système de gestion de bases de données.
-    answer: "Faux, c'est un **orchestrateur de conteneurs**."
-  - question: |
-      Vrai ou Faux : Kubernetes a été initialement créé par Microsoft.
-    answer: "Faux, il a été créé par **Google**."
-  - question: |
-      Dans quel langage de programmation Kubernetes est-il principalement écrit ?
+      Vrai ou Faux : Dans Kubernetes, un **Pod** peut contenir plusieurs conteneurs.
+    answer: |
+      ✅ **Vrai !** Un Pod peut contenir un ou plusieurs conteneurs qui partagent notamment le même réseau.
 
-        1. Python
-        2. Java
-        3. Go (Golang)
-        4. C++
-    answer: "Go (Golang)"
   - question: |
-      Quel langage est le plus couramment utilisé pour décrire les ressources (pods, services, etc.) dans Kubernetes ?
+      Vrai ou Faux : Si un Pod géré par un `Deployment` disparaît, Kubernetes peut automatiquement en créer un nouveau pour le remplacer.
+    answer: |
+      ✅ **Vrai !** Le `Deployment` s'appuie sur un `ReplicaSet` pour maintenir le nombre de Pods souhaité.
 
-        1. JSON
-        2. YAML
-        3. XML
-        4. TOML
-    answer: "YAML (ou KYAML depuis v1.34)"
-  - question: "Quel concept permet de regrouper des containers exécutés sur le même hôte ?"
-    answer: "Le Pod"
-  - question: "Trouver l'intrus : `K3S` / `K6S` / `K8S` / `K9S`"
-    answer: "`K6S` est un vélo électrique de Kemoway, à ne pas confondre avec `K6` outil de test de Grafana Labs"
   - question: |
-      Que fait la commande :
-      ```
-        kubectl get secrets -n searxng searxng-config
-          -ojsonpath='{.data.settings.yml}' | b64decode
-      ```
-    answer: "Elle affiche en clair le contenu du champ `settings.yml`, stocké dans les données du secret `searxng-config` dans le namespace `searxng`"
+      Vrai ou Faux : Un `Service` Kubernetes permet notamment de fournir un point d'accès stable à un ensemble de Pods.
+    answer: |
+      ✅ **Vrai !** Les Pods peuvent être recréés et changer d'adresse IP. Un `Service` fournit une manière stable de les joindre.
+
   - question: |
-      Corrigez la commande :
+      Vrai ou Faux : Une `ConfigMap` est principalement destinée à stocker des mots de passe et des clés API sensibles.
+    answer: |
+      ❌ **Faux !** Une `ConfigMap` sert aux données de configuration non sensibles.
+
+  - question: |
+      Vrai ou Faux : Cette commande permet d'afficher les Pods présents dans le namespace courant.
+
       ```bash
-      kubectl patch deployment nginx-deployment
-          --subresource='replicas' --type='merge'
-          -p '{"spec":{"replicas":3}}
+      kubectl get pods
       ```
     answer: |
-      La *subresource* est `scale` pas `replicas`.
-      ```bash
-      kubectl patch deployment nginx-deployment
-        --subresource='scale' --type='merge'
-        -p '{"spec":{"replicas":3}}
-      ```
-  - question: "Sur quel algorithme de consensus s’appuie la base clés/valeurs par défaut qui stocke l’état du cluster ?"
-    answer: "`etcd` s’appuie sur l’algorithme Raft"
-  - question: "Quelles sont les étapes du *scheduling framework* ?"
+      ✅ **Vrai !** `kubectl get pods` affiche les Pods du namespace actuellement utilisé.
+
+  - question: |
+      Vrai ou Faux : Une `livenessProbe` permet à Kubernetes de déterminer si une application doit recevoir du trafic.
     answer: |
-      1. Queueing / Admission : le pod arrive dans la file du scheduler.
+      ❌ **Faux !** C'est principalement le rôle de la `readinessProbe`.
 
-      Scheduling cycle
+  - question: |
+      Vrai ou Faux : Deux Pods portant le même nom peuvent exister simultanément dans deux `Namespaces` différents.
+    answer: |
+      ✅ **Vrai !** Les noms des ressources doivent être uniques dans leur namespace, mais le même nom peut être utilisé dans un autre namespace.
 
-      2. PreFilter : prépare et valide des données partagées pour la phase de sélection.
-      3. Filter : chaque nœud candidat est filtré selon des contraintes (affinity/anti‑affinity, taints/tolerations, ressources disponibles, node selectors, volumes attachables, etc.). On garde la liste des nœuds valides.
-      4. PostFilter : intervient si aucun nœud n’a passé le Filter (ex. pour déclencher des actions d’échec ou de remédiation comme re‑préemption).
-      5. Score : les nœuds valides sont notés (scoring) par les plugins ; les scores sont normalisés et additionnés pour obtenir le(s) meilleur(s) nœud(s).
-      6. Reserve : réservation temporaire des ressources sur le(s) nœud(s) choisi(s).
-      7. Permit : pause possible avant le binding : un plugin peut retarder l’ordonnancement (ex. attendre d’être approuvé par une politique, coordination multi‑cluster, ou pour la préemption). Peut aussi rejeter le pod.
+  - question: |
+      Vrai ou Faux : Définir une `memory limit` signifie qu'un conteneur peut utiliser autant de mémoire qu'il veut si le cluster en possède encore.
+    answer: |
+      ❌ **Faux !** La `memory limit` fixe une limite de mémoire pour le conteneur.
 
-      Binding cycle
+  - question: |
+      Vrai ou Faux : Un `HorizontalPodAutoscaler` peut modifier automatiquement le nombre de Pods d'une application en fonction de métriques.
+    answer: |
+      ✅ **Vrai !** Le HPA peut ajuster automatiquement le nombre de réplicas selon des métriques telles que l'utilisation CPU ou mémoire lorsqu'elles sont configurées et disponibles.
 
-      8. PreBind : dernières vérifications / préparation juste avant la liaison.
-      9. Bind : action qui lie le Pod au Node : appel à l’API kube‑apiserver pour créer l’objet binding (effectif « scheduled »).
-      10. PostBind : notifications après le bind (ex. notifications, instrumentation, déclenchement de handlers externes).
+  - question: |
+      👾 **BOSS FINAL — Vrai ou Faux :**
+
+      Un Pod possédant les bonnes `tolerations` est **obligatoirement** déployé sur un nœud possédant les `taints` correspondants.
+    answer: |
+      ❌ **Faux !** Une `toleration` permet à un Pod d'être accepté sur un nœud possédant le `taint` correspondant, mais elle ne force pas Kubernetes à le placer sur ce nœud.
 ---
