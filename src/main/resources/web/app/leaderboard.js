@@ -15,8 +15,11 @@ export function initLeaderboardPage(allModules) {
     displayedLeaderboard.forEach((entry, index) => {
         const template = document.getElementById('leaderboard-row-template').content.cloneNode(true);
         if (index > 0) {
-            const progress = (index - 1) / Math.max(displayedLeaderboard.length - 2, 1);
-            template.querySelector('tr').style.setProperty('--rank-green-lightness', `${72 + progress * 23}%`);
+            const progress = index / (displayedLeaderboard.length - 1);
+            const lightness = 63 + 32 * progress;
+            const row = template.querySelector('tr');
+            row.style.setProperty('--rank-green-lightness', `${lightness}%`);
+            row.style.setProperty('--rank-green-end-lightness', `${Math.min(lightness + 10, 98)}%`);
         }
         const cells = template.querySelectorAll('td');
         template.querySelector('th').textContent = index + 1;
@@ -140,6 +143,4 @@ window.leaderboard = {
     displayCurrentQuiz: displayCurrentQuiz,
     forceFinishQuiz: forceFinishQuiz
 }
-
-
 
