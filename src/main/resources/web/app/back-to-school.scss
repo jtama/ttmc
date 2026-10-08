@@ -856,8 +856,6 @@ dialog {
 
 /* Stylesheet Back to school */
 
-
-
 // BDX I/O — Back to School - palette Colors
 $color-dark: #090817;
 $color-medium-purple: #1f0b57;
@@ -933,6 +931,18 @@ $color-white: #ffffff;
 .back-to-school {
   --z-aside: 10;
   --z-header: 20;
+
+  > .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .site-footer {
+    margin-top: auto;
+    padding-top: var(--spacing-xl);
+  }
 
   position: relative;
   isolation: isolate;
@@ -1159,4 +1169,59 @@ $color-white: #ffffff;
     }
   }
 
+  /* Page 404 */
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  .p-404 {
+    font-size: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+  .question-404 {
+    max-width: 70%;
+    color: $color-dark;
+    background-color: $color-white;
+    border-radius: 15px;
+    padding: 1rem;
+
+    span {
+      font-weight: 700;
+    }
+
+    .awser-404 {
+      display: block;
+      margin-top: 2rem;
+      .error {
+        color: $color-red;
+      }
+
+      .question-404 {
+        &[hidden] {
+          display: none;
+        }
+        &.hidden {
+          display: none;
+        }
+        &.visible {
+          display: block;
+        }
+      }
+
+      .btn-group-404 {
+        display: flex;
+        justify-content: space-between;
+
+        .btn-404-home,
+        .btn-404-answer {
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+        }
+      }
+    }
+  }
 }

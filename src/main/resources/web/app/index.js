@@ -4,3 +4,4 @@ import './start-quiz.js';
 import './module.js';
 import './leaderboard.js';
 import './final-score.js';
+import './404.js';
