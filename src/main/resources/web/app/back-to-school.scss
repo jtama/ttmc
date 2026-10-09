@@ -974,6 +974,10 @@ $color-white: #ffffff;
     mix-blend-mode: screen;
   }
 
+  &:has(.home-page)::before {
+    content: none;
+  }
+
   > * {
     position: relative;
     z-index: 1;
