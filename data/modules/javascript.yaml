@@ -1,4 +1,3 @@
----
 title: JavaScript
 questions:
   - question: |
@@ -84,4 +83,3 @@ questions:
       ```
     answer: |
       ❌ **Faux !** Il affiche `1`, puis `3`, puis `2`.
----

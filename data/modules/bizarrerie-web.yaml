@@ -1,4 +1,3 @@
----
 title: Bugs & bizarreries du Web
 menu-title: Bizarreries Web
 questions:
@@ -83,4 +82,3 @@ questions:
       ```
     answer: |
       ✅ **Vrai !** Les conversions implicites effectuées avec `==` conduisent ici les deux côtés à être comparés comme la valeur numérique `0`.
----

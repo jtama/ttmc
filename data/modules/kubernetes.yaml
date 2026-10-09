@@ -1,4 +1,3 @@
----
 title: Kubernetes
 questions:
   - question: |
@@ -56,4 +55,3 @@ questions:
       Un Pod possédant les bonnes `tolerations` est **obligatoirement** déployé sur un nœud possédant les `taints` correspondants.
     answer: |
       ❌ **Faux !** Une `toleration` permet à un Pod d'être accepté sur un nœud possédant le `taint` correspondant, mais elle ne force pas Kubernetes à le placer sur ce nœud.
----

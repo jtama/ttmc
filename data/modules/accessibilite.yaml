@@ -1,4 +1,3 @@
----
 title: Accessibilité Web
 questions:
   - question: |
@@ -58,4 +57,3 @@ questions:
       ```
     answer: |
       ❌ **Faux !** `aria-disabled="true"` expose l'état aux technologies d'assistance mais n'empêche pas à lui seul l'activation du bouton.
----

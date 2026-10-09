@@ -1,4 +1,3 @@
----
 title: Java
 questions:
   - question: |
@@ -100,4 +99,3 @@ questions:
       ```
     answer: |
       ✅ **Vrai !** Java met généralement en cache les objets `Integer` correspondant aux valeurs de `-128` à `127`.
----

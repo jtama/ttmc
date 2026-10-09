@@ -1,4 +1,3 @@
----
 title: Intelligence artificielle
 questions:
   - question: |
@@ -52,4 +51,3 @@ questions:
       Lorsqu'un **LLM** génère une réponse, il consulte automatiquement une base contenant la réponse exacte puis choisit les mots à afficher.
     answer: |
       ❌ **Faux !** Un LLM génère du texte en prédisant successivement des tokens à partir du contexte et des paramètres appris pendant son entraînement.
----

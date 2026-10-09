@@ -1,4 +1,3 @@
----
 title: Base de données
 questions:
   - question: |
@@ -80,4 +79,3 @@ questions:
       La troisième forme normale (**3NF**) cherche notamment à éviter qu'un attribut non-clé dépende transitivement d'une clé via un autre attribut non-clé.
     answer: |
       ✅ **Vrai !** La troisième forme normale vise notamment à éliminer les dépendances transitives problématiques entre attributs non-clés.
----

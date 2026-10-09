@@ -1,4 +1,3 @@
----
 title: Git & GitHub
 questions:
   - question: |
@@ -62,4 +61,3 @@ questions:
       puis créé un nouveau commit sans créer de branche, ce nouveau commit appartient automatiquement à `main`.
     answer: |
       ❌ **Faux !** On se trouve en `detached HEAD` : le nouveau commit n'est pas automatiquement rattaché à `main`.
----

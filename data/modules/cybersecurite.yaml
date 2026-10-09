@@ -1,4 +1,3 @@
----
 title: Cybersécurité
 questions:
   - question: |
@@ -57,4 +56,3 @@ questions:
       Le contenu d'un **JWT** encodé en Base64URL est automatiquement confidentiel : une personne possédant le token ne peut donc pas lire son `payload`.
     answer: |
       ❌ **Faux !** Le payload d'un JWT signé classique peut être décodé et lu ; il n'est pas automatiquement chiffré.
----

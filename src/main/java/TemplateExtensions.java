@@ -8,22 +8,31 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TemplateExtensions {
 
     @TemplateExtension
+    public static DocumentPage getFirstModule(RoqCollection collection) {
+        return alphabetical(collection).getFirst();
+    }
+
+    @TemplateExtension
     public static List<DocumentPage> alphabetical(RoqCollection collection) {
+       return alphabeticalAsStream(collection).toList();
+    }
+
+    private static Stream<DocumentPage> alphabeticalAsStream(RoqCollection collection) {
         Collator collator = Collator.getInstance(Locale.FRENCH);
         collator.setStrength(Collator.PRIMARY);
         return collection.stream()
                 .sorted(Comparator.comparing(DocumentPage::title, collator)
-                        .thenComparing(DocumentPage::id))
-                .toList();
+                        .thenComparing(DocumentPage::id));
     }
 
     @TemplateExtension
     public static String collectionTitles(RoqCollection collection) {
-        return "['%s']".formatted(alphabetical(collection).stream()
+        return "['%s']".formatted(alphabeticalAsStream(collection)
                 .map(DocumentPage::title)
                         .map(value -> value.replaceAll("'", "\\\\'"))
                 .collect(Collectors.joining("','")));
@@ -31,24 +40,24 @@ public class TemplateExtensions {
 
     @TemplateExtension
     public static String allModules(RoqCollection collection) {
-        return alphabetical(collection).stream()
+        return alphabeticalAsStream(collection)
                 .map(document -> document.url().relative())
                 .collect(Collectors.joining(","));
     }
 
     @TemplateExtension
     public static String nextModule(Page page) {
-        List<DocumentPage> modules = alphabetical(page.site().collections().get("modules"));
+        Stream<DocumentPage> modules = alphabeticalAsStream(page.site().collections().get("modules"));
         if (page.url().equals(page.site().url()))
-           return modules.stream()
+           return modules
                    .findFirst()
                    .map(doc -> doc.url().relative())
                    .orElse(page.site().url().fromRoot("leaderboard").absolute());
-        for (int index = 0; index < modules.size() - 1; index++) {
-            if (modules.get(index).id().equals(page.id())) {
-                return modules.get(index + 1).url().relative();
-            }
-        }
-        return page.site().url().fromRoot("leaderboard").absolute();
+        return modules
+                .filter(item -> item.id().equals(page.id()))
+                .findFirst()
+                .map(DocumentPage::next)
+                .map(doc -> doc.url().relative())
+                .orElse(page.site().url().fromRoot("leaderboard").absolute());
     }
 }

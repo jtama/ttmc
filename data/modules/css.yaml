@@ -1,4 +1,3 @@
----
 title: CSS
 questions:
   # Niveaux 1 à 3 : très faciles
@@ -121,4 +120,3 @@ questions:
       ❌ **Faux !** Le bouton sera **vert** ! Pour les déclarations `!important`, l'ordre de priorité des couches est inversé : la première couche, `base`, gagne sur `theme`.
 
       Les déclarations importantes placées dans une couche gagnent aussi sur les déclarations importantes hors couche. La spécificité de `#play` ne change donc pas le résultat.
----
