@@ -52,7 +52,7 @@ function displayCurrentQuiz(totalModules) {
     const contentElement = document.getElementById('current-quiz-content');
 
     if (currentQuizData && currentQuizData.playerName) {
-        const answeredModules = currentQuizData.detail ? currentQuizData.detail.map(d => d.module) : [];
+        const answeredModules = currentQuizData.detail ? currentQuizData.detail.filter(d => d.completed !== false).map(d => d.module) : [];
         const remainingCount = totalModules - answeredModules.length;
         const currentScore = currentQuizData.detail ? currentQuizData.detail.reduce((acc, d) => acc + (d.points || 0), 0) : 0;
 
@@ -143,4 +143,3 @@ window.leaderboard = {
     displayCurrentQuiz: displayCurrentQuiz,
     forceFinishQuiz: forceFinishQuiz
 }
-

@@ -1,108 +1,88 @@
 import {showDialog} from "./dialog";
-// --- Module Page Logic ---
-function initModulePage(nextModule, allModules) {
-    const levelButtons = document.querySelectorAll('.level-btn');
+
+function initModulePage() {
+    const levelButtons = Array.from(document.querySelectorAll('.level-btn'));
     if (!levelButtons.length) return;
-    // Objet pour tracker l'état de révélation (passé par référence)
-    const state = { answerRevealed: false, currentQuestionElement: null };
-    levelButtons.forEach(btn => {
-        btn.addEventListener('click', () => showQuestion(btn, nextModule, levelButtons, state, allModules));
-    });
-}
-
-function showQuestion(btn, nextModule, levelButtons, state, allModules) {
-    const idx = parseInt(btn.getAttribute('data-index'));
-    const questionElement = document.getElementById(`question-${idx}`);
-    if (!questionElement) return;
-
-    // Cacher la question précédente si elle existe
-    if (state.currentQuestionElement) {
-        state.currentQuestionElement.style.display = 'none';
-    }
-
-    // Si la réponse n'a pas encore été révélée, permettre le changement de question
-    if (!state.answerRevealed) {
-        // Réactiver tous les boutons de niveau
-        levelButtons.forEach(otherBtn => {
-            otherBtn.disabled = false;
-            otherBtn.style.opacity = '1';
-            otherBtn.style.pointerEvents = 'auto';
-            const isActive = otherBtn === btn;
-            // Mettre en évidence le bouton actuellement sélectionné
-            otherBtn.classList.toggle('is-active', isActive);
-            otherBtn.setAttribute('aria-pressed', String(isActive));
-        });
-    }
-
-    questionElement.style.display = 'block';
-    state.currentQuestionElement = questionElement;
-
-    const showAnswerBtn = questionElement.querySelector('.show-answer-btn');
-    const okBtn = questionElement.querySelector('.ok-btn');
-    const errorBtn = questionElement.querySelector('.error-btn');
-    const answerText = questionElement.querySelector('.answer-text');
-    const questionText = questionElement.querySelector('.question-text');
-
-    showAnswerBtn.onclick = () => {
-        // Marquer que la réponse a été révélée
-        state.answerRevealed = true;
-
-        // Désactiver tous les autres boutons de niveau maintenant
-        levelButtons.forEach(otherBtn => {
-            if (otherBtn !== btn) {
-                otherBtn.disabled = true;
-                otherBtn.style.opacity = '0.5';
-                otherBtn.style.pointerEvents = 'none';
-            }
-        });
-
-        answerText.style.display = 'block';
-        okBtn.style.display = 'inline-flex';
-        errorBtn.style.display = 'inline-flex';
-        okBtn.disabled = false;
-        errorBtn.disabled = false;
-        showAnswerBtn.disabled = true;
-        showAnswerBtn.style.opacity = '0.5';
-    };
-
-    okBtn.onclick = () => handleAnswer(true, parseInt(okBtn.dataset.points), questionText.innerHTML, parseInt(okBtn.dataset.points), nextModule, allModules);
-    errorBtn.onclick = () => handleAnswer(false, 0, questionText.innerHTML, parseInt(okBtn.dataset.points), nextModule, allModules);
-}
-
-function handleAnswer(isCorrect, points, question, niveau, nextModule, allModules) {
-    let currentQuizData = JSON.parse(localStorage.getItem('currentQuiz'));
-    if (!currentQuizData) {
-        showDialog('Veuillez démarrer le quiz depuis la page principale.');
-        return;
-    }
-    if (!currentQuizData.detail) currentQuizData.detail = [];
 
     const moduleName = document.body.getAttribute('data-page-title') || document.title;
-    const newDetail = {
-        niveau: niveau,
-        module: moduleName,
-        question: question || '-',
-        points: isCorrect ? points : 0
-    };
+    const nextModule = document.body.getAttribute('data-next-module');
+    const quiz = JSON.parse(localStorage.getItem('currentQuiz'));
+    const detail = quiz?.detail?.find(item => item.module === moduleName);
+    const answers = detail?.answers || [];
+    let currentIndex = answers.length;
+    let currentQuestion = null;
 
-    const idx = currentQuizData.detail.findIndex(d => d.module === moduleName);
-    if (idx !== -1) {
-        currentQuizData.detail[idx] = newDetail;
-    } else {
-        currentQuizData.detail.push(newDetail);
+    function showCurrentQuestion() {
+        levelButtons.forEach((button, index) => {
+            button.disabled = index !== currentIndex;
+            button.classList.toggle('is-answered', index < currentIndex);
+            button.classList.toggle('is-active', index === currentIndex);
+            button.setAttribute('aria-pressed', String(index === currentIndex));
+        });
+        if (currentQuestion) currentQuestion.style.display = 'none';
+        if (currentIndex >= levelButtons.length) {
+            document.getElementById('module-complete').hidden = false;
+            return;
+        }
+
+        const button = levelButtons[currentIndex];
+        currentQuestion = document.getElementById(`question-${button.dataset.index}`);
+        currentQuestion.style.display = 'block';
+        const revealButton = currentQuestion.querySelector('.show-answer-btn');
+        const answerText = currentQuestion.querySelector('.answer-text');
+        const okButton = currentQuestion.querySelector('.ok-btn');
+        const errorButton = currentQuestion.querySelector('.error-btn');
+        let revealed = false;
+        let submitted = false;
+
+        revealButton.onclick = () => {
+            revealed = true;
+            answerText.style.display = 'block';
+            for (const action of [okButton, errorButton]) {
+                action.style.display = 'inline-flex';
+                action.disabled = false;
+            }
+            revealButton.disabled = true;
+        };
+
+        function submitAnswer(correct) {
+            if (!revealed || submitted) return;
+            const currentQuiz = JSON.parse(localStorage.getItem('currentQuiz'));
+            if (!currentQuiz) {
+                showDialog('Veuillez démarrer le quiz depuis la page principale.');
+                return;
+            }
+            submitted = true;
+            const niveau = Number(okButton.dataset.points);
+            answers.push({
+                niveau,
+                question: currentQuestion.querySelector('.question-text').innerHTML,
+                points: correct ? niveau : 0
+            });
+            const completed = answers.length === levelButtons.length;
+            const moduleDetail = {
+                module: moduleName,
+                niveau,
+                question: answers[answers.length - 1].question,
+                answers,
+                completed,
+                points: answers.reduce((total, answer) => total + answer.points, 0)
+            };
+            currentQuiz.detail ||= [];
+            const index = currentQuiz.detail.findIndex(item => item.module === moduleName);
+            if (index === -1) currentQuiz.detail.push(moduleDetail);
+            else currentQuiz.detail[index] = moduleDetail;
+            currentQuiz.nextModuleUrl = completed && nextModule ? nextModule : window.location.pathname;
+            localStorage.setItem('currentQuiz', JSON.stringify(currentQuiz));
+            currentIndex++;
+            showCurrentQuestion();
+        }
+
+        okButton.onclick = () => submitAnswer(true);
+        errorButton.onclick = () => submitAnswer(false);
     }
 
-    if (nextModule) {
-        currentQuizData.nextModuleUrl = nextModule;
-    } else {
-        // No more modules, clear the next module URL
-        delete currentQuizData.nextModuleUrl.relative;
-    }
-
-    localStorage.setItem('currentQuiz', JSON.stringify(currentQuizData));
-    window.location.href = nextModule;
+    showCurrentQuestion();
 }
 
-const nextModule = document.body.getAttribute('data-next-module');
-const allModules = document.body.getAttribute('data-all-modules') || '[]';
-initModulePage(nextModule, allModules);
+initModulePage();

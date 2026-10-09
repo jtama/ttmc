@@ -1,116 +1,124 @@
 ---
 title: CSS
 questions:
+  # Niveaux 1 à 3 : très faciles
   - question: |
-      Vrai ou Faux : La pseudo-classe `:where()` a toujours une spécificité de `0`, même si elle contient un sélecteur très spécifique.
+      Vrai ou Faux : CSS permet de modifier l'apparence d'une page web, comme les couleurs et la taille du texte.
+    answer: |
+      ✅ **Vrai !** CSS sert à définir la présentation des éléments HTML : couleurs, tailles, espacements et mise en page.
+
+  - question: |
+      Vrai ou Faux : Ce code affiche le texte des paragraphes en rouge.
 
       ```css
-      :where(#app .card button) {
-      color: red;
+      p {
+        color: red;
       }
       ```
     answer: |
-      ✅ **Vrai !** `:where()` possède une spécificité nulle, quel que soit le sélecteur placé entre ses parenthèses.
+      ✅ **Vrai !** La propriété `color` définit la couleur du texte. Ici, les paragraphes passent au rouge.
 
   - question: |
-      Vrai ou Faux : La pseudo-classe `:has()` permet de sélectionner un élément en fonction des éléments qu'il contient.
+      Vrai ou Faux : La propriété `background-color` permet de changer la taille du texte.
+    answer: |
+      ❌ **Faux !** `background-color` change la couleur de fond. Pour changer la taille du texte, on utilise `font-size`.
+
+  # Niveaux 4 à 6 : un peu moins faciles
+  - question: |
+      Vrai ou Faux : Le sélecteur `.hero` cible les éléments qui possèdent la classe `hero`.
 
       ```css
-      .card:has(img) {
-      padding: 0;
+      .hero {
+        font-weight: bold;
       }
       ```
     answer: |
-      ✅ **Vrai !** Ici, seules les `.card` correspondant à la condition `:has(img)` sont sélectionnées.
+      ✅ **Vrai !** Le point `.` indique une classe. Le sélecteur `#hero`, lui, cible un élément dont l'identifiant est `hero`.
 
   - question: |
-      Vrai ou Faux : Avec ce code, `.child` peut forcément passer devant tous les autres éléments de la page grâce à son `z-index: 9999`.
+      Vrai ou Faux : `padding` ajoute de l'espace à l'extérieur de la bordure d'un élément.
+    answer: |
+      ❌ **Faux !** `padding` ajoute de l'espace entre le contenu et la bordure. L'espace extérieur se règle avec `margin`.
+
+  - question: |
+      Vrai ou Faux : La règle suivante s'applique uniquement lorsque la largeur du viewport est inférieure ou égale à `600px`.
 
       ```css
-      .parent {
-      position: relative;
-      z-index: 1;
-      }
-
-      .child {
-      position: absolute;
-      z-index: 9999;
-      }
-      ```
-    answer: |
-      ❌ **Faux !** Le `z-index` de l'enfant reste contraint par le contexte d'empilement de son parent.
-
-  - question: |
-      Vrai ou Faux : Appliquer `opacity: 0.99` à un élément peut créer un nouveau contexte d'empilement.
-    answer: |
-      ✅ **Vrai !** Une valeur d'`opacity` inférieure à `1` crée un nouveau stacking context.
-
-  - question: |
-      Vrai ou Faux : Avec CSS Grid, `minmax(0, 1fr)` peut être utile à la place de `1fr` pour permettre à une colonne de se réduire malgré un contenu volumineux.
-
-      ```css
-      .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 300px;
+      @media (max-width: 600px) {
+        .menu {
+          display: none;
+        }
       }
       ```
     answer: |
-      ✅ **Vrai !** `minmax(0, 1fr)` autorise explicitement la piste à descendre jusqu'à `0`.
+      ✅ **Vrai !** Cette media query masque le menu lorsque la zone d'affichage mesure au maximum `600px` de large.
 
+  # Niveaux 7 et 8 : plus difficiles
   - question: |
-      Vrai ou Faux : Une `@container` query permet d'adapter un composant en fonction de la taille de son conteneur plutôt que de celle du viewport.
+      Vrai ou Faux : Avec ce CSS, la largeur totale de la boîte, bordures comprises et hors marges, est de `200px`.
 
       ```css
-      @container (width > 500px) {
       .card {
-      display: grid;
-      }
+        box-sizing: border-box;
+        width: 200px;
+        padding: 20px;
+        border: 5px solid black;
       }
       ```
     answer: |
-      ✅ **Vrai !** Les container queries permettent notamment de réagir aux dimensions d'un conteneur.
+      ✅ **Vrai !** Avec `border-box`, les bordures et le padding sont inclus dans les `200px`. La largeur du contenu est donc de `150px`.
 
   - question: |
-      Vrai ou Faux : `margin-inline-start` correspond obligatoirement à `margin-left`.
-    answer: |
-      ❌ **Faux !** Les propriétés logiques s'adaptent notamment au sens d'écriture du document.
+      Vrai ou Faux : Avec ce HTML et ces deux règles, le texte du bouton sera bleu, même si la règle rouge est écrite en dernier.
 
-  - question: |
-      Vrai ou Faux : Dans des `@layer`, un sélecteur extrêmement spécifique placé dans une couche moins prioritaire peut perdre face à un simple sélecteur placé dans une couche plus prioritaire.
+      ```html
+      <button id="play" class="action">Jouer</button>
+      ```
 
       ```css
-      @layer base, components;
+      #play { color: blue; }
+      .action { color: red; }
+      ```
+    answer: |
+      ✅ **Vrai !** Dans ces règles de même origine, sans couche ni `!important`, le sélecteur d'identifiant est plus spécifique que le sélecteur de classe. L'ordre d'écriture ne suffit pas à le battre.
 
-      @layer base {
-      #app .page .card button {
-      color: blue;
-      }
+  # Niveau 9 : difficile
+  - question: |
+      Vrai ou Faux : Un bouton situé dans `.panel` sera rouge avec ce CSS, car le sélecteur de la première règle est plus spécifique.
+
+      ```css
+      :where(#app .panel) button {
+        color: red;
       }
 
-      @layer components {
-      button {
-      color: red;
-      }
+      .panel button {
+        color: blue;
       }
       ```
     answer: |
-      ✅ **Vrai !** La priorité des couches est évaluée avant la spécificité des sélecteurs appartenant à ces couches.
+      ❌ **Faux !** `:where()` et tous ses arguments apportent une spécificité nulle. La première règle a une spécificité de `0-0-1`, contre `0-1-1` pour la seconde : le bouton sera bleu.
 
-  - question: |
-      Vrai ou Faux : `display: contents` fait disparaître l'élément du DOM et déplace réellement ses enfants dans son parent.
-    answer: |
-      ❌ **Faux !** `display: contents` affecte la génération de boîtes CSS, mais ne déplace pas les éléments dans le DOM.
-
+  # Niveau 10 : très difficile
   - question: |
       👾 **BOSS FINAL — Vrai ou Faux :**
 
-      Ajouter `transform: translateZ(0)` sur un élément peut modifier le comportement de ses descendants utilisant `z-index`, même si l'élément ne semble pas avoir bougé visuellement.
+      Avec uniquement ce CSS, un bouton `<button id="play">Jouer</button>` sera rouge.
 
       ```css
-      .container {
-      transform: translateZ(0);
+      @layer base, theme;
+
+      @layer base {
+        button { color: green !important; }
       }
+
+      @layer theme {
+        #play { color: red !important; }
+      }
+
+      #play { color: blue !important; }
       ```
     answer: |
-      ✅ **Vrai !** Une transformation différente de `none` crée un nouveau contexte d'empilement et peut donc modifier le comportement des `z-index`.
+      ❌ **Faux !** Le bouton sera **vert** ! Pour les déclarations `!important`, l'ordre de priorité des couches est inversé : la première couche, `base`, gagne sur `theme`.
+
+      Les déclarations importantes placées dans une couche gagnent aussi sur les déclarations importantes hors couche. La spécificité de `#play` ne change donc pas le résultat.
 ---
