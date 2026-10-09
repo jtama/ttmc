@@ -1,14 +1,15 @@
 ---
-title: "🏆 HIGH SCORES <br> Qui règne sur la cour de récré ?"
+title: "HIGH SCORES <br> Qui règne sur la cour de récré ?"
 html-title: true
+title-trophy: true
 layout: default
 ---
 <div class="container leaderboard-page">
     <main>
 
         <!-- Section Quiz en cours -->
-        <div id="quiz-in-progress">
-            <h2 id="current-quiz-title">🎯 Quiz en cours'</h2>
+        <div id="quiz-in-progress" data-module-count="{site.collections.modules.size}">
+            <h2 id="current-quiz-title"><span class="heading-icon heading-icon--info" style="background-image: url('{site.image('Icon-info-transparent.png')}')" aria-hidden="true" hidden></span><span class="quiz-title-label">🎯 Quiz en cours'</span></h2>
             <div class="current-quizz" id="current-quiz-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
                 <div>
                     <p><strong>Joueur :</strong> <span class="player-name-display"></span></p>
@@ -21,12 +22,10 @@ layout: default
                     </ul>
                 </div>
                 <div class="btn-actions-quizz">
-                    <button class="force-finish-btn"
-                            onclick="leaderboard.forceFinishQuiz({site.collections.modules.collectionTitles.raw})">
+                    <button class="force-finish-btn">
                         💾 Terminer le quiz (0 pts pour les modules restants)
                     </button>
-                    <button class="continue-quiz-btn"
-                            onclick="leaderboard.continueQuiz()">
+                    <button class="continue-quiz-btn">
                         🕹️ Continuer le quiz
                     </button>
                 </div>
@@ -34,9 +33,8 @@ layout: default
         </div>
 
         <!-- Section Leaderboard -->
-        <div class="leaderboard-section" id="leaderboard"
-             data-modules="{site.collections.modules.collectionTitles.raw}">
-            <h2>🥇 Classement</h2>
+        <div class="leaderboard-section" id="leaderboard">
+            <h2><img class="heading-icon" src="{site.image('Trophee-num-1.png')}" alt="">Classement</h2>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -64,7 +62,3 @@ layout: default
         </div>
     </main>
 </div>
-
-<script type="module">
-    addEventListener("load", () => leaderboard.initLeaderboardPage({site.collections.modules.size()}));
-</script>
