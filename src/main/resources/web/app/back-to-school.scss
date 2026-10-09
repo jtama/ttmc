@@ -1004,6 +1004,11 @@ $color-white: #ffffff;
     }
 
     aside nav ul li a {
+      &.is-completed {
+        opacity: 0.45;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
       display: inline-flex;
       align-items: center;
       gap: 12px;
@@ -1071,16 +1076,6 @@ $color-white: #ffffff;
     }
 
     @include level-button-states($color-dark);
-
-    &.is-answered {
-      background: var(--level-color);
-      color: $color-dark;
-      opacity: 0.45;
-      cursor: not-allowed;
-      filter: none;
-      transform: none;
-      box-shadow: none;
-    }
 
     &--beginner {
       --level-color: #{$level-beginner};

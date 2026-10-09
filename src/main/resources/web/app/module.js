@@ -1,13 +1,18 @@
 import {showDialog} from "./dialog";
+import {completedModules, refreshModuleLinks, nextAvailableModule} from './module-progress';
 
 function initModulePage() {
     const levelButtons = Array.from(document.querySelectorAll('.level-btn'));
     if (!levelButtons.length) return;
 
     const moduleName = document.body.getAttribute('data-page-title') || document.title;
-    const nextModule = document.body.getAttribute('data-next-module');
     const quiz = JSON.parse(localStorage.getItem('currentQuiz'));
     const detail = quiz?.detail?.find(item => item.module === moduleName);
+    if (completedModules(quiz).has(moduleName)) {
+        document.querySelector('.main-layout').style.display = 'none';
+        window.location.replace(nextAvailableModule(quiz, moduleName));
+        return;
+    }
     const answers = detail?.answers || [];
     const answeredLevels = new Set(answers.map(answer => answer.niveau));
     const revealedLevels = new Set();
@@ -17,9 +22,7 @@ function initModulePage() {
     function showCurrentQuestion(selectedIndex = -1) {
         currentIndex = selectedIndex;
         levelButtons.forEach((button, index) => {
-            const answered = answeredLevels.has(index + 1);
-            button.disabled = answered;
-            button.classList.toggle('is-answered', answered);
+            button.disabled = answeredLevels.size === levelButtons.length;
             button.classList.toggle('is-active', index === currentIndex);
             button.setAttribute('aria-pressed', String(index === currentIndex));
         });
@@ -35,13 +38,14 @@ function initModulePage() {
         const okButton = currentQuestion.querySelector('.ok-btn');
         const errorButton = currentQuestion.querySelector('.error-btn');
         const niveau = Number(okButton.dataset.points);
-        let revealed = revealedLevels.has(niveau);
+        const answered = answeredLevels.has(niveau);
+        let revealed = answered || revealedLevels.has(niveau);
         let submitted = false;
         answerText.style.display = revealed ? 'block' : 'none';
         revealButton.disabled = revealed;
         for (const action of [okButton, errorButton]) {
-            action.style.display = revealed ? 'inline-flex' : 'none';
-            action.disabled = !revealed;
+            action.style.display = revealed && !answered ? 'inline-flex' : 'none';
+            action.disabled = !revealed || answered;
         }
 
         revealButton.onclick = () => {
@@ -82,8 +86,12 @@ function initModulePage() {
             const index = currentQuiz.detail.findIndex(item => item.module === moduleName);
             if (index === -1) currentQuiz.detail.push(moduleDetail);
             else currentQuiz.detail[index] = moduleDetail;
-            currentQuiz.nextModuleUrl = completed && nextModule ? nextModule : window.location.pathname;
+            currentQuiz.nextModuleUrl = completed ? nextAvailableModule(currentQuiz, moduleName) : window.location.pathname;
             localStorage.setItem('currentQuiz', JSON.stringify(currentQuiz));
+            refreshModuleLinks(currentQuiz);
+            if (completed) {
+                document.querySelector('#module-complete a').href = currentQuiz.nextModuleUrl;
+            }
             showCurrentQuestion();
         }
 
@@ -93,7 +101,7 @@ function initModulePage() {
 
     levelButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
-            if (!answeredLevels.has(index + 1)) showCurrentQuestion(index);
+            if (answeredLevels.size < levelButtons.length) showCurrentQuestion(index);
         });
     });
     showCurrentQuestion();

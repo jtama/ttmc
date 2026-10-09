@@ -1,5 +1,6 @@
 import hljs from 'highlight.js';
 import 'highlight.js/scss/default.scss';
+import {completedModules, refreshModuleLinks} from './module-progress';
 
 hljs.highlightAll();
 
@@ -18,19 +19,24 @@ function markCurrentModuleLink() {
 
 function initModuleNavigation() {
     markCurrentModuleLink();
+    refreshModuleLinks(JSON.parse(localStorage.getItem('currentQuiz')));
 
     document.querySelectorAll('[data-module-link]').forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', event => {
+            const currentQuizJSON = localStorage.getItem('currentQuiz');
+            const currentQuiz = currentQuizJSON ? JSON.parse(currentQuizJSON) : null;
+            if (completedModules(currentQuiz).has(link.dataset.moduleTitle)) {
+                event.preventDefault();
+                return;
+            }
             document.querySelectorAll('[data-module-link].current').forEach(currentLink => {
                 currentLink.classList.remove('current');
             });
             link.classList.add('current');
 
-            const currentQuizJSON = localStorage.getItem('currentQuiz');
             if (!currentQuizJSON) return;
 
             const targetUrl = new URL(link.href, window.location.href);
-            const currentQuiz = JSON.parse(currentQuizJSON);
             currentQuiz.nextModuleUrl = targetUrl.pathname;
             localStorage.setItem('currentQuiz', JSON.stringify(currentQuiz));
         });
