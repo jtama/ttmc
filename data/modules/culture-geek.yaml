@@ -64,28 +64,31 @@ questions:
     answer: "**Sega**. La Dreamcast est sortie à la fin des années 1990 et fut la dernière console de salon produite par Sega. 🎮"
 
   - question: |
-      Dans **Matrix**, quelle pilule Neo choisit-il pour découvrir la vérité sur la Matrice ?
+      Dans **Pokémon Rouge et Bleu** sur Game Boy, quel professeur accompagne le joueur au début de son aventure ?
 
-      1. La pilule bleue
-      2. La pilule rouge
-      3. La pilule verte
-      4. La pilule blanche
-    answer: "**La pilule rouge**. Elle permet à Neo de découvrir la véritable nature de son monde."
-
-  - question: |
-      Dans **Retour vers le futur**, quelle vitesse la DeLorean doit-elle atteindre pour voyager dans le temps ?
-
-      1. 77 mph
-      2. 88 mph
-      3. 99 mph
-      4. 121 mph
-    answer: "**88 mph**, soit environ **142 km/h**. Une fois cette vitesse atteinte, le convecteur temporel peut faire son petit effet. ⚡🚗"
+      1. Le professeur Orme
+      2. Le professeur Chen
+      3. Le professeur Seko
+      4. Le professeur Sorbier
+    answer: "**Le professeur Chen**. C'est le professeur emblématique de Kanto, appelé Professor Oak en anglais. Retour à l'époque des piles de la Game Boy ! ⚡🎮"
 
   - question: |
-      Dans le premier **The Legend of Zelda**, sorti sur Famicom Disk System en 1986, quelle partie de la Triforce Link doit-il reconstituer avant d'affronter Ganon ?
+      👾 Vrai ou Faux : **Tetris** a été créé en Union soviétique dans les années 1980 et son créateur n'a pas immédiatement touché les revenus générés par le succès mondial du jeu.
+    answer: |
+      ✅ **Vrai !** Alexey Pajitnov a créé Tetris en 1984, mais les droits étaient initialement contrôlés par l'État soviétique.
 
+  - question: |
+      👾 Vrai ou Faux :
+
+<<<<<<< Updated upstream:data/modules/culture-geek.yaml
       1. La Triforce du Courage
       2. La Triforce du Pouvoir
       3. La Triforce de la Sagesse
       4. La Triforce du Temps
     answer: "**La Triforce de la Sagesse**. Elle a été divisée en huit fragments que Link doit retrouver dans les donjons avant d'affronter Ganon."
+=======
+      Rechercher **"do a barrel roll"** sur Google déclenche un Easter egg qui fait effectuer une rotation complète à la page de résultats.
+    answer: |
+      ✅ **Vrai !** La page effectue une rotation à 360°.
+---
+>>>>>>> Stashed changes:content/modules/culture-geek.html

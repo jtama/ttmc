@@ -12,7 +12,7 @@
             <header>
                 <div class="header-flex">
                     {#if page.data.containsKey('html-title')}
-                    <h1>{page.title.raw}</h1>
+                    <h1>{#if page.data.containsKey('title-trophy')}<span class="title-trophy" aria-hidden="true"></span> {/if}{page.title.raw}</h1>
                     {#else if page.data.containsKey('custom-title')}
                     <h1>{page.title}</h1>
                     {#else}
@@ -36,7 +36,7 @@
                 <button id="close-dialog-btn" style="display: none;">OK</button>
             </dialog>
             <footer class="site-footer">
-                <p>&copy; 2025/2026 Onepoint ❤️ <strong>Camille Grandjean</strong>, <strong>Jérôme Tama</strong>, Camille Hoareau, Robin Cadinot, Rémi Pachet, Julien Fettinger, Sébastien Buchoux, Nicolas Trauwaen, Mary Pascal, Alexandre Bregeon, Emilie De Pinho 👾</p>
+                <p>&copy; 2026 Onepoint ❤️ <strong>Emilie De Pinho 👾</strong></p>
             </footer>
         </div>
         </div>

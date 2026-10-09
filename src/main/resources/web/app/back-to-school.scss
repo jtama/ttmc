@@ -986,13 +986,25 @@ $color-white: #ffffff;
   header {
     background: linear-gradient(
       180deg,
-      rgba($color-dark, 0.98) 0%,
+      rgba($color-dark, 0.80) 0%,
       rgba($color-medium-purple, 0.96) 100%
     );
     margin-bottom: 2rem;
   }
 
   .header-flex {
+    .title-trophy {
+      display: inline-block;
+      width: 1.25em;
+      height: 1.25em;
+      margin-right: 0.25em;
+      vertical-align: middle;
+      background: url('./src/coupe-pixel-art.png') no-repeat center / contain;
+      image-rendering: pixelated;
+    }
+
+    display: flex;
+    align-items: last baseline;
     padding-bottom: 1rem;
 
     .header-btn {
@@ -1149,6 +1161,11 @@ $color-white: #ffffff;
   }
 
   .leaderboard-section {
+    #leaderboard-list th[scope="row"] {
+      border: none;
+      box-shadow: none;
+    }
+
     #leaderboard-list tr {
       background: linear-gradient(135deg,
         hsl(145, 55%, var(--rank-green-lightness, 85%)) 0%,
