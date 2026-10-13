@@ -80,15 +80,6 @@ questions:
   - question: |
       👾 Vrai ou Faux :
 
-<<<<<<< Updated upstream:data/modules/culture-geek.yaml
-      1. La Triforce du Courage
-      2. La Triforce du Pouvoir
-      3. La Triforce de la Sagesse
-      4. La Triforce du Temps
-    answer: "**La Triforce de la Sagesse**. Elle a été divisée en huit fragments que Link doit retrouver dans les donjons avant d'affronter Ganon."
-=======
       Rechercher **"do a barrel roll"** sur Google déclenche un Easter egg qui fait effectuer une rotation complète à la page de résultats.
     answer: |
       ✅ **Vrai !** La page effectue une rotation à 360°.
----
->>>>>>> Stashed changes:content/modules/culture-geek.html
