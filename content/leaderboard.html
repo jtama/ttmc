@@ -9,7 +9,7 @@ layout: default
 
         <!-- Section Quiz en cours -->
         <div id="quiz-in-progress" data-module-count="{site.collections.modules.size}">
-            <h2 id="current-quiz-title">🎯 Quiz en cours'</h2>
+            <h2 id="current-quiz-title"><span class="heading-icon heading-icon--info" style="background-image: url('{site.image('Icon-info-transparent.png')}')" aria-hidden="true" hidden></span><span class="quiz-title-label">🎯 Quiz en cours'</span></h2>
             <div class="current-quizz" id="current-quiz-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
                 <div>
                     <p><strong>Joueur :</strong> <span class="player-name-display"></span></p>
@@ -34,7 +34,7 @@ layout: default
 
         <!-- Section Leaderboard -->
         <div class="leaderboard-section" id="leaderboard">
-            <h2>🥇 Classement</h2>
+            <h2><img class="heading-icon" src="{site.image('Trophee-num-1.png')}" alt="">Classement</h2>
             <table class="table table-striped">
                 <thead>
                 <tr>

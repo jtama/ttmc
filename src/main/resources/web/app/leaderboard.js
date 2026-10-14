@@ -17,7 +17,9 @@ function renderCurrentQuiz() {
     const content = document.getElementById('current-quiz-content');
     const quiz = loadQuiz();
     if (!quiz) {
-        document.getElementById('current-quiz-title').textContent = 'ℹ️ Aucun quiz en cours';
+        const title = document.getElementById('current-quiz-title');
+        title.querySelector('.heading-icon--info').hidden = false;
+        title.querySelector('.quiz-title-label').textContent = 'Aucun quiz en cours';
         content.innerHTML = '';
         return;
     }

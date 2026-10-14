@@ -955,6 +955,14 @@ $color-white: #ffffff;
       vertical-align: -0.2em;
       margin-right: 0.25em;
     }
+
+    .footer-avatar {
+      height: 1.8em;
+      width: 1.8em;
+      object-fit: contain;
+      vertical-align: -0.45em;
+      image-rendering: pixelated;
+    }
   }
 
   position: relative;
@@ -1132,6 +1140,28 @@ $color-white: #ffffff;
   .leaderboard-page {
     box-sizing: border-box;
     width: 100%;
+
+    .heading-icon {
+      display: inline-block;
+      width: 1.5em;
+      height: 1.5em;
+      object-fit: contain;
+      vertical-align: middle;
+      margin-right: 0.35em;
+
+      &[hidden] {
+        display: none;
+      }
+    }
+
+    .heading-icon--info {
+      width: 1.7cap;
+      height: 1.7cap;
+      vertical-align: -0.35cap;
+      background-size: 110% auto;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
   }
 
   .current-quizz {
