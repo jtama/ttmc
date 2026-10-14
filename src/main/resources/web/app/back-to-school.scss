@@ -901,6 +901,10 @@ $color-white: #ffffff;
       background-color: $level-beginner;
       color: $color-dark;
     }
+    &[aria-disabled="true"] {
+      pointer-events: none;
+      opacity: 0.5;
+    }
   }
 
   &::before {
@@ -941,7 +945,16 @@ $color-white: #ffffff;
 
   .site-footer {
     margin-top: auto;
-    padding-top: var(--spacing-xl);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+
+    .footer-emoji {
+      display: inline-block;
+      height: 1.2em;
+      width: auto;
+      vertical-align: -0.2em;
+      margin-right: 0.25em;
+    }
   }
 
   position: relative;

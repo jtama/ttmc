@@ -8,7 +8,7 @@ layout: default
     <main>
 
         <!-- Section Quiz en cours -->
-        <div id="quiz-in-progress">
+        <div id="quiz-in-progress" data-module-count="{site.collections.modules.size}">
             <h2 id="current-quiz-title">🎯 Quiz en cours'</h2>
             <div class="current-quizz" id="current-quiz-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
                 <div>
@@ -22,12 +22,10 @@ layout: default
                     </ul>
                 </div>
                 <div class="btn-actions-quizz">
-                    <button class="force-finish-btn"
-                            onclick="leaderboard.forceFinishQuiz({site.collections.modules.collectionTitles.raw})">
+                    <button class="force-finish-btn">
                         💾 Terminer le quiz (0 pts pour les modules restants)
                     </button>
-                    <button class="continue-quiz-btn"
-                            onclick="leaderboard.continueQuiz()">
+                    <button class="continue-quiz-btn">
                         🕹️ Continuer le quiz
                     </button>
                 </div>
@@ -35,8 +33,7 @@ layout: default
         </div>
 
         <!-- Section Leaderboard -->
-        <div class="leaderboard-section" id="leaderboard"
-             data-modules="{site.collections.modules.collectionTitles.raw}">
+        <div class="leaderboard-section" id="leaderboard">
             <h2>🥇 Classement</h2>
             <table class="table table-striped">
                 <thead>
@@ -65,7 +62,3 @@ layout: default
         </div>
     </main>
 </div>
-
-<script type="module">
-    addEventListener("load", () => leaderboard.initLeaderboardPage({site.collections.modules.size()}));
-</script>

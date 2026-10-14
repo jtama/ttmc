@@ -1,62 +1,36 @@
-import {showDialog} from "./dialog";
+import {showDialog} from './dialog';
+import {loadQuiz, startQuiz} from './quiz-state';
 
+export function initStartQuizPage() {
+    const startButton = document.getElementById('start-quiz-btn');
+    const nameInput = document.getElementById('player-name');
+    if (!startButton || !nameInput) return;
 
-
-// --- Start Quiz Page Logic ---
-function initStartQuizPage() {
-    const startQuizButton = document.getElementById('start-quiz-btn');
-    const playerNameInput = document.getElementById('player-name');
-    if (!startQuizButton || !playerNameInput) return;
-
-    // Désactiver le bouton au démarrage
-    startQuizButton.style.pointerEvents = 'none';
-    startQuizButton.style.opacity = '0.5';
-
-    // Fonction pour vérifier et activer/désactiver le bouton
-    function toggleStartButton() {
-        const playerName = playerNameInput.value.trim();
-        if (playerName) {
-            startQuizButton.style.pointerEvents = 'auto';
-            startQuizButton.style.opacity = '1';
-        } else {
-            startQuizButton.style.pointerEvents = 'none';
-            startQuizButton.style.opacity = '0.5';
-        }
+    // A quiz in progress is resumed where the player left it.
+    const quiz = loadQuiz();
+    if (quiz?.nextModuleUrl) {
+        window.location.href = quiz.nextModuleUrl;
+        return;
     }
 
-    // Écouter les changements dans le champ de saisie
-    playerNameInput.addEventListener('input', toggleStartButton);
-    playerNameInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            const playerName = playerNameInput.value.trim();
-            if (playerName) {
-                startQuizButton.click();
-            }
-        }
-    });
+    const playerName = () => nameInput.value.trim();
+    const refreshStartButton = () => startButton.setAttribute('aria-disabled', String(!playerName()));
 
-    startQuizButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        const playerName = playerNameInput.value.trim();
-        if (!playerName) {
+    nameInput.addEventListener('input', refreshStartButton);
+    nameInput.addEventListener('keydown', event => {
+        if (event.key !== 'Enter') return;
+        event.preventDefault();
+        startButton.click();
+    });
+    startButton.addEventListener('click', event => {
+        event.preventDefault();
+        if (!playerName()) {
             showDialog('Veuillez saisir votre nom pour commencer le quiz.');
-            playerNameInput.focus();
+            nameInput.focus();
             return;
         }
-        const newQuizData = {
-            playerName,
-            quizId: Date.now(),
-            nextModuleUrl: startQuizButton.pathname,
-            detail: []
-        };
-        localStorage.setItem('currentQuiz', JSON.stringify(newQuizData));
-        window.location.href = startQuizButton.href;
+        startQuiz(playerName(), startButton.pathname);
+        window.location.href = startButton.href;
     });
-
-    // Vérification initiale
-    toggleStartButton();
+    refreshStartButton();
 }
-
-// Execute redirection check first. If it redirects, the rest of the script won't matter.
-initStartQuizPage();

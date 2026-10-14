@@ -5,7 +5,7 @@
         {#insert head /}
         <title>Tu te mets combien ???</title>
     </head>
-    <body data-next-module="{page.nextModule}" data-leaderboard-url="{site.url.fromRoot('leaderboard')}" data-all-modules="{site.collections.modules.size}" data-page-title="{page.title}">
+    <body data-leaderboard-url="{site.url.fromRoot('leaderboard')}">
         <div class="back-to-school">
             <div class="container" >
 
@@ -36,16 +36,9 @@
                 <button id="close-dialog-btn" style="display: none;">OK</button>
             </dialog>
             <footer class="site-footer">
-                <p>&copy; 2026 Onepoint ❤️ <strong>Emilie De Pinho 👾</strong></p>
+                <p>&copy; 2026 Onepoint ❤️ <strong>Emilie De Pinho 👾</strong>, <strong><img class="footer-emoji" src="{site.image('roq-peeking.png')}" alt=""/>Jérôme Tama</strong>, 🤖</p>
             </footer>
         </div>
         </div>
-
-    <script type="module">
-        addEventListener("load", () => {
-            common.initModuleNavigation();
-            common.redirectToNextModuleIfQuizInProgress();
-        });
-    </script>
     </body>
 </html>
