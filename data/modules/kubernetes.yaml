@@ -52,6 +52,6 @@ questions:
   - question: |
       👾 **BOSS FINAL — Vrai ou Faux :**
 
-      Un Pod possédant les bonnes `tolerations` est **obligatoirement** déployé sur un nœud possédant les `taints` correspondants.
+      Un `Deployment` possède **3 réplicas** et un `PodDisruptionBudget` avec `minAvailable: 3`. Ce budget empêche forcément son contrôleur de supprimer un ancien Pod pendant une mise à jour `RollingUpdate`, même si la stratégie du Deployment autorise `maxUnavailable: 1`.
     answer: |
-      ❌ **Faux !** Une `toleration` permet à un Pod d'être accepté sur un nœud possédant le `taint` correspondant, mais elle ne force pas Kubernetes à le placer sur ce nœud.
+      ❌ **Faux !** Un `PodDisruptionBudget` encadre les évictions passant par l'**API Eviction**, comme celles d'un drain respectant le budget. Il ne limite pas les suppressions effectuées par le contrôleur du Deployment pendant un rolling update : c'est la stratégie `maxUnavailable` / `maxSurge` qui pilote cette mise à jour. Les Pods indisponibles pendant le rollout comptent toutefois dans le calcul du budget pour les autres évictions.

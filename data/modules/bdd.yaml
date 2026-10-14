@@ -1,56 +1,34 @@
 title: Base de données
 questions:
   - question: |
-      Vrai ou Faux : En SQL, `DISTINCT` permet d'éviter les doublons dans le résultat d'une requête.
-
-      ```sql
-      SELECT DISTINCT ville
-      FROM users;
-      ```
+      Vrai ou Faux : Une base de données sert à stocker des informations.
     answer: |
-      ✅ **Vrai !** `DISTINCT` élimine les lignes identiques du résultat. Bordeaux n'a donc pas besoin d'apparaître 42 fois. 🍷
+      ✅ **Vrai !** Elle permet de conserver des informations, comme des noms ou des scores.
 
   - question: |
-      Vrai ou Faux : Cette requête permet de trouver tous les pseudos qui commencent par la lettre `M`.
-
-      ```sql
-      SELECT *
-      FROM players
-      WHERE pseudo LIKE 'M%';
-      ```
+      Vrai ou Faux : Une base de données peut enregistrer les scores des joueurs d'un jeu vidéo.
     answer: |
-      ✅ **Vrai !** Avec `LIKE`, le caractère `%` représente zéro, un ou plusieurs caractères. Mario, Marco et Morpheus peuvent entrer. 👾
+      ✅ **Vrai !** Elle peut conserver le nom de chaque joueur et son score.
 
   - question: |
-      Vrai ou Faux : La fonction `COUNT(*)` permet de compter le nombre de lignes retournées par une requête.
-
-      ```sql
-      SELECT COUNT(*)
-      FROM players;
-      ```
+      Vrai ou Faux : Pour retrouver une information dans une base de données, il faut forcément tout lire à la main.
     answer: |
-      ✅ **Vrai !** `COUNT(*)` compte les lignes. Pratique pour savoir combien de courageux ont osé lancer le quiz. 🎮
+      ❌ **Faux !** On peut demander à l'ordinateur de rechercher l'information pour nous.
 
   - question: |
-      Vrai ou Faux : La contrainte `UNIQUE` interdit à plusieurs lignes de posséder la même valeur pour la ou les colonnes concernées.
+      Vrai ou Faux : Une base de données peut contenir une liste de contacts.
     answer: |
-      ✅ **Vrai !** Une contrainte `UNIQUE` impose l'unicité des valeurs concernées.
+      ✅ **Vrai !** Elle peut conserver des noms et des numéros de téléphone.
 
   - question: |
-      Vrai ou Faux : Cette requête modifie le pseudo de tous les joueurs de la table.
-
-      ```sql
-      UPDATE players
-      SET pseudo = 'DarkVador'
-      WHERE id = 42;
-      ```
+      Vrai ou Faux : Une base de données peut contenir uniquement des nombres.
     answer: |
-      ❌ **Faux !** Grâce au `WHERE`, seules les lignes dont `id` vaut `42` sont concernées.
+      ❌ **Faux !** Elle peut aussi contenir du texte, comme des noms ou des adresses.
 
   - question: |
-      Vrai ou Faux : Une `VIEW` SQL stocke obligatoirement une copie physique complète des données qu'elle affiche.
+      Vrai ou Faux : On peut modifier une adresse enregistrée dans une base de données.
     answer: |
-      ❌ **Faux !** Une vue classique correspond essentiellement à une requête enregistrée et ne stocke généralement pas elle-même une copie de toutes les données.
+      ✅ **Vrai !** On peut mettre les informations à jour, par exemple après un déménagement.
 
   - question: |
       Vrai ou Faux : `GROUP BY` permet de regrouper des lignes afin d'effectuer des calculs par groupe.
@@ -69,9 +47,9 @@ questions:
       ✅ **Vrai !** Une procédure stockée permet de regrouper une logique exécutée côté base de données.
 
   - question: |
-      Vrai ou Faux : Un `TRIGGER` doit forcément être lancé manuellement par un utilisateur.
+      Vrai ou Faux : Le niveau d'isolation **REPEATABLE READ** garantit, dans tous les systèmes de bases de données, qu'une même requête ne pourra jamais retourner de nouvelles lignes ajoutées par une autre transaction.
     answer: |
-      ❌ **Faux !** Un trigger peut se déclencher automatiquement lorsqu'un événement défini se produit, par exemple lors d'un `INSERT`, d'un `UPDATE` ou d'un `DELETE`.
+      ❌ **Faux !** Selon le standard SQL, **REPEATABLE READ** peut encore autoriser des « lectures fantômes » : de nouvelles lignes peuvent apparaître lorsqu'une requête est répétée. Certains systèmes offrent toutefois des garanties plus fortes à ce niveau. **SERIALIZABLE** empêche ce phénomène.
 
   - question: |
       👾 **BOSS FINAL — Vrai ou Faux :**

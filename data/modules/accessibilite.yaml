@@ -1,34 +1,34 @@
 title: Accessibilité Web
 questions:
   - question: |
-      Vrai ou Faux : Ajouter `role="button"` sur un `<div>` lui donne automatiquement le même comportement clavier qu'un véritable `<button>`.
+      Vrai ou Faux : Écrire en tout petit facilite la lecture.
     answer: |
-      ❌ **Faux !** Le rôle expose sa fonction, mais n'ajoute pas automatiquement les comportements clavier natifs d'un `<button>`.
+      ❌ **Faux !** Un texte suffisamment grand est plus facile à lire.
 
   - question: |
-      Vrai ou Faux : Un élément avec `aria-hidden="true"` peut encore recevoir le focus clavier s'il est rendu focusable.
+      Vrai ou Faux : Les sous-titres permettent de comprendre une vidéo sans entendre le son.
     answer: |
-      ✅ **Vrai !** `aria-hidden="true"` ne retire pas à lui seul un élément de l'ordre de tabulation.
+      ✅ **Vrai !** On peut lire ce qui est dit.
 
   - question: |
-      Vrai ou Faux : Pour un texte de taille normale, le niveau **AA des WCAG** demande généralement un ratio de contraste d'au moins **4.5:1**.
+      Vrai ou Faux : Tout le monde utilise une souris pour naviguer sur Internet.
     answer: |
-      ✅ **Vrai !** Le contraste minimal attendu pour du texte normal est généralement de 4.5:1.
+      ❌ **Faux !** Certaines personnes utilisent un clavier ou d'autres outils.
 
   - question: |
-      Vrai ou Faux : Un bouton contenant uniquement une icône peut être accessible sans afficher de texte visible à l'intérieur.
+      Vrai ou Faux : Un texte noir sur un fond blanc est plus facile à lire qu'un texte gris clair sur un fond blanc.
     answer: |
-      ✅ **Vrai !** Il peut être accessible s'il possède un nom accessible pertinent, par exemple via un texte masqué ou `aria-label`.
+      ✅ **Vrai !** Le texte noir se distingue mieux du fond blanc.
 
   - question: |
-      Vrai ou Faux : Utiliser `tabindex="5"` est une bonne pratique pour faire passer un bouton avant les autres éléments interactifs au clavier.
+      Vrai ou Faux : Pour signaler une erreur dans un formulaire, il suffit de mettre le champ en rouge, sans aucun message.
     answer: |
-      ❌ **Faux !** Les valeurs positives de `tabindex` créent un ordre de tabulation artificiel et sont généralement à éviter.
+      ❌ **Faux !** Certaines personnes distinguent mal les couleurs. Un message permet de comprendre l'erreur.
 
   - question: |
-      Vrai ou Faux : Un élément avec `tabindex="-1"` ne peut jamais recevoir le focus.
+      Vrai ou Faux : Un lien intitulé « Télécharger le menu du restaurant » est plus clair qu'un lien intitulé « Cliquez ici ».
     answer: |
-      ❌ **Faux !** Il est retiré de la tabulation séquentielle, mais peut toujours recevoir le focus par programmation.
+      ✅ **Vrai !** Le texte du lien explique directement ce qui se passe quand on clique dessus.
 
   - question: |
       Vrai ou Faux : Lorsqu'une modale est ouverte, le focus clavier devrait normalement rester à l'intérieur de celle-ci jusqu'à sa fermeture.

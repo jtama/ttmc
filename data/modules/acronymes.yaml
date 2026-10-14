@@ -1,34 +1,34 @@
 title: Acronymes
 questions:
   - question: |
-      Vrai ou Faux : **MIME** signifie `Multipurpose Internet Mail Extensions`.
+      Vrai ou Faux : le « U » de **USB** signifie « Universel ».
     answer: |
-      ✅ **Vrai !** MIME signifie **Multipurpose Internet Mail Extensions**.
+      ✅ **Vrai !** USB signifie **Universal Serial Bus**.
 
   - question: |
-      Vrai ou Faux : **CORS** signifie `Cross-Origin Resource Sharing`.
+      Vrai ou Faux : le « H » de **HTML** signifie « HyperText ».
     answer: |
-      ✅ **Vrai !** CORS signifie **Cross-Origin Resource Sharing**.
+      ✅ **Vrai !** HTML signifie **HyperText Markup Language**.
 
   - question: |
-      Vrai ou Faux : **JWT** signifie `Java Web Token`.
+      Vrai ou Faux : **CSS** signifie `Computer Style Sheets`.
     answer: |
-      ❌ **Faux !** JWT signifie **JSON Web Token**.
+      ❌ **Faux !** CSS signifie **Cascading Style Sheets**, soit « feuilles de style en cascade ».
 
   - question: |
-      Vrai ou Faux : **ORM** signifie `Object-Relational Mapping`.
+      Vrai ou Faux : le « D » de **PDF** signifie « Document ».
     answer: |
-      ✅ **Vrai !** ORM signifie **Object-Relational Mapping**.
+      ✅ **Vrai !** PDF signifie **Portable Document Format**, soit « format de document portable ».
 
   - question: |
-      Vrai ou Faux : **SPA** signifie `Single Page Application`.
+      Vrai ou Faux : le « S » de **SMS** signifie « Super ».
     answer: |
-      ✅ **Vrai !** SPA signifie **Single Page Application**.
+      ❌ **Faux !** Le « S » signifie **Short** (« court »). SMS signifie **Short Message Service**, soit « service de messages courts ».
 
   - question: |
-      Vrai ou Faux : En sécurité informatique, **XSS** signifie `Cross-Site Scripting`.
+      Vrai ou Faux : **GPS** signifie `Global Positioning System`.
     answer: |
-      ✅ **Vrai !** XSS signifie **Cross-Site Scripting**.
+      ✅ **Vrai !** GPS signifie **Global Positioning System**, soit « système de positionnement mondial ».
 
   - question: |
       Vrai ou Faux : **TTL** signifie `Time To Live`.

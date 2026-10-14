@@ -60,13 +60,17 @@ questions:
   - question: |
       👾 **BOSS FINAL — Vrai ou Faux :**
 
-      Dans ce code, cliquer sur le texte **"Mode expert"** permet nativement d'activer ou désactiver la case, sans JavaScript.
+      Appeler `form.submit()` déclenche la validation des champs HTML (`required`, `type="email"`…) et l'événement `submit`, exactement comme un clic sur un bouton d'envoi.
 
       ```html
-      <label>
-      <input type="checkbox" name="expert">
-      Mode expert
-      </label>
+      <form id="inscription">
+        <input type="email" name="email" required>
+        <button type="submit">S'inscrire</button>
+      </form>
+      <script>
+        const form = document.getElementById('inscription');
+        form.submit();
+      </script>
       ```
     answer: |
-      ✅ **Vrai !** Un contrôle placé à l'intérieur d'un `<label>` est implicitement associé à celui-ci.
+      ❌ **Faux !** `form.submit()` contourne la validation HTML et ne déclenche pas l'événement `submit`. Pour demander une soumission avec validation et événement `submit` si les champs sont valides, on utilise `form.requestSubmit()`.

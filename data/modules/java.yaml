@@ -89,13 +89,16 @@ questions:
   - question: |
       👾 **BOSS FINAL — Vrai ou Faux :**
 
-      Ce code affiche `true` :
+      L'appel à `score()` propage une `IllegalStateException`, même si le bloc `finally` contient un `return`.
 
       ```java
-      Integer score1 = 100;
-      Integer score2 = 100;
-
-      System.out.println(score1 == score2);
+      static int score() {
+          try {
+              throw new IllegalStateException("Erreur !");
+          } finally {
+              return 42;
+          }
+      }
       ```
     answer: |
-      ✅ **Vrai !** Java met généralement en cache les objets `Integer` correspondant aux valeurs de `-128` à `127`.
+      ❌ **Faux !** La méthode retourne **42**. Le `return` du bloc `finally` remplace la sortie provoquée par l'exception, qui n'est donc pas propagée. C'est pourquoi un `return` dans `finally` est à éviter : il peut masquer une erreur.

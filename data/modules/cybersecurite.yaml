@@ -1,6 +1,21 @@
 title: Cybersécurité
 questions:
   - question: |
+      Vrai ou Faux : Si un message annonce que tu as gagné un cadeau, tu peux cliquer sur son lien sans vérifier qui l'a envoyé.
+    answer: |
+      ❌ **Faux !** Le message peut être une arnaque. Il faut vérifier son origine avant de cliquer.
+
+  - question: |
+      Vrai ou Faux : Verrouiller son ordinateur quand on s'absente empêche les autres de l'utiliser directement.
+    answer: |
+      ✅ **Vrai !** Il faut alors déverrouiller la session pour accéder à tes fichiers et applications.
+
+  - question: |
+      Vrai ou Faux : Les mises à jour servent uniquement à changer l'apparence des applications.
+    answer: |
+      ❌ **Faux !** Elles peuvent aussi corriger des problèmes de sécurité et mieux protéger tes appareils.
+
+  - question: |
       Vrai ou Faux : Un site utilisant **HTTPS** garantit que le site est fiable et qu'il ne peut pas être frauduleux.
     answer: |
       ❌ **Faux !** HTTPS chiffre la connexion, mais ne garantit pas qu'un site est fiable.
@@ -16,43 +31,23 @@ questions:
       ❌ **Faux !** Le MFA renforce la sécurité, mais ne garantit pas une protection absolue.
 
   - question: |
-      Vrai ou Faux : Un **ransomware** peut chiffrer les fichiers d'une victime afin d'exiger une rançon pour leur récupération.
+      Vrai ou Faux : Utiliser le même mot de passe sur tous ses comptes est une bonne idée.
     answer: |
-      ✅ **Vrai !** Un ransomware peut chiffrer les données d'une victime et demander une rançon.
+      ❌ **Faux !** Si ce mot de passe est volé, plusieurs comptes peuvent être menacés. Il vaut mieux utiliser un mot de passe différent pour chaque compte.
 
   - question: |
-      Vrai ou Faux : Un mot de passe stocké sous forme de **hash** peut normalement être "déchiffré" avec la bonne clé pour retrouver le mot de passe original.
+      Vrai ou Faux : Garder une copie de ses fichiers importants sur un autre support peut aider à les récupérer si son ordinateur tombe en panne.
     answer: |
-      ❌ **Faux !** Le hachage est conçu comme une transformation à sens unique.
+      ✅ **Vrai !** Une sauvegarde permet de retrouver ses fichiers si les originaux sont perdus ou endommagés.
 
   - question: |
-      Vrai ou Faux : Cette construction d'une requête SQL peut présenter un risque de sécurité si `username` provient directement de l'utilisateur :
-
-      ```java
-      String sql =
-      "SELECT * FROM users WHERE name = '" + username + "'";
-      ```
+      Vrai ou Faux : Une personne se présente comme le support informatique et demande ton code reçu par SMS. Tu peux le lui donner puisqu’elle connaît ton nom.
     answer: |
-      ✅ **Vrai !** Cette construction peut rendre l'application vulnérable à une injection SQL.
-
-  - question: |
-      Vrai ou Faux : Une attaque **brute force** consiste à essayer un grand nombre de combinaisons afin de trouver une information secrète, comme un mot de passe.
-    answer: |
-      ✅ **Vrai !** Une attaque par force brute teste de nombreuses combinaisons jusqu'à trouver la bonne.
-
-  - question: |
-      Vrai ou Faux : Le principe du **moindre privilège** consiste à donner à un utilisateur tous les droits disponibles, puis à retirer ceux dont il n'a pas besoin.
-    answer: |
-      ❌ **Faux !** Il consiste à accorder uniquement les permissions nécessaires.
-
-  - question: |
-      Vrai ou Faux : Dans une approche **Zero Trust**, un utilisateur connecté au réseau interne de l'entreprise est automatiquement considéré comme digne de confiance.
-    answer: |
-      ❌ **Faux !** Le Zero Trust impose de vérifier les accès même lorsqu'ils proviennent du réseau interne.
+      ❌ **Faux !** Connaître ton nom ne prouve pas son identité. Ne partage pas le code et contacte le support par son canal habituel.
 
   - question: |
       👾 **BOSS FINAL — Vrai ou Faux :**
 
-      Le contenu d'un **JWT** encodé en Base64URL est automatiquement confidentiel : une personne possédant le token ne peut donc pas lire son `payload`.
+      Un pirate qui vole un cookie de session encore valide peut parfois accéder à un compte sans connaître le mot de passe ni saisir le code de double authentification.
     answer: |
-      ❌ **Faux !** Le payload d'un JWT signé classique peut être décodé et lu ; il n'est pas automatiquement chiffré.
+      ✅ **Vrai !** Ce cookie peut servir de preuve que l'utilisateur est déjà connecté. La double authentification protège la connexion, mais ne bloque pas forcément l'utilisation d'une session volée.

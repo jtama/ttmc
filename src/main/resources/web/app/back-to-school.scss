@@ -294,19 +294,16 @@
     box-shadow: var(--shadow-sm);
     position: relative;
     overflow: hidden;
-    transform: translateY(0);
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), --border-angle 0.5s linear;
 
     &:hover {
       --border-angle: 360deg;
       box-shadow: 0 8px 25px color-mix(in srgb, var(--primary) 15%, transparent);
-      transform: translateY(-4px) scale(1.03);
       background: var(--primary-50);
       color: var(--primary-700);
     }
 
     &:active {
-      transform: translateY(-2px) scale(1.01);
       transition-duration: 0.1s;
     }
   }
@@ -369,7 +366,6 @@
     gap: var(--spacing-xs);
     position: relative;
     overflow: hidden;
-    transform: translateY(0);
 
     &::before {
       content: '';
@@ -393,7 +389,6 @@
     &:focus {
       background: #1F0B57;
       box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 25%, transparent);
-      transform: translateY(-2px) scale(1.02);
 
       &::before {
         left: 100%;
@@ -401,7 +396,6 @@
     }
 
     &:active {
-      transform: translateY(-1px) scale(1.01);
       transition: all 0.1s;
     }
   }
@@ -414,7 +408,6 @@
     &:hover:not(:disabled) {
       background: color-mix(in srgb, var(--success) 90%, black);
       box-shadow: 0 4px 12px color-mix(in srgb, var(--success) 25%, transparent);
-      transform: translateY(-2px) scale(1.02);
 
       &::before {
         left: 100%;
@@ -422,7 +415,6 @@
     }
 
     &:active:not(:disabled) {
-      transform: translateY(-1px) scale(1.01);
       transition: all 0.1s;
     }
   }
@@ -435,7 +427,6 @@
     &:hover:not(:disabled) {
       background: color-mix(in srgb, var(--error) 90%, black);
       box-shadow: 0 4px 12px color-mix(in srgb, var(--error) 25%, transparent);
-      transform: translateY(-2px) scale(1.02);
 
       &::before {
         left: 100%;
@@ -443,7 +434,6 @@
     }
 
     &:active:not(:disabled) {
-      transform: translateY(-1px) scale(1.01);
       transition: all 0.1s;
     }
   }
@@ -457,7 +447,6 @@
       background: var(--gray-200);
       border-color: var(--gray-300);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transform: translateY(-2px) scale(1.02);
 
       &::before {
         left: 100%;
@@ -465,7 +454,6 @@
     }
 
     &:active {
-      transform: translateY(-1px) scale(1.01);
       transition: all 0.1s;
     }
   }
@@ -812,7 +800,6 @@ dialog {
 
         &:hover {
             color: var(--text-primary);
-            transform: rotate(90deg);
         }
     }
 
@@ -1096,7 +1083,6 @@ $color-white: #ffffff;
         drop-shadow(0 0 4px var(--level-color))
         drop-shadow(0 0 8px var(--level-color));
 
-      transform: translateY(-2px);
     }
 
     &:focus-visible {
@@ -1107,7 +1093,6 @@ $color-white: #ffffff;
     }
 
     &:active {
-      transform: translateY(2px);
       background-color: var(--level-color);
       color: $color-dark;
     }
@@ -1183,7 +1168,6 @@ $color-white: #ffffff;
       &:hover {
         filter:
           drop-shadow(0 0 4px $color-red);
-          transform: translateY(-2px);
       }
     }
     .continue-quiz-btn {
@@ -1198,7 +1182,6 @@ $color-white: #ffffff;
       &:hover {
         filter:
           drop-shadow(0 0 4px $color-green);
-          transform: translateY(-2px);
       }
     }
   }
@@ -1295,5 +1278,17 @@ $color-white: #ffffff;
         }
       }
     }
+  }
+}
+
+// Home and Leaderboard use their pink outline color as a subtle hover fill.
+.back-to-school .header-flex .header-btn {
+  &::before {
+    content: none;
+  }
+
+  &:hover {
+    background: color-mix(in srgb, #{$color-pink} 20%, #{$color-dark});
+    color: #{$color-white};
   }
 }
