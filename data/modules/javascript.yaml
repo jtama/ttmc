@@ -54,32 +54,42 @@ questions:
       ❌ **Faux !** Même déclaré avec `const`, le contenu d'un tableau peut être modifié. On ne peut simplement pas réassigner `snacks` à un autre tableau. Le cookie est sauvé. 🍪
 
   - question: |
-      Vrai ou Faux : En JavaScript, `typeof null` retourne `"null"`.
-    answer: |
-      ❌ **Faux !** Il retourne `"object"`. C'est une particularité historique de JavaScript. Oui, même JavaScript traîne encore des casseroles des années 90. 📼
-
-  - question: |
-      Vrai ou Faux : Ce code affiche `false` :
+      Vrai ou Faux : Ce code affiche `true` deux fois :
 
       ```javascript
-      console.log(NaN === NaN);
+      const tableau = new Array(3);
+      const resultat = tableau.map(() => 42);
+
+      console.log(resultat.length === 3);
+      console.log(resultat[0] === 42);
       ```
     answer: |
-      ✅ **Vrai !** L'expression affiche bien `false`. `NaN` n'est pas égal à lui-même. Pour le détecter proprement, on peut utiliser `Number.isNaN()`.
+      ❌ **Faux !** Il affiche **true**, puis **false**. `new Array(3)` crée un tableau de longueur 3 avec des cases absentes. `map()` ne les visite pas : le résultat conserve ces cases absentes et `resultat[0]` vaut `undefined`.
+
+  - question: |
+      Vrai ou Faux : Ce code affiche `10`, car l'opérateur `...` crée une copie indépendante de toutes les données :
+
+      ```javascript
+      const joueur = { stats: { score: 10 } };
+      const copie = { ...joueur };
+      copie.stats.score = 99;
+
+      console.log(joueur.stats.score);
+      ```
+    answer: |
+      ❌ **Faux !** Il affiche **99**. L'opérateur `...` effectue une copie superficielle : `joueur` et `copie` partagent encore le même objet `stats`. Modifier son score affecte donc les deux.
 
   - question: |
       👾 **BOSS FINAL — Vrai ou Faux :**
 
-      Ce code affiche `1`, puis `2`, puis `3`.
+      Ce code affiche **A**, puis **B**, puis **C**.
 
       ```javascript
-      console.log(1);
-
-      setTimeout(() => {
-        console.log(2);
-      }, 0);
-
-      console.log(3);
+      Promise.resolve("A")
+        .finally(() => Promise.reject("B"))
+        .then(valeur => console.log(valeur))
+        .catch(erreur => console.log(erreur))
+        .then(() => console.log("C"));
       ```
     answer: |
-      ❌ **Faux !** Il affiche `1`, puis `3`, puis `2`.
+      ❌ **Faux !** Il affiche uniquement **B**, puis **C**. Un `finally()` qui se termine normalement conserve le résultat initial, mais ici il retourne une promesse rejetée : le rejet **B** remplace la résolution **A**. Le premier `then()` est ignoré, `catch()` affiche **B** et rétablit une promesse résolue, puis le dernier `then()` affiche **C**.

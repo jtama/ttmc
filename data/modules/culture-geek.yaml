@@ -12,28 +12,28 @@ questions:
   - question: |
       Quel Pokémon est devenu la mascotte emblématique de la franchise **Pokémon** ?
 
-      1. Évoli
-      2. Salamèche
+      1. Voltichou
+      2. Patatachu
       3. Pikachu
-      4. Miaouss
+      4. Grillepichu
     answer: "**Pikachu**. Le Pokémon électrique est devenu l'un des personnages les plus reconnaissables de la culture geek. ⚡"
 
   - question: |
-      Dans **Harry Potter**, à quelle maison appartient Harry ?
+      Quel animal a inspiré les pouvoirs de **Spider-Man** ?
 
-      1. Serpentard
-      2. Poufsouffle
-      3. Serdaigle
-      4. Gryffondor
-    answer: "**Gryffondor**. Le Choixpeau envisage Serpentard, mais Harry demande à ne pas y être envoyé. 🪄"
+      1. Un hamster ninja
+      2. Une araignée
+      3. Un pigeon radioactif
+      4. Une limace supersonique
+    answer: "**Une araignée**. Peter Parker obtient ses pouvoirs après avoir été mordu par une araignée. 🕷️"
 
   - question: |
       Dans **Star Wars**, quel est le véritable nom de Dark Vador ?
 
-      1. Anakin Skywalker
-      2. Luke Skywalker
-      3. Obi-Wan Kenobi
-      4. Han Solo
+      1. Jean-Michel Sabrelaser
+      2. Anakin Skywalker
+      3. Dark Patate
+      4. Gérard du Côté Obscur
     answer: "**Anakin Skywalker**. Ancien Jedi, Anakin bascule du côté obscur et devient Dark Vador."
 
   - question: |
@@ -64,12 +64,12 @@ questions:
     answer: "**Sega**. La Dreamcast est sortie à la fin des années 1990 et fut la dernière console de salon produite par Sega. 🎮"
 
   - question: |
-      Dans **Matrix**, quelle pilule Neo choisit-il pour découvrir la vérité sur la Matrice ?
+      Dans **Matrix**, que choisit Neo pour découvrir la vérité sur la Matrice ?
 
-      1. La pilule bleue
+      1. Un cornichon fluorescent
       2. La pilule rouge
-      3. La pilule verte
-      4. La pilule blanche
+      3. Une raclette connectée
+      4. Un suppositoire du futur
     answer: "**La pilule rouge**. Elle permet à Neo de découvrir la véritable nature de son monde."
 
   - question: |
@@ -82,10 +82,10 @@ questions:
     answer: "**88 mph**, soit environ **142 km/h**. Une fois cette vitesse atteinte, le convecteur temporel peut faire son petit effet. ⚡🚗"
 
   - question: |
-      Dans le premier **The Legend of Zelda**, sorti sur Famicom Disk System en 1986, quelle partie de la Triforce Link doit-il reconstituer avant d'affronter Ganon ?
+      Dans **Harry Potter**, dans quel ordre apparaissent les quatre animaux sur le blason de Poudlard, de gauche à droite puis de haut en bas ?
 
-      1. La Triforce du Courage
-      2. La Triforce du Pouvoir
-      3. La Triforce de la Sagesse
-      4. La Triforce du Temps
-    answer: "**La Triforce de la Sagesse**. Elle a été divisée en huit fragments que Link doit retrouver dans les donjons avant d'affronter Ganon."
+      1. Lion, serpent, blaireau, aigle
+      2. Lion, aigle, blaireau, serpent
+      3. Aigle, lion, serpent, blaireau
+      4. Lion, blaireau, aigle, serpent
+    answer: "**Lion, serpent, blaireau, aigle** : Gryffondor, Serpentard, Poufsouffle et Serdaigle. 🪄"

@@ -16,9 +16,9 @@ questions:
       ❌ **Faux !** JavaScript a été créé par Brendan Eich.
 
   - question: |
-      Vrai ou Faux : **Margaret Hamilton** a dirigé l'équipe chargée du développement du logiciel de vol embarqué du programme Apollo au MIT.
+      Vrai ou Faux : **Guido van Rossum** est le créateur du langage Python.
     answer: |
-      ✅ **Vrai !** Margaret Hamilton a dirigé l'équipe ayant développé le logiciel de vol embarqué d'Apollo.
+      ✅ **Vrai !** Guido van Rossum est à l'origine de Python.
 
   - question: |
       Vrai ou Faux : **Linus Torvalds** est à l'origine de Linux mais également de Git.
@@ -36,9 +36,9 @@ questions:
       ✅ **Vrai !** Håkon Wium Lie a proposé CSS en 1994 alors qu'il travaillait au CERN.
 
   - question: |
-      Vrai ou Faux : **Radia Perlman** est parfois surnommée la "Mother of the Internet" grâce notamment à ses travaux sur le Spanning Tree Protocol.
+      Vrai ou Faux : **Steve Jobs** a conçu les circuits électroniques de l'**Apple I**, le premier ordinateur commercialisé par Apple.
     answer: |
-      ✅ **Vrai !** Radia Perlman est notamment connue pour avoir conçu le Spanning Tree Protocol.
+      ❌ **Faux !** C'est **Steve Wozniak** qui a conçu l'Apple I. Steve Jobs a joué un rôle essentiel dans sa commercialisation. Deux Steve, mais pas le même rôle ! 🍎
 
   - question: |
       Vrai ou Faux : **Dennis Ritchie** est à l'origine du langage C et a également participé à la création d'Unix.
@@ -48,6 +48,6 @@ questions:
   - question: |
       👾 **BOSS FINAL — Vrai ou Faux :**
 
-      **Guido van Rossum** est le créateur du langage Python.
+      **Radia Perlman** est parfois surnommée la "Mother of the Internet" grâce notamment à ses travaux sur le Spanning Tree Protocol.
     answer: |
-      ✅ **Vrai !** Guido van Rossum est à l'origine de Python.
+      ✅ **Vrai !** Radia Perlman est notamment connue pour avoir conçu le Spanning Tree Protocol.

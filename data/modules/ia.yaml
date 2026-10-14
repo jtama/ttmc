@@ -1,14 +1,14 @@
 title: Intelligence artificielle
 questions:
   - question: |
-      Vrai ou Faux : Une intelligence artificielle générative peut produire du contenu qu'elle n'a jamais vu exactement sous cette forme pendant son entraînement.
+      Vrai ou Faux : Une intelligence artificielle peut aider à écrire un texte.
     answer: |
-      ✅ **Vrai !** Une IA générative apprend des régularités à partir de ses données d'entraînement et peut générer de nouveaux contenus à partir de ce qu'elle a appris.
+      ✅ **Vrai !** Elle peut proposer un brouillon de message, une histoire ou un résumé.
 
   - question: |
-      Vrai ou Faux : En apprentissage supervisé, le modèle apprend à partir d'exemples associés à des réponses ou des labels attendus.
+      Vrai ou Faux : Une intelligence artificielle est forcément un robot avec des bras et des jambes.
     answer: |
-      ✅ **Vrai !** Les données d'entraînement contiennent des exemples accompagnés de la réponse attendue.
+      ❌ **Faux !** Une IA peut être un logiciel utilisé sur un ordinateur ou un téléphone, sans corps de robot.
 
   - question: |
       Vrai ou Faux : Lorsqu'une IA "hallucine", cela signifie qu'elle refuse de répondre à une question.
@@ -16,19 +16,19 @@ questions:
       ❌ **Faux !** Une hallucination correspond à une réponse générée qui peut sembler crédible mais qui contient des informations fausses, inventées ou non étayées.
 
   - question: |
-      Vrai ou Faux : Pour un modèle de langage, un `token` correspond obligatoirement à un mot entier.
+      Vrai ou Faux : Une IA peut aider à traduire un texte dans une autre langue.
     answer: |
-      ❌ **Faux !** Un token peut correspondre à un mot, une partie de mot, un signe de ponctuation ou d'autres fragments de texte selon la tokenisation utilisée.
+      ✅ **Vrai !** Elle peut proposer une traduction, mais il reste utile de vérifier le résultat.
 
   - question: |
-      Vrai ou Faux : Un `embedding` permet de représenter une information sous la forme d'un vecteur numérique.
+      Vrai ou Faux : Une IA devine toujours ce que tu veux, même si ta demande est très vague.
     answer: |
-      ✅ **Vrai !** Les embeddings représentent des éléments comme des textes sous forme de vecteurs.
+      ❌ **Faux !** Une demande claire et précise l'aide à donner une réponse plus adaptée.
 
   - question: |
-      Vrai ou Faux : Dans un système de type `RAG`, le modèle doit obligatoirement être réentraîné chaque fois qu'un nouveau document est ajouté à la base documentaire.
+      Vrai ou Faux : Une image créée par une IA peut montrer une scène qui n'a jamais eu lieu.
     answer: |
-      ❌ **Faux !** Le **Retrieval-Augmented Generation** permet de rechercher des informations pertinentes dans une source externe puis de les fournir au modèle comme contexte.
+      ✅ **Vrai !** Une IA peut inventer une image réaliste. Ce n'est donc pas forcément la preuve d'un événement réel.
 
   - question: |
       Vrai ou Faux : Augmenter la `temperature` d'un modèle de langage tend généralement à rendre ses réponses plus déterministes.
@@ -36,18 +36,18 @@ questions:
       ❌ **Faux !** Une température plus élevée tend généralement à augmenter la diversité des sorties.
 
   - question: |
-      Vrai ou Faux : Le `fine-tuning` et le `prompt engineering` désignent exactement la même technique.
-    answer: |
-      ❌ **Faux !** Le **prompt engineering** consiste à travailler les instructions et le contexte fournis au modèle.
-
-  - question: |
       Vrai ou Faux : Si les données utilisées pour entraîner un modèle contiennent des biais, le modèle peut apprendre et reproduire certains de ces biais.
     answer: |
       ✅ **Vrai !** Les modèles apprennent à partir de données et celles-ci peuvent contenir des biais ou des déséquilibres.
 
   - question: |
+      Vrai ou Faux : Le `fine-tuning` et le `prompt engineering` désignent exactement la même technique.
+    answer: |
+      ❌ **Faux !** Le **prompt engineering** consiste à travailler les instructions et le contexte fournis au modèle.
+
+  - question: |
       👾 **BOSS FINAL — Vrai ou Faux :**
 
-      Lorsqu'un **LLM** génère une réponse, il consulte automatiquement une base contenant la réponse exacte puis choisit les mots à afficher.
+      Une IA chargée de résumer un document peut être détournée par des instructions malveillantes cachées dans ce document, même si l'utilisateur ne lui a jamais demandé de les suivre.
     answer: |
-      ❌ **Faux !** Un LLM génère du texte en prédisant successivement des tokens à partir du contexte et des paramètres appris pendant son entraînement.
+      ✅ **Vrai !** C'est une **injection de prompt indirecte** : l'IA peut confondre le contenu à analyser avec des consignes à exécuter. Les instructions présentes dans un document doivent être traitées comme des données, pas comme des ordres de l'utilisateur.
