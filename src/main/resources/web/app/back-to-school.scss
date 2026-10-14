@@ -2,7 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-
 @layer base, layout, components;
 
 @property --border-angle {
@@ -742,103 +741,103 @@
 
 
 dialog {
-    background: var(--surface);
-    color: var(--text-primary);
-    border: 2px solid var(--border-light);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    padding: 20px;
-    margin: auto;
-    width: 90vw;
-    max-width: 500px;
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 20px;
+  margin: auto;
+  width: 90vw;
+  max-width: 500px;
 
-    /* Custom spring-like animation curve */
-    transition: opacity 0.4s ease, scale 0.4s cubic-bezier(.5, 1.3, .75, 1), translate 0.4s cubic-bezier(.5, 1.3, .75, 1), display 0.4s allow-discrete;
+  /* Custom spring-like animation curve */
+  transition: opacity 0.4s ease, scale 0.4s cubic-bezier(.5, 1.3, .75, 1), translate 0.4s cubic-bezier(.5, 1.3, .75, 1), display 0.4s allow-discrete;
 
 
-    /* Content inside the dialog */
+  /* Content inside the dialog */
 
-    .dialog-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: var(--spacing) var(--spacing-lg);
-        border-bottom: 1px solid var(--border-light);
+  .dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing) var(--spacing-lg);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+
+  .dialog-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .dialog-body {
+    padding: var(--spacing-lg);
+  }
+
+  .dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-sm);
+    padding: var(--spacing) var(--spacing-lg);
+    background: var(--surface-elevated);
+    border-top: 1px solid var(--border-light);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  }
+
+  /* Close button */
+
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    transition: color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      color: var(--text-primary);
     }
+  }
 
+  /* Style for when the dialog is open, using the :modal pseudo-class */
 
-    .dialog-title {
-        font-size: 1.25rem;
-        font-weight: 600;
+  &[open] {
+    @starting-style {
+      opacity: 0;
+      scale: 0.95;
+      translate: 0 -25%;
     }
+  }
 
-    .dialog-body {
-        padding: var(--spacing-lg);
+  /* Add a closing animation */
+
+  &.closing {
+    opacity: 0;
+    scale: 0.95;
+    translate: 0 -25%;
+  }
+
+  /* Style the backdrop */
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease, backdrop-filter 0.3s ease, display 0.3s allow-discrete;
+  }
+
+  &::backdrop {
+    opacity: 1;
+    @starting-style {
+      opacity: 0;
     }
+  }
 
-    .dialog-footer {
-        display: flex;
-        justify-content: flex-end;
-        gap: var(--spacing-sm);
-        padding: var(--spacing) var(--spacing-lg);
-        background: var(--surface-elevated);
-        border-top: 1px solid var(--border-light);
-        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-    }
-
-    /* Close button */
-
-    .close-btn {
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--text-muted);
-        cursor: pointer;
-        padding: 0.5rem;
-        line-height: 1;
-        transition: color 0.2s ease, transform 0.2s ease;
-
-        &:hover {
-            color: var(--text-primary);
-        }
-    }
-
-    /* Style for when the dialog is open, using the :modal pseudo-class */
-
-    &[open] {
-        @starting-style {
-            opacity: 0;
-            scale: 0.95;
-            translate: 0 -25%;
-        }
-    }
-
-    /* Add a closing animation */
-
-    &.closing {
-        opacity: 0;
-        scale: 0.95;
-        translate: 0 -25%;
-    }
-
-    /* Style the backdrop */
-
-    &::backdrop {
-        background-color: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(4px);
-        transition: opacity 0.3s ease, backdrop-filter 0.3s ease, display 0.3s allow-discrete;
-    }
-
-    &::backdrop {
-        opacity: 1;
-        @starting-style {
-            opacity: 0;
-        }
-    }
-
-    &.closing::backdrop {
-        opacity: 0;
-    }
+  &.closing::backdrop {
+    opacity: 0;
+  }
 }
 
 /* Stylesheet Back to school */
@@ -884,10 +883,12 @@ $color-white: #ffffff;
   .button {
     border: 2px solid $level-beginner;
     background-color: $color-dark;
+
     &:hover {
       background-color: $level-beginner;
       color: $color-dark;
     }
+
     &[aria-disabled="true"] {
       pointer-events: none;
       opacity: 0.5;
@@ -956,16 +957,15 @@ $color-white: #ffffff;
   isolation: isolate;
   min-height: 100vh;
   color: $color-white;
-  background:
-    linear-gradient(
-    180deg,
-    $color-dark 0%,
-    $color-medium-purple 18%,
-    $color-dark-purple 35%,
-    $color-purple 52%,
-    $color-dark-magenta 68%,
-    $color-magenta 82%,
-    $color-pink 100%
+  background: linear-gradient(
+          180deg,
+          $color-dark 0%,
+          $color-medium-purple 18%,
+          $color-dark-purple 35%,
+          $color-purple 52%,
+          $color-dark-magenta 68%,
+          $color-magenta 82%,
+          $color-pink 100%
   );
 
   &::before {
@@ -993,9 +993,9 @@ $color-white: #ffffff;
 
   header {
     background: linear-gradient(
-      180deg,
-      rgba($color-dark, 0.80) 0%,
-      rgba($color-medium-purple, 0.96) 100%
+            180deg,
+            rgba($color-dark, 0.80) 0%,
+            rgba($color-medium-purple, 0.96) 100%
     );
     margin-bottom: 2rem;
   }
@@ -1033,9 +1033,11 @@ $color-white: #ffffff;
         cursor: not-allowed;
         pointer-events: none;
       }
+
       display: inline-flex;
       align-items: center;
       gap: 12px;
+
       &:hover,
       &.current {
         background-color: #dff0ff;
@@ -1074,14 +1076,11 @@ $color-white: #ffffff;
     font-weight: 700;
     cursor: pointer;
 
-    transition:
-            filter 0.2s ease,
-            transform 0.2s ease;
+    transition: filter 0.2s ease,
+    transform 0.2s ease;
 
     &:hover {
-      filter:
-        drop-shadow(0 0 4px var(--level-color))
-        drop-shadow(0 0 8px var(--level-color));
+      filter: drop-shadow(0 0 4px var(--level-color)) drop-shadow(0 0 8px var(--level-color));
 
     }
 
@@ -1161,27 +1160,24 @@ $color-white: #ffffff;
       color: $color-dark;
       border: 2px solid $color-red;
 
-      transition:
-              filter 0.2s ease,
-              transform 0.2s ease;
+      transition: filter 0.2s ease,
+      transform 0.2s ease;
 
       &:hover {
-        filter:
-          drop-shadow(0 0 4px $color-red);
+        filter: drop-shadow(0 0 4px $color-red);
       }
     }
+
     .continue-quiz-btn {
       background-color: $color-green;
       color: $color-dark;
       border: 2px solid $color-green;
 
-      transition:
-              filter 0.2s ease,
-              transform 0.2s ease;
+      transition: filter 0.2s ease,
+      transform 0.2s ease;
 
       &:hover {
-        filter:
-          drop-shadow(0 0 4px $color-green);
+        filter: drop-shadow(0 0 4px $color-green);
       }
     }
   }
@@ -1194,8 +1190,8 @@ $color-white: #ffffff;
 
     #leaderboard-list tr {
       background: linear-gradient(135deg,
-        hsl(145, 55%, var(--rank-green-lightness, 85%)) 0%,
-        hsl(145, 55%, var(--rank-green-end-lightness, 95%)) 100%) !important;
+      hsl(145, 55%, var(--rank-green-lightness, 85%)) 0%,
+      hsl(145, 55%, var(--rank-green-end-lightness, 95%)) 100%) !important;
 
       th,
       td {
@@ -1205,6 +1201,7 @@ $color-white: #ffffff;
 
       &:first-child {
         background: $color-green !important;
+
         th, td {
           font-weight: 700;
           color: $color-dark;
@@ -1214,8 +1211,10 @@ $color-white: #ffffff;
 
     table {
       margin-bottom: 2rem;
+
       thead {
         background: linear-gradient(135deg, $color-cyan 0%, $color-yellow 100%);
+
         th {
           text-align: center;
           color: $color-dark;
@@ -1237,6 +1236,7 @@ $color-white: #ffffff;
   h2 {
     margin-bottom: 2rem;
   }
+
   .question-404 {
     max-width: 70%;
     color: $color-dark;
@@ -1251,6 +1251,7 @@ $color-white: #ffffff;
     .awser-404 {
       display: block;
       margin-top: 2rem;
+
       .error {
         color: $color-red;
       }
@@ -1259,9 +1260,11 @@ $color-white: #ffffff;
         &[hidden] {
           display: none;
         }
+
         &.hidden {
           display: none;
         }
+
         &.visible {
           display: block;
         }

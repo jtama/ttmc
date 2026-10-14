@@ -2,7 +2,8 @@ import {showDialog} from './dialog';
 import {chooseLevel, chosenLevel, loadQuiz, recordAnswer, setNextModuleUrl} from './quiz-state';
 import {currentModuleLink, nextModuleUrl} from './navigation';
 
-// Levels can be changed until an answer is submitted for this module.
+// A single question can be asked per module: choosing a level locks the others,
+// and answering the question moves on to the next unanswered module.
 export function initModulePage() {
     const levelButtons = Array.from(document.querySelectorAll('.level-btn'));
     const moduleName = currentModuleLink()?.dataset.moduleTitle;
@@ -13,12 +14,11 @@ export function initModulePage() {
             showDialog('Veuillez démarrer le quiz depuis la page principale.');
             return;
         }
-        if (!Number.isInteger(index) || !levelButtons[index]) return;
         chooseLevel(moduleName, index);
         levelButtons.forEach((button, i) => {
+            button.disabled = i !== index;
             button.classList.toggle('is-active', i === index);
             button.setAttribute('aria-pressed', String(i === index));
-            document.getElementById(`question-${button.dataset.index}`).style.display = 'none';
         });
         showQuestion(document.getElementById(`question-${levelButtons[index].dataset.index}`));
     }
@@ -29,18 +29,16 @@ export function initModulePage() {
         const niveau = Number(answerButtons[0].dataset.points);
         question.style.display = 'block';
 
-        revealButton.onclick = () => {
+        revealButton.addEventListener('click', () => {
             revealButton.disabled = true;
             question.querySelector('.answer-text').style.display = 'block';
             answerButtons.forEach(button => {
                 button.style.display = 'inline-flex';
                 button.disabled = false;
             });
-        };
+        });
 
         function submitAnswer(correct) {
-            if (answerButtons[0].disabled) return;
-            levelButtons.forEach(button => button.disabled = true);
             answerButtons.forEach(button => button.disabled = true);
             recordAnswer({
                 module: moduleName,
@@ -53,13 +51,13 @@ export function initModulePage() {
             window.location.href = next;
         }
 
-        answerButtons[0].onclick = () => submitAnswer(true);
-        answerButtons[1].onclick = () => submitAnswer(false);
+        answerButtons[0].addEventListener('click', () => submitAnswer(true));
+        answerButtons[1].addEventListener('click', () => submitAnswer(false));
     }
 
     levelButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
-            askQuestion(index);
+            if (chosenLevel(moduleName) === undefined) askQuestion(index);
         });
     });
 
