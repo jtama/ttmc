@@ -40,8 +40,8 @@ nb-configuration.xml
 # Local environment
 .env
 
-#node_modules
-.node_modules/
+# Generated web dependencies
+node_modules/
 
 # Plugin directory
 /.quarkus/cli/plugins/
