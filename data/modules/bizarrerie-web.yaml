@@ -50,35 +50,37 @@ questions:
       ❌ **Faux !** HTML n'autorise pas plusieurs attributs portant le même nom sur un même élément.
 
   - question: |
-      Vrai ou Faux : Ce calcul JavaScript peut produire `0.30000000000000004` au lieu de `0.3`.
+      En JavaScript, que vaut ce calcul ?
 
       ```javascript
       0.1 + 0.2
       ```
     answer: |
-      ✅ **Vrai !** Certains nombres décimaux ne peuvent pas être représentés exactement avec le format numérique binaire utilisé par JavaScript.
+      **`0.30000000000000004` !** OK si tu as dit « pas exactement `0.3` ». Certains nombres décimaux ne peuvent pas être représentés exactement avec le format numérique binaire utilisé par JavaScript.
 
   - question: |
-      Vrai ou Faux : Un élément avec `visibility: hidden` continue normalement à occuper de la place dans la mise en page.
+      En CSS, quelle différence entre `visibility: hidden` et `display: none` ?
     answer: |
-      ✅ **Vrai !** Contrairement à `display: none`, `visibility: hidden` conserve normalement l'espace occupé par l'élément.
+      **Les deux cachent l'élément, mais `visibility: hidden` lui garde sa place dans la mise en page !** Avec `display: none`, l'élément disparaît complètement et les autres prennent sa place.
 
   - question: |
-      Vrai ou Faux : En JavaScript, cette comparaison retourne `true`.
+      En JavaScript, ce test ne détecte jamais `NaN`. Pourquoi, et que faut-il écrire à la place ?
 
       ```javascript
-      NaN === NaN
+      if (x === NaN) {
+        console.log("Ce n'est pas un nombre !");
+      }
       ```
     answer: |
-      ❌ **Faux !** `NaN` n'est pas égal à lui-même.
+      **`NaN` n'est égal à rien, pas même à lui-même : il faut écrire `Number.isNaN(x)`.** `x === NaN` vaut toujours `false`, même quand `x` vaut `NaN`.
 
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      👾 **BOSS FINAL :**
 
-      En JavaScript, cette expression retourne `true`.
+      En JavaScript, que retourne cette expression, et pourquoi ?
 
       ```javascript
       [] == ![]
       ```
     answer: |
-      ✅ **Vrai !** Les conversions implicites effectuées avec `==` conduisent ici les deux côtés à être comparés comme la valeur numérique `0`.
+      **`true` !** `![]` vaut `false`, car un tableau, même vide, est considéré comme vrai. Les conversions implicites effectuées avec `==` conduisent ensuite les deux côtés à être comparés comme la valeur numérique `0`. OK seulement avec le pourquoi.

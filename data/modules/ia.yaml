@@ -31,23 +31,23 @@ questions:
       ✅ **Vrai !** Une IA peut inventer une image réaliste. Ce n'est donc pas forcément la preuve d'un événement réel.
 
   - question: |
-      Vrai ou Faux : Augmenter la `temperature` d'un modèle de langage tend généralement à rendre ses réponses plus déterministes.
+      Qu'est-ce que change une `temperature` plus élevée pour un modèle de langage ?
     answer: |
-      ❌ **Faux !** Une température plus élevée tend généralement à augmenter la diversité des sorties.
+      **Des réponses plus variées, moins prévisibles !** Une température plus élevée tend généralement à augmenter la diversité des sorties. Une température basse les rend plus déterministes.
 
   - question: |
-      Vrai ou Faux : Si les données utilisées pour entraîner un modèle contiennent des biais, le modèle peut apprendre et reproduire certains de ces biais.
+      Comment s'appelle la technique qui va chercher des documents pertinents et les ajoute au prompt avant que le modèle génère sa réponse ?
     answer: |
-      ✅ **Vrai !** Les modèles apprennent à partir de données et celles-ci peuvent contenir des biais ou des déséquilibres.
+      **Le RAG (Retrieval-Augmented Generation) !** Le modèle répond à partir de documents récupérés au moment de la question, par exemple la documentation de ton entreprise, sans avoir été réentraîné dessus. OK si tu as dit « RAG ».
 
   - question: |
-      Vrai ou Faux : Le `fine-tuning` et le `prompt engineering` désignent exactement la même technique.
+      Quelle différence entre le `fine-tuning` et le `prompt engineering` ?
     answer: |
-      ❌ **Faux !** Le **prompt engineering** consiste à travailler les instructions et le contexte fournis au modèle.
+      **Le fine-tuning modifie le modèle, le prompt engineering seulement ce qu'on lui demande !** Le **fine-tuning** réentraîne un modèle sur des données choisies, ce qui change ses poids. Le **prompt engineering** consiste à travailler les instructions et le contexte fournis au modèle, sans le modifier.
 
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      👾 **BOSS FINAL :**
 
-      Une IA chargée de résumer un document peut être détournée par des instructions malveillantes cachées dans ce document, même si l'utilisateur ne lui a jamais demandé de les suivre.
+      Quel est le titre de l'article scientifique de 2017 qui a introduit l'architecture **Transformer**, le « T » de GPT ?
     answer: |
-      ✅ **Vrai !** C'est une **injection de prompt indirecte** : l'IA peut confondre le contenu à analyser avec des consignes à exécuter. Les instructions présentes dans un document doivent être traitées comme des données, pas comme des ordres de l'utilisateur.
+      **« Attention Is All You Need » !** Publié en 2017 par Ashish Vaswani et ses collègues de Google, il décrit le mécanisme d'attention qui permet à chaque mot de tenir compte de tous les autres. Presque tous les grands modèles de langage actuels en descendent.

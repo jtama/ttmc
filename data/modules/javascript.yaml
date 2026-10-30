@@ -11,9 +11,13 @@ questions:
       ✅ **Vrai !** Le signe `+` permet ici d'additionner deux nombres : `2 + 3` donne bien `5`. 🧮
 
   - question: |
-      Vrai ou Faux : JavaScript et Java sont deux noms pour le même langage.
+      Vrai ou Faux : Ce code affiche un message dans la console du navigateur :
+
+      ```javascript
+      console.log("Prêt à jouer !");
+      ```
     answer: |
-      ❌ **Faux !** JavaScript et Java sont deux langages différents, malgré leurs noms qui se ressemblent. ☕
+      ✅ **Vrai !** `console.log()` écrit un message dans la console, visible dans les outils de développement du navigateur. 🕹️
 
   - question: |
       Vrai ou Faux : Après ce code, Batman a disparu du tableau :
@@ -26,13 +30,13 @@ questions:
       ✅ **Vrai !** `shift()` retire le premier élément du tableau. Batman est donc parti bouder dans sa Batcave. 🦇
 
   - question: |
-      Vrai ou Faux : Ce code affiche `55` :
+      Vrai ou Faux : Ce code affiche `number` :
 
       ```javascript
-      console.log("5" + 5);
+      console.log(typeof "42");
       ```
     answer: |
-      ✅ **Vrai !** Comme l'une des valeurs est une chaîne de caractères, JavaScript effectue une concaténation et affiche `"55"`.
+      ❌ **Faux !** Il affiche `string`. Avec ses guillemets, `"42"` est une chaîne de caractères, même si elle ne contient que des chiffres. 🔤
 
   - question: |
       Vrai ou Faux : Ce code affiche `true` :
@@ -44,17 +48,17 @@ questions:
       ✅ **Vrai !** Avec `==`, JavaScript effectue une conversion implicite des types. Avec `0 === false`, le résultat serait `false`. JavaScript commence à jouer avec nos nerfs. 😈
 
   - question: |
-      Vrai ou Faux : Ce code provoque une erreur :
+      Que se passe-t-il quand on exécute ce code ?
 
       ```javascript
       const snacks = ["🍕", "🍔"];
       snacks.push("🍪");
       ```
     answer: |
-      ❌ **Faux !** Même déclaré avec `const`, le contenu d'un tableau peut être modifié. On ne peut simplement pas réassigner `snacks` à un autre tableau. Le cookie est sauvé. 🍪
+      **Aucune erreur : `snacks` contient trois éléments !** Même déclaré avec `const`, le contenu d'un tableau peut être modifié. On ne peut simplement pas réassigner `snacks` à un autre tableau. Le cookie est sauvé. 🍪
 
   - question: |
-      Vrai ou Faux : Ce code affiche `true` deux fois :
+      Qu'affiche ce code ?
 
       ```javascript
       const tableau = new Array(3);
@@ -64,10 +68,10 @@ questions:
       console.log(resultat[0] === 42);
       ```
     answer: |
-      ❌ **Faux !** Il affiche **true**, puis **false**. `new Array(3)` crée un tableau de longueur 3 avec des cases absentes. `map()` ne les visite pas : le résultat conserve ces cases absentes et `resultat[0]` vaut `undefined`.
+      **`true`, puis `false` !** `new Array(3)` crée un tableau de longueur 3 avec des cases absentes. `map()` ne les visite pas : le résultat conserve ces cases absentes et `resultat[0]` vaut `undefined`.
 
   - question: |
-      Vrai ou Faux : Ce code affiche `10`, car l'opérateur `...` crée une copie indépendante de toutes les données :
+      Qu'affiche ce code ?
 
       ```javascript
       const joueur = { stats: { score: 10 } };
@@ -77,12 +81,12 @@ questions:
       console.log(joueur.stats.score);
       ```
     answer: |
-      ❌ **Faux !** Il affiche **99**. L'opérateur `...` effectue une copie superficielle : `joueur` et `copie` partagent encore le même objet `stats`. Modifier son score affecte donc les deux.
+      **`99` !** L'opérateur `...` effectue une copie superficielle : `joueur` et `copie` partagent encore le même objet `stats`. Modifier son score affecte donc les deux.
 
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      👾 **BOSS FINAL :**
 
-      Ce code affiche **A**, puis **B**, puis **C**.
+      Qu'affiche ce code ?
 
       ```javascript
       Promise.resolve("A")
@@ -92,4 +96,4 @@ questions:
         .then(() => console.log("C"));
       ```
     answer: |
-      ❌ **Faux !** Il affiche uniquement **B**, puis **C**. Un `finally()` qui se termine normalement conserve le résultat initial, mais ici il retourne une promesse rejetée : le rejet **B** remplace la résolution **A**. Le premier `then()` est ignoré, `catch()` affiche **B** et rétablit une promesse résolue, puis le dernier `then()` affiche **C**.
+      **`B`, puis `C` !** Pas de `A`. Un `finally()` qui se termine normalement conserve le résultat initial, mais ici il retourne une promesse rejetée : le rejet **B** remplace la résolution **A**. Le premier `then()` est ignoré, `catch()` affiche **B** et rétablit une promesse résolue, puis le dernier `then()` affiche **C**.

@@ -31,23 +31,23 @@ questions:
       ❌ **Faux !** Grace Hopper est notamment une pionnière des compilateurs et des langages de programmation.
 
   - question: |
-      Vrai ou Faux : **Håkon Wium Lie** a proposé CSS alors qu'il travaillait avec Tim Berners-Lee au CERN.
+      Qui a dirigé l'équipe du MIT qui a écrit le logiciel de vol des missions **Apollo**, et a popularisé l'expression « génie logiciel » ?
     answer: |
-      ✅ **Vrai !** Håkon Wium Lie a proposé CSS en 1994 alors qu'il travaillait au CERN.
+      **Margaret Hamilton !** Une photo célèbre la montre à côté des listings du code d'Apollo, empilés aussi haut qu'elle. 🚀
 
   - question: |
-      Vrai ou Faux : **Steve Jobs** a conçu les circuits électroniques de l'**Apple I**, le premier ordinateur commercialisé par Apple.
+      Qui a conçu les circuits électroniques de l'**Apple I**, le premier ordinateur commercialisé par Apple ?
     answer: |
-      ❌ **Faux !** C'est **Steve Wozniak** qui a conçu l'Apple I. Steve Jobs a joué un rôle essentiel dans sa commercialisation. Deux Steve, mais pas le même rôle ! 🍎
+      **Steve Wozniak !** Steve Jobs a joué un rôle essentiel dans sa commercialisation. Deux Steve, mais pas le même rôle ! 🍎
 
   - question: |
-      Vrai ou Faux : **Dennis Ritchie** est à l'origine du langage C et a également participé à la création d'Unix.
+      Qui a créé le langage C, et participé à la création d'Unix avec Ken Thompson ?
     answer: |
-      ✅ **Vrai !** Dennis Ritchie a créé le langage C et contribué au développement d'Unix.
+      **Dennis Ritchie !** Il a créé le langage C au début des années 1970 aux Bell Labs, et développé Unix avec Ken Thompson.
 
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      👾 **BOSS FINAL :**
 
-      **Radia Perlman** est parfois surnommée la "Mother of the Internet" grâce notamment à ses travaux sur le Spanning Tree Protocol.
+      Quelle informaticienne est parfois surnommée la « Mother of the Internet », notamment pour avoir conçu le Spanning Tree Protocol ?
     answer: |
-      ✅ **Vrai !** Radia Perlman est notamment connue pour avoir conçu le Spanning Tree Protocol.
+      **Radia Perlman !** Elle est notamment connue pour avoir conçu le Spanning Tree Protocol, qui évite les boucles dans les réseaux Ethernet.

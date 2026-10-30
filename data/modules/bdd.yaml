@@ -31,7 +31,7 @@ questions:
       ✅ **Vrai !** On peut mettre les informations à jour, par exemple après un déménagement.
 
   - question: |
-      Vrai ou Faux : `GROUP BY` permet de regrouper des lignes afin d'effectuer des calculs par groupe.
+      Que calcule cette requête ?
 
       ```sql
       SELECT team, AVG(score)
@@ -39,21 +39,21 @@ questions:
       GROUP BY team;
       ```
     answer: |
-      ✅ **Vrai !** Ici, les joueurs sont regroupés par équipe et `AVG(score)` calcule le score moyen de chacune.
+      **Le score moyen de chaque équipe !** `GROUP BY` regroupe les joueurs par équipe et `AVG(score)` calcule le score moyen de chacune.
 
   - question: |
-      Vrai ou Faux : Une procédure stockée est un ensemble d'instructions enregistré dans la base de données et pouvant être exécuté à la demande.
+      Comment appelle-t-on un ensemble d'instructions enregistré dans la base de données et exécuté à la demande ?
     answer: |
-      ✅ **Vrai !** Une procédure stockée permet de regrouper une logique exécutée côté base de données.
+      **Une procédure stockée !** Elle permet de regrouper une logique exécutée côté base de données.
 
   - question: |
-      Vrai ou Faux : Le niveau d'isolation **REPEATABLE READ** garantit, dans tous les systèmes de bases de données, qu'une même requête ne pourra jamais retourner de nouvelles lignes ajoutées par une autre transaction.
+      Dans le standard SQL, quel niveau d'isolation empêche les « lectures fantômes », ces nouvelles lignes ajoutées par une autre transaction qui apparaissent quand on répète une même requête ?
     answer: |
-      ❌ **Faux !** Selon le standard SQL, **REPEATABLE READ** peut encore autoriser des « lectures fantômes » : de nouvelles lignes peuvent apparaître lorsqu'une requête est répétée. Certains systèmes offrent toutefois des garanties plus fortes à ce niveau. **SERIALIZABLE** empêche ce phénomène.
+      **SERIALIZABLE !** Selon le standard SQL, **REPEATABLE READ** peut encore autoriser des lectures fantômes. Certains systèmes, comme PostgreSQL, offrent toutefois des garanties plus fortes à ce niveau.
 
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      👾 **BOSS FINAL :**
 
-      La troisième forme normale (**3NF**) cherche notamment à éviter qu'un attribut non-clé dépende transitivement d'une clé via un autre attribut non-clé.
+      Quelle forme normale cherche à éviter qu'un attribut non-clé dépende transitivement d'une clé via un autre attribut non-clé ?
     answer: |
-      ✅ **Vrai !** La troisième forme normale vise notamment à éliminer les dépendances transitives problématiques entre attributs non-clés.
+      **La troisième forme normale (3NF) !** Elle vise notamment à éliminer les dépendances transitives entre attributs non-clés.

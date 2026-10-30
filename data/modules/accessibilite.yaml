@@ -31,14 +31,14 @@ questions:
       ✅ **Vrai !** Le texte du lien explique directement ce qui se passe quand on clique dessus.
 
   - question: |
-      Vrai ou Faux : Lorsqu'une modale est ouverte, le focus clavier devrait normalement rester à l'intérieur de celle-ci jusqu'à sa fermeture.
+      Lorsqu'une modale est ouverte, où doit rester le focus clavier ?
     answer: |
-      ✅ **Vrai !** Une boîte de dialogue modale doit gérer le focus afin que l'utilisateur n'interagisse pas avec le contenu situé derrière elle.
+      **À l'intérieur de la modale, jusqu'à sa fermeture !** Une boîte de dialogue modale doit gérer le focus afin que l'utilisateur n'interagisse pas avec le contenu situé derrière elle.
 
   - question: |
-      Vrai ou Faux : `aria-live` peut permettre à un lecteur d'écran d'annoncer une information mise à jour dynamiquement sans déplacer le focus dessus.
+      Quel attribut permet à un lecteur d'écran d'annoncer une information mise à jour dynamiquement, sans déplacer le focus dessus ?
     answer: |
-      ✅ **Vrai !** Une région live permet d'annoncer certains changements dynamiques sans nécessiter de déplacement du focus.
+      **`aria-live` !** Une région live permet d'annoncer certains changements dynamiques sans nécessiter de déplacement du focus.
 
   - question: |
       Vrai ou Faux : Ajouter un attribut ARIA à un composant HTML natif rend systématiquement ce composant plus accessible.
@@ -46,9 +46,9 @@ questions:
       ❌ **Faux !** Un mauvais usage d'ARIA peut dégrader l'accessibilité d'un composant déjà correctement sémantique.
 
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      👾 **BOSS FINAL :**
 
-      Ce bouton est correctement désactivé pour tous les utilisateurs uniquement grâce à `aria-disabled="true"` :
+      Un utilisateur clique sur ce bouton. Que se passe-t-il ?
 
       ```html
       <button aria-disabled="true">
@@ -56,4 +56,4 @@ questions:
       </button>
       ```
     answer: |
-      ❌ **Faux !** `aria-disabled="true"` expose l'état aux technologies d'assistance mais n'empêche pas à lui seul l'activation du bouton.
+      **Le clic fonctionne, l'action se déclenche !** `aria-disabled="true"` annonce l'état aux technologies d'assistance mais n'empêche pas à lui seul l'activation du bouton. Il faut bloquer l'action en JavaScript, ou utiliser l'attribut `disabled`.

@@ -54,7 +54,7 @@ questions:
 
   # Niveaux 7 et 8 : plus difficiles
   - question: |
-      Vrai ou Faux : Avec ce CSS, la largeur totale de la boîte, bordures comprises et hors marges, est de `200px`.
+      Avec ce CSS, quelle est la largeur totale de la boîte, bordures comprises et hors marges ?
 
       ```css
       .card {
@@ -65,10 +65,10 @@ questions:
       }
       ```
     answer: |
-      ✅ **Vrai !** Avec `border-box`, les bordures et le padding sont inclus dans les `200px`. La largeur du contenu est donc de `150px`.
+      **`200px` !** Avec `border-box`, les bordures et le padding sont inclus dans les `200px`. La largeur du contenu est donc de `150px`.
 
   - question: |
-      Vrai ou Faux : Avec ce HTML et ces deux règles, le texte du bouton sera bleu, même si la règle rouge est écrite en dernier.
+      Avec ce HTML et ces deux règles, de quelle couleur sera le texte du bouton ?
 
       ```html
       <button id="play" class="action">Jouer</button>
@@ -79,11 +79,11 @@ questions:
       .action { color: red; }
       ```
     answer: |
-      ✅ **Vrai !** Dans ces règles de même origine, sans couche ni `!important`, le sélecteur d'identifiant est plus spécifique que le sélecteur de classe. L'ordre d'écriture ne suffit pas à le battre.
+      **Bleu !** Dans ces règles de même origine, sans couche ni `!important`, le sélecteur d'identifiant est plus spécifique que le sélecteur de classe. La règle rouge a beau être écrite en dernier, l'ordre d'écriture ne suffit pas à le battre.
 
   # Niveau 9 : difficile
   - question: |
-      Vrai ou Faux : Un bouton situé dans `.panel` sera rouge avec ce CSS, car le sélecteur de la première règle est plus spécifique.
+      Avec ce CSS, de quelle couleur sera un bouton situé dans `.panel` ?
 
       ```css
       :where(#app .panel) button {
@@ -95,13 +95,13 @@ questions:
       }
       ```
     answer: |
-      ❌ **Faux !** `:where()` et tous ses arguments apportent une spécificité nulle. La première règle a une spécificité de `0-0-1`, contre `0-1-1` pour la seconde : le bouton sera bleu.
+      **Bleu !** `:where()` et tous ses arguments apportent une spécificité nulle. La première règle a une spécificité de `0-0-1`, contre `0-1-1` pour la seconde.
 
   # Niveau 10 : très difficile
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      👾 **BOSS FINAL :**
 
-      Avec uniquement ce CSS, un bouton `<button id="play">Jouer</button>` sera rouge.
+      Avec uniquement ce CSS, de quelle couleur sera un bouton `<button id="play">Jouer</button>` ?
 
       ```css
       @layer base, theme;
@@ -117,6 +117,6 @@ questions:
       #play { color: blue !important; }
       ```
     answer: |
-      ❌ **Faux !** Le bouton sera **vert** ! Pour les déclarations `!important`, l'ordre de priorité des couches est inversé : la première couche, `base`, gagne sur `theme`.
+      **Vert !** Pour les déclarations `!important`, l'ordre de priorité des couches est inversé : la première couche, `base`, gagne sur `theme`.
 
       Les déclarations importantes placées dans une couche gagnent aussi sur les déclarations importantes hors couche. La spécificité de `#play` ne change donc pas le résultat.

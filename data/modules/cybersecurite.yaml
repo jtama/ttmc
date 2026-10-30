@@ -16,21 +16,6 @@ questions:
       ❌ **Faux !** Elles peuvent aussi corriger des problèmes de sécurité et mieux protéger tes appareils.
 
   - question: |
-      Vrai ou Faux : Un site utilisant **HTTPS** garantit que le site est fiable et qu'il ne peut pas être frauduleux.
-    answer: |
-      ❌ **Faux !** HTTPS chiffre la connexion, mais ne garantit pas qu'un site est fiable.
-
-  - question: |
-      Vrai ou Faux : Un gestionnaire de mots de passe permet d'utiliser un mot de passe différent et complexe pour chaque service sans avoir à tous les mémoriser.
-    answer: |
-      ✅ **Vrai !** Il permet de stocker et générer des mots de passe uniques et complexes.
-
-  - question: |
-      Vrai ou Faux : L'authentification multifacteur (**MFA**) empêche absolument toute compromission d'un compte.
-    answer: |
-      ❌ **Faux !** Le MFA renforce la sécurité, mais ne garantit pas une protection absolue.
-
-  - question: |
       Vrai ou Faux : Utiliser le même mot de passe sur tous ses comptes est une bonne idée.
     answer: |
       ❌ **Faux !** Si ce mot de passe est volé, plusieurs comptes peuvent être menacés. Il vaut mieux utiliser un mot de passe différent pour chaque compte.
@@ -41,13 +26,32 @@ questions:
       ✅ **Vrai !** Une sauvegarde permet de retrouver ses fichiers si les originaux sont perdus ou endommagés.
 
   - question: |
-      Vrai ou Faux : Une personne se présente comme le support informatique et demande ton code reçu par SMS. Tu peux le lui donner puisqu’elle connaît ton nom.
+      Vrai ou Faux : Un site frauduleux peut afficher le cadenas HTTPS dans la barre d'adresse.
     answer: |
-      ❌ **Faux !** Connaître ton nom ne prouve pas son identité. Ne partage pas le code et contacte le support par son canal habituel.
+      ✅ **Vrai !** Les certificats sont gratuits et faciles à obtenir. Le cadenas montre que la connexion est chiffrée, pas que le site est honnête.
 
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      Quelle faille contient ce code, et comment la corriger ?
 
-      Un pirate qui vole un cookie de session encore valide peut parfois accéder à un compte sans connaître le mot de passe ni saisir le code de double authentification.
+      ```java
+      String query = "SELECT * FROM users WHERE name = '" + name + "'";
+      ```
     answer: |
-      ✅ **Vrai !** Ce cookie peut servir de preuve que l'utilisateur est déjà connecté. La double authentification protège la connexion, mais ne bloque pas forcément l'utilisation d'une session volée.
+      **Une injection SQL !** Si `name` vaut `' OR '1'='1`, la requête renvoie tous les utilisateurs. On la corrige avec une requête paramétrée, qui envoie la valeur à part du texte SQL.
+
+  - question: |
+      Un JWT est signé avec une clé que seul le serveur connaît. Qui peut lire son contenu ?
+    answer: |
+      **N'importe qui !** Le contenu d'un JWT signé est seulement encodé en Base64URL : la signature empêche de le modifier, pas de le lire. Il ne faut donc jamais y mettre de secret.
+
+  - question: |
+      Ton API répond avec l'en-tête `Access-Control-Allow-Origin: https://monsite.fr`. Un script `curl` lancé depuis un autre serveur peut-il quand même l'appeler ? Pourquoi ?
+    answer: |
+      **Oui !** OK seulement avec le pourquoi : CORS est appliqué par le navigateur, pas par le serveur. Il empêche le JavaScript d'un autre site de lire la réponse, mais `curl` l'ignore. Pour protéger une API, il faut une vraie authentification.
+
+  - question: |
+      👾 **BOSS FINAL :**
+
+      Ton serveur télécharge l'image dont l'utilisateur donne l'URL. Comment s'appelle cette faille, et que peut viser un attaquant ?
+    answer: |
+      **Une SSRF (Server-Side Request Forgery) !** L'attaquant fait appeler par ton serveur des adresses internes, inaccessibles depuis Internet. Par exemple `http://169.254.169.254/`, l'adresse des métadonnées du cloud, qui peut livrer des identifiants. C'est ainsi qu'a commencé la fuite de données de Capital One en 2019. OK si tu as dit SSRF, ou que le serveur peut appeler le réseau interne.

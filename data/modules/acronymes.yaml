@@ -31,23 +31,23 @@ questions:
       ✅ **Vrai !** GPS signifie **Global Positioning System**, soit « système de positionnement mondial ».
 
   - question: |
-      Vrai ou Faux : **TTL** signifie `Time To Live`.
+      Que signifie **TTL** ?
     answer: |
-      ✅ **Vrai !** TTL signifie **Time To Live**.
+      **Time To Live !** La « durée de vie » d'un paquet réseau ou d'une donnée en cache.
 
   - question: |
-      Vrai ou Faux : **ARIA** signifie `Accessible Rich Internet Applications`.
+      Que signifie **ARIA** ?
     answer: |
-      ✅ **Vrai !** ARIA signifie **Accessible Rich Internet Applications**.
+      **Accessible Rich Internet Applications !** Des attributs qui décrivent les composants d'une page aux technologies d'assistance, comme les lecteurs d'écran.
 
   - question: |
-      Vrai ou Faux : **YAML** signifie aujourd'hui `Yet Another Markup Language`.
+      Que signifie **YAML** aujourd'hui ?
     answer: |
-      ❌ **Faux !** YAML est aujourd'hui développé récursivement comme **YAML Ain't Markup Language**.
+      **YAML Ain't Markup Language !** C'est un acronyme récursif. À sa création, en 2001, c'était Yet Another Markup Language : cette réponse-là ne compte pas.
 
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      👾 **BOSS FINAL :**
 
-      **GNU** signifie `GNU's Not Unix`.
+      Que signifie **CAPTCHA** ?
     answer: |
-      ✅ **Vrai !** GNU signifie **GNU's Not Unix**.
+      **Completely Automated Public Turing test to tell Computers and Humans Apart !** Soit « test de Turing public et entièrement automatisé pour distinguer les ordinateurs des humains ». OK si tu as cité le test de Turing. 🤖

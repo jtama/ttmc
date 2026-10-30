@@ -31,23 +31,23 @@ questions:
       ❌ **Faux !** Plusieurs formats existent, notamment les Quickies, conférences et Hands-on Labs.
 
   - question: |
-      Vrai ou Faux : Un **Quickie** à BDX I/O dure **15 minutes**.
+      Combien de temps dure un **Quickie** à BDX I/O ?
     answer: |
-      ✅ **Vrai !** Le Quickie est le format court de 15 minutes de BDX I/O.
+      **15 minutes !** Le Quickie est le format le plus court de BDX I/O.
 
   - question: |
-      Vrai ou Faux : Les conférences proposées à BDX I/O sont sélectionnées uniquement en fonction de la **notoriété du speaker**.
+      À partir de quoi les évaluateurs de BDX I/O sélectionnent-ils les talks proposés ?
     answer: |
-      ❌ **Faux !** Les évaluateurs sélectionnent les propositions à partir du titre et de la description du talk.
+      **Uniquement le titre et la description du talk !** Les évaluateurs n'ont accès à rien d'autre : chaque proposition est jugée sur son contenu, pas sur la notoriété du speaker.
 
   - question: |
-      Vrai ou Faux : Pour l'édition **2026**, BDX I/O quitte le Palais des Congrès et revient à **l'ENSEIRB-MATMECA de Talence**.
+      Où se déroule l'édition **2026** de BDX I/O ?
     answer: |
-      ✅ **Vrai !** L'édition 2026 se déroule à l'ENSEIRB-MATMECA.
+      **À l'ENSEIRB-MATMECA de Talence !** BDX I/O quitte le Palais des Congrès de Bordeaux Lac, où se sont tenues les éditions 2022 à 2025.
 
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      👾 **BOSS FINAL :**
 
-      L'édition **2026 de BDX I/O se déroule pour la première fois sur deux jours**, les **29 et 30 octobre**.
+      Combien de temps dure un **Hands-on Lab** à BDX I/O ?
     answer: |
-      ✅ **Vrai !** BDX I/O 2026 se déroule sur deux jours, les 29 et 30 octobre.
+      **100 minutes !** C'est le format le plus long de BDX I/O, pour mettre les mains dans le code. Les autres : la conférence (45 minutes) et le Quickie (15 minutes).

@@ -38,29 +38,29 @@ questions:
       ✅ **Vrai !** Les attributs `data-*` peuvent être récupérés en JavaScript via la propriété `dataset`.
 
   - question: |
-      Vrai ou Faux : Plusieurs éléments d'une même page peuvent partager le même attribut `id` sans rendre le document HTML non conforme.
+      Dans un document HTML conforme, combien d'éléments peuvent porter le même `id` ?
     answer: |
-      ❌ **Faux !** La valeur d'un `id` doit être unique dans le document.
+      **Un seul !** La valeur d'un `id` doit être unique dans le document.
 
   - question: |
-      Vrai ou Faux : Un script chargé avec `defer` attend normalement que le document soit analysé avant d'être exécuté.
+      À quel moment le script `game.js` est-il exécuté ?
 
       ```html
       <script src="game.js" defer></script>
       ```
     answer: |
-      ✅ **Vrai !** Un script classique avec `defer` est téléchargé en parallèle puis exécuté après
-      l'analyse du document.
+      **Après l'analyse complète du document !** Un script classique avec `defer` est téléchargé en parallèle,
+      puis exécuté une fois le HTML analysé, juste avant l'événement `DOMContentLoaded`.
 
   - question: |
-      Vrai ou Faux : L'élément HTML natif `<dialog>` peut être ouvert comme une boîte de dialogue modale avec la méthode JavaScript `showModal()`.
+      Quelle méthode JavaScript ouvre l'élément HTML natif `<dialog>` comme une boîte de dialogue modale ?
     answer: |
-      ✅ **Vrai !** `showModal()` permet d'afficher un `<dialog>` dans la couche supérieure en mode modal.
+      **`showModal()` !** Elle affiche le `<dialog>` dans la couche supérieure, en mode modal. La méthode `show()`, elle, l'ouvre sans le rendre modal.
 
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      👾 **BOSS FINAL :**
 
-      Appeler `form.submit()` déclenche la validation des champs HTML (`required`, `type="email"`…) et l'événement `submit`, exactement comme un clic sur un bouton d'envoi.
+      Le champ email est vide. Que se passe-t-il quand ce script appelle `form.submit()` ?
 
       ```html
       <form id="inscription">
@@ -73,4 +73,4 @@ questions:
       </script>
       ```
     answer: |
-      ❌ **Faux !** `form.submit()` contourne la validation HTML et ne déclenche pas l'événement `submit`. Pour demander une soumission avec validation et événement `submit` si les champs sont valides, on utilise `form.requestSubmit()`.
+      **Le formulaire est envoyé quand même !** `form.submit()` contourne la validation HTML et ne déclenche pas l'événement `submit`. Pour demander une soumission avec validation et événement `submit` si les champs sont valides, on utilise `form.requestSubmit()`.

@@ -35,23 +35,23 @@ questions:
       ❌ **Faux !** C'est principalement le rôle de la `readinessProbe`.
 
   - question: |
-      Vrai ou Faux : Deux Pods portant le même nom peuvent exister simultanément dans deux `Namespaces` différents.
+      Deux Pods peuvent-ils porter le même nom en même temps ? À quelle condition ?
     answer: |
-      ✅ **Vrai !** Les noms des ressources doivent être uniques dans leur namespace, mais le même nom peut être utilisé dans un autre namespace.
+      **Oui, s'ils sont dans deux `Namespaces` différents !** Les noms des ressources doivent être uniques dans leur namespace, mais le même nom peut être utilisé dans un autre namespace.
 
   - question: |
-      Vrai ou Faux : Définir une `memory limit` signifie qu'un conteneur peut utiliser autant de mémoire qu'il veut si le cluster en possède encore.
+      Que se passe-t-il si un conteneur essaie d'utiliser plus de mémoire que sa `memory limit` ?
     answer: |
-      ❌ **Faux !** La `memory limit` fixe une limite de mémoire pour le conteneur.
+      **Il est arrêté : `OOMKilled` !** La `memory limit` fixe un plafond, même si le cluster a encore de la mémoire libre. Au-delà, le noyau Linux arrête le processus, puis Kubernetes relance le conteneur selon sa politique de redémarrage.
 
   - question: |
-      Vrai ou Faux : Un `HorizontalPodAutoscaler` peut modifier automatiquement le nombre de Pods d'une application en fonction de métriques.
+      Quel objet Kubernetes peut modifier automatiquement le nombre de Pods d'une application en fonction de métriques ?
     answer: |
-      ✅ **Vrai !** Le HPA peut ajuster automatiquement le nombre de réplicas selon des métriques telles que l'utilisation CPU ou mémoire lorsqu'elles sont configurées et disponibles.
+      **Le `HorizontalPodAutoscaler` (HPA) !** Il peut ajuster automatiquement le nombre de réplicas selon des métriques telles que l'utilisation CPU ou mémoire lorsqu'elles sont configurées et disponibles.
 
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      👾 **BOSS FINAL :**
 
-      Un `Deployment` possède **3 réplicas** et un `PodDisruptionBudget` avec `minAvailable: 3`. Ce budget empêche forcément son contrôleur de supprimer un ancien Pod pendant une mise à jour `RollingUpdate`, même si la stratégie du Deployment autorise `maxUnavailable: 1`.
+      Un `Deployment` possède **3 réplicas** et un `PodDisruptionBudget` avec `minAvailable: 3`. Ce budget bloque-t-il un `kubectl drain` du nœud qui héberge un de ces Pods ? Et une mise à jour `RollingUpdate` du Deployment avec `maxUnavailable: 1` ?
     answer: |
-      ❌ **Faux !** Un `PodDisruptionBudget` encadre les évictions passant par l'**API Eviction**, comme celles d'un drain respectant le budget. Il ne limite pas les suppressions effectuées par le contrôleur du Deployment pendant un rolling update : c'est la stratégie `maxUnavailable` / `maxSurge` qui pilote cette mise à jour. Les Pods indisponibles pendant le rollout comptent toutefois dans le calcul du budget pour les autres évictions.
+      **Le drain est bloqué, le rolling update ne l'est pas !** OK seulement avec les deux bonnes réponses. Un `PodDisruptionBudget` encadre les évictions passant par l'**API Eviction**, comme celles d'un `kubectl drain` : évincer un Pod ferait tomber à 2 Pods disponibles, sous le minimum de 3, donc le drain attend. Le budget ne limite pas les suppressions effectuées par le contrôleur du Deployment pendant un rolling update : c'est la stratégie `maxUnavailable` / `maxSurge` qui pilote cette mise à jour. Les Pods indisponibles pendant le rollout comptent toutefois dans le calcul du budget pour les autres évictions.

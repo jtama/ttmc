@@ -54,7 +54,7 @@ questions:
       ❌ **Faux !** Il affiche `2`. Comme `5` et `2` sont des entiers, Java effectue une division entière et supprime la partie décimale. Et voilà le premier piège. 😈
 
   - question: |
-      Vrai ou Faux : En Java, une `String` peut être comparée de manière fiable avec `==` pour vérifier si deux chaînes contiennent le même texte.
+      Qu'affiche ce code, et pourquoi ?
 
       ```java
       String player1 = new String("Mario");
@@ -63,20 +63,15 @@ questions:
       System.out.println(player1 == player2);
       ```
     answer: |
-      ❌ **Faux !** `==` compare ici les références des objets. Pour comparer leur contenu, on utilise généralement `player1.equals(player2)`. 🍄
+      **`false` !** `==` compare ici les références des objets, et `new String` crée deux objets distincts. Pour comparer leur contenu, on utilise généralement `player1.equals(player2)`. 🍄
 
   - question: |
-      Vrai ou Faux : Une classe Java peut hériter directement de plusieurs classes en même temps.
-
-      ```java
-      class SuperHero extends Batman, Superman {
-      }
-      ```
+      Avec `extends`, combien de classes une classe Java peut-elle étendre directement ?
     answer: |
-      ❌ **Faux !** Java n'autorise pas l'héritage multiple de classes. Une classe ne peut étendre directement qu'une seule classe. Même un super-héros doit respecter les règles. 🦸
+      **Une seule !** Java n'autorise pas l'héritage multiple de classes : `class SuperHero extends Batman, Superman` ne compile pas. Même un super-héros doit respecter les règles. 🦸
 
   - question: |
-      Vrai ou Faux : Ce code compile correctement :
+      Que se passe-t-il quand on compile puis exécute ce code ?
 
       ```java
       int[] levels = {1, 2, 3};
@@ -84,12 +79,12 @@ questions:
       System.out.println(levels[3]);
       ```
     answer: |
-      ✅ **Vrai !** Le code peut compiler, mais son exécution provoquera une `ArrayIndexOutOfBoundsException`. Les indices disponibles sont `0`, `1` et `2`. Le niveau 3 était un piège. 💥
+      **Il compile, puis plante !** L'exécution provoque une `ArrayIndexOutOfBoundsException`. Les indices disponibles sont `0`, `1` et `2`. Le niveau 3 était un piège. 💥
 
   - question: |
-      👾 **BOSS FINAL — Vrai ou Faux :**
+      👾 **BOSS FINAL :**
 
-      L'appel à `score()` propage une `IllegalStateException`, même si le bloc `finally` contient un `return`.
+      Que se passe-t-il quand on appelle `score()` ?
 
       ```java
       static int score() {
@@ -101,4 +96,4 @@ questions:
       }
       ```
     answer: |
-      ❌ **Faux !** La méthode retourne **42**. Le `return` du bloc `finally` remplace la sortie provoquée par l'exception, qui n'est donc pas propagée. C'est pourquoi un `return` dans `finally` est à éviter : il peut masquer une erreur.
+      **Elle retourne `42` !** Aucune exception ne sort. Le `return` du bloc `finally` remplace la sortie provoquée par l'exception, qui n'est donc pas propagée. C'est pourquoi un `return` dans `finally` est à éviter : il peut masquer une erreur.
